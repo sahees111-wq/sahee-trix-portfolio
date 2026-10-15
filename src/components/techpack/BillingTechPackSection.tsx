@@ -113,6 +113,10 @@ export function BillingTechPackSection() {
                 <img
                   src="/images/saheetrix-billing-sample.jpg"
                   alt="SAHEETRIX Custom Jersey & Apparel Tech Pack"
+                  width={1200}
+                  height={1500}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-contain filter drop-shadow-[0_15px_35px_rgba(0,0,0,0.9)]"
                 />
 

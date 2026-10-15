@@ -6,7 +6,7 @@ import { FloatingElements } from "./FloatingElements";
 import { ParticleField } from "./ParticleField";
 import * as THREE from "three";
 
-function DynamicLights({ mouse }: { mouse: { x: number; y: number } }) {
+function DynamicLights({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: number }> }) {
   const light1Ref = useRef<THREE.PointLight>(null);
   const light2Ref = useRef<THREE.PointLight>(null);
   const light3Ref = useRef<THREE.PointLight>(null);
@@ -16,13 +16,13 @@ function DynamicLights({ mouse }: { mouse: { x: number; y: number } }) {
       // Dynamic Cyan / Neon Blue light following cursor
       light1Ref.current.position.x = THREE.MathUtils.damp(
         light1Ref.current.position.x,
-        mouse.x * 8 - 4,
+        mouse.current.x * 8 - 4,
         2,
         delta
       );
       light1Ref.current.position.y = THREE.MathUtils.damp(
         light1Ref.current.position.y,
-        mouse.y * 6 + 2,
+        mouse.current.y * 6 + 2,
         2,
         delta
       );
@@ -32,13 +32,13 @@ function DynamicLights({ mouse }: { mouse: { x: number; y: number } }) {
       // Dynamic Violet / Magenta counter-light
       light2Ref.current.position.x = THREE.MathUtils.damp(
         light2Ref.current.position.x,
-        -mouse.x * 7 + 4,
+        -mouse.current.x * 7 + 4,
         2,
         delta
       );
       light2Ref.current.position.y = THREE.MathUtils.damp(
         light2Ref.current.position.y,
-        -mouse.y * 5 - 2,
+        -mouse.current.y * 5 - 2,
         2,
         delta
       );
@@ -48,7 +48,7 @@ function DynamicLights({ mouse }: { mouse: { x: number; y: number } }) {
       // Dynamic Amber / Gold accent light
       light3Ref.current.position.x = THREE.MathUtils.damp(
         light3Ref.current.position.x,
-        mouse.y * 5,
+        mouse.current.y * 5,
         2,
         delta
       );
@@ -69,45 +69,50 @@ function DynamicLights({ mouse }: { mouse: { x: number; y: number } }) {
 }
 
 export function HeroScene() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [isMounted, setIsMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsMounted(true);
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
 
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth) * 2 - 1;
-      const y = -(e.clientY / innerHeight) * 2 + 1;
-      setMouse({ x, y });
+      mouse.current.x = (e.clientX / innerWidth) * 2 - 1;
+      mouse.current.y = -(e.clientY / innerHeight) * 2 + 1;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: "200px 0px" }
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
   }, []);
 
   if (!isMounted) return <div className="absolute inset-0 bg-[#08080a]" />;
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
       <Canvas
         camera={{ position: [0, 0, 7.5], fov: 45 }}
-        dpr={isMobile ? 1 : [1, 1.5]}
-        gl={{ antialias: !isMobile, alpha: true, powerPreference: "high-performance" }}
+        frameloop={isVisible ? "always" : "never"}
+        dpr={1}
+        gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       >
         <DynamicLights mouse={mouse} />
         <Suspense fallback={null}>
           <FloatingElements mouse={mouse} />
-          <ParticleField count={isMobile ? 40 : 130} />
+          <ParticleField count={70} />
         </Suspense>
       </Canvas>
     </div>

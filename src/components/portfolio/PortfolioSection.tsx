@@ -98,6 +98,8 @@ export function PortfolioSection() {
                   <img
                     src={project.thumbnail}
                     alt={project.title}
+                    loading={idx < 2 ? "eager" : "lazy"}
+                    decoding="async"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Dark gradient overlay */}

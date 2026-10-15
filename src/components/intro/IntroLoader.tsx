@@ -19,17 +19,17 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
           clearInterval(timer);
           return 100;
         }
-        return prev + 2;
+        return prev + 4;
       });
-    }, 28);
+    }, 24);
 
     // Staged typography reveals
-    const trixTimer = setTimeout(() => setStage("trix"), 600);
-    const taglineTimer = setTimeout(() => setStage("tagline"), 1200);
+    const trixTimer = setTimeout(() => setStage("trix"), 350);
+    const taglineTimer = setTimeout(() => setStage("tagline"), 700);
     const exitTimer = setTimeout(() => {
       setStage("exit");
-      setTimeout(onComplete, 800);
-    }, 2400);
+      setTimeout(onComplete, 450);
+    }, 1500);
 
     return () => {
       clearInterval(timer);

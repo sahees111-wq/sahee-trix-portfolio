@@ -13,6 +13,7 @@ const HeroScene = dynamic(
 
 export function HeroSection() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [showScene, setShowScene] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,10 +22,35 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // Keep the first paint light. The decorative 3D scene is loaded only on
+  // capable desktop devices after the browser has finished the important UI.
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    const hasEnoughMemory = !("deviceMemory" in navigator) || (navigator as Navigator & { deviceMemory?: number }).deviceMemory! >= 4;
+
+    if (reduceMotion || coarsePointer || window.innerWidth < 900 || !hasEnoughMemory) return;
+
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const loadScene = () => setShowScene(true);
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(loadScene, { timeout: 1800 });
+    } else {
+      timeoutId = globalThis.setTimeout(loadScene, 1200);
+    }
+
+    return () => {
+      if (idleId !== undefined && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) globalThis.clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#060608]">
       {/* 3D Canvas Background */}
-      <HeroScene />
+      {showScene && <HeroScene />}
 
       {/* Signature '+' Pattern Overlay from SAHEETRIX Flyer */}
       <div className="absolute inset-0 bg-plus-pattern pointer-events-none opacity-60 z-[2]" />
@@ -200,6 +226,11 @@ export function HeroSection() {
                 <img
                   src="/images/sahee-portrait.jpg"
                   alt="Tharmaraja Saheevan (SAHEETRIX)"
+                  width={780}
+                  height={897}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover object-center filter contrast-105 brightness-100 group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Subtle rim shadow along bottom edge only */}

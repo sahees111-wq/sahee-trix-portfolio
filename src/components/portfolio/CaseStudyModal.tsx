@@ -95,6 +95,8 @@ export function CaseStudyModal({
                 <img
                   src={project.heroImage}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c10] via-transparent to-transparent opacity-60" />
@@ -183,6 +185,8 @@ export function CaseStudyModal({
                         <img
                           src={img.url}
                           alt={img.caption}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                       </div>

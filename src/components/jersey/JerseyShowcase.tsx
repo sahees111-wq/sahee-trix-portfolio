@@ -163,6 +163,8 @@ export function JerseyShowcase() {
                 <img
                   src={currentStage.imageUrl}
                   alt={currentStage.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 font-mono text-xs px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00e5ff] border border-white/10">

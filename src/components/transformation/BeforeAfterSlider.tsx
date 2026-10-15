@@ -152,6 +152,8 @@ export function BeforeAfterSlider() {
             <img
               src={activeItem.afterImage}
               alt={activeItem.afterLabel}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute top-4 right-4 font-mono text-[10px] sm:text-xs px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00e5ff] border border-[#00e5ff]/30 font-bold z-10">
@@ -167,6 +169,8 @@ export function BeforeAfterSlider() {
               <img
                 src={activeItem.beforeImage}
                 alt={activeItem.beforeLabel}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover filter grayscale contrast-125"
                 style={{
                   width: containerRef.current ? `${containerRef.current.clientWidth}px` : "100%",

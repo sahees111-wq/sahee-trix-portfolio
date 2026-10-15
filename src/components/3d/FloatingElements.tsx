@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { Float, MeshTransmissionMaterial, RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
 
-export function FloatingElements({ mouse }: { mouse: { x: number; y: number } }) {
+export function FloatingElements({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: number }> }) {
   const groupRef = useRef<THREE.Group>(null);
   const cube1Ref = useRef<THREE.Mesh>(null);
   const icosaRef = useRef<THREE.Mesh>(null);
@@ -18,13 +18,13 @@ export function FloatingElements({ mouse }: { mouse: { x: number; y: number } })
       // Smooth mouse parallax
       groupRef.current.rotation.y = THREE.MathUtils.damp(
         groupRef.current.rotation.y,
-        mouse.x * 0.25,
+        mouse.current.x * 0.25,
         2,
         delta
       );
       groupRef.current.rotation.x = THREE.MathUtils.damp(
         groupRef.current.rotation.x,
-        -mouse.y * 0.2,
+        -mouse.current.y * 0.2,
         2,
         delta
       );

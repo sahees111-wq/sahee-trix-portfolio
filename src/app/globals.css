@@ -33,6 +33,12 @@
     selection-color: #ffffff;
   }
 
+  /* Skip layout/paint work for long sections until they approach the viewport. */
+  main > section {
+    content-visibility: auto;
+    contain-intrinsic-size: 900px;
+  }
+
   ::selection {
     background: #ff1a26;
     color: #ffffff;
@@ -95,6 +101,24 @@
   background: rgba(25, 12, 14, 0.85);
   border-color: rgba(255, 26, 38, 0.45);
   box-shadow: 0 10px 35px -10px rgba(229, 9, 20, 0.3);
+}
+
+/* Backdrop filters are expensive on smaller GPUs. Keep the tinted surfaces,
+   but remove the blur while the user is scrolling on mobile. */
+@media (max-width: 767px) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .glass-panel,
+  .glass-panel-red {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  main > section {
+    contain-intrinsic-size: 700px;
+  }
 }
 
 /* Red Glow Utilities */
