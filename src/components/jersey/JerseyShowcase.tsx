@@ -83,7 +83,7 @@ export function JerseyShowcase() {
   const currentStage = JERSEY_STAGES.find((s) => s.id === activeStageId) || JERSEY_STAGES[0];
 
   return (
-    <section id="jersey" className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section id="jersey" className="fx-animated-section fx-orbit-drift fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute top-1/3 -left-32 w-96 h-96 bg-[#00e5ff]/5 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#3b82f6]/5 rounded-full blur-[160px] pointer-events-none" />

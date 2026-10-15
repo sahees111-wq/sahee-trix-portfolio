@@ -30,7 +30,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative w-full bg-[#050507] border-t border-red-500/20 pt-20 pb-12 px-4 sm:px-6 lg:px-12 overflow-hidden">
+    <footer className="fx-animated-section fx-footer-radiance relative w-full bg-[#050507] border-t border-red-500/20 pt-20 pb-12 px-4 sm:px-6 lg:px-12 overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-gradient-to-t from-red-600/10 via-rose-600/5 to-transparent rounded-full blur-[160px] pointer-events-none" />
 

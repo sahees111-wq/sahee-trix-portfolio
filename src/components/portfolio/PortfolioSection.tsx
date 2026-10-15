@@ -26,7 +26,7 @@ export function PortfolioSection() {
     : portfolioProjects.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="work" className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5">
+    <section id="work" className="fx-animated-section fx-pulse-glow fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">

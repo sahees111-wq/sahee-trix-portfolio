@@ -71,7 +71,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section id="contact" className="fx-animated-section fx-contact-radiance fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       {/* Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-[#00e5ff]/10 via-[#8b5cf6]/10 to-[#ec4899]/10 rounded-full blur-[180px] pointer-events-none" />
 

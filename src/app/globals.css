@@ -112,6 +112,156 @@
   background-clip: text;
 }
 
+/* Animated red atmosphere. Each section gets a different motion language so
+   the page feels alive without turning every block into the same pulsing card. */
+.fx-animated-section {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  will-change: background-position;
+}
+
+.fx-hero-radiance {
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(255, 26, 38, 0.2), transparent 27%),
+    radial-gradient(circle at 82% 72%, rgba(153, 0, 0, 0.22), transparent 30%),
+    linear-gradient(120deg, #060608 0%, #16070a 48%, #060608 100%);
+  background-size: 145% 145%, 160% 160%, 220% 220%;
+  animation: fx-hero-gradient 18s ease-in-out infinite alternate;
+}
+
+.fx-spectrum {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.08), transparent 24%),
+    radial-gradient(circle at 88% 80%, rgba(236, 72, 153, 0.08), transparent 25%),
+    linear-gradient(115deg, #08080a 0%, #100a12 45%, #08080a 100%);
+  background-size: 150% 150%, 150% 150%, 220% 220%;
+  animation: fx-spectrum-drift 21s ease-in-out infinite alternate;
+}
+
+.fx-grid-scan {
+  background-image:
+    linear-gradient(rgba(255, 26, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 26, 38, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 70% 30%, rgba(229, 9, 20, 0.1), transparent 28%);
+  background-size: 44px 44px, 44px 44px, 130% 130%;
+  animation: fx-grid-scan 24s linear infinite;
+}
+
+.fx-pulse-glow {
+  background-image:
+    radial-gradient(circle at 50% 18%, rgba(255, 26, 38, 0.14), transparent 28%),
+    radial-gradient(circle at 10% 90%, rgba(153, 0, 0, 0.11), transparent 24%),
+    linear-gradient(180deg, #08080a 0%, #100709 50%, #08080a 100%);
+  background-size: 140% 140%, 140% 140%, 100% 220%;
+  animation: fx-pulse-glow 10s ease-in-out infinite;
+}
+
+.fx-orbit-drift {
+  background-image:
+    radial-gradient(circle at 12% 48%, transparent 0 12%, rgba(255, 26, 38, 0.1) 12.2% 12.5%, transparent 12.8% 24%),
+    radial-gradient(circle at 90% 22%, rgba(0, 229, 255, 0.08), transparent 24%),
+    conic-gradient(from 120deg at 50% 50%, transparent 0deg, rgba(229, 9, 20, 0.07) 45deg, transparent 95deg, rgba(0, 229, 255, 0.05) 165deg, transparent 220deg);
+  background-size: 120% 150%, 150% 150%, 180% 180%;
+  animation: fx-orbit-drift 26s ease-in-out infinite alternate;
+}
+
+.fx-contact-radiance {
+  background-image:
+    radial-gradient(circle at 50% 58%, rgba(229, 9, 20, 0.17), transparent 31%),
+    radial-gradient(circle at 4% 10%, rgba(0, 229, 255, 0.08), transparent 22%),
+    linear-gradient(135deg, #08080a 0%, #13070b 50%, #08080a 100%);
+  background-size: 150% 150%, 150% 150%, 230% 230%;
+  animation: fx-contact-gradient 16s ease-in-out infinite alternate;
+}
+
+.fx-footer-radiance {
+  background-image:
+    radial-gradient(ellipse at 50% 100%, rgba(229, 9, 20, 0.2), transparent 48%),
+    linear-gradient(105deg, #050507 0%, #150608 52%, #050507 100%);
+  background-size: 150% 150%, 240% 240%;
+  animation: fx-footer-gradient 20s ease-in-out infinite alternate;
+}
+
+.fx-marquee-glow {
+  background-image: linear-gradient(90deg, #08080a 0%, #180608 50%, #08080a 100%);
+  background-size: 220% 100%;
+  animation: fx-marquee-glow 15s linear infinite;
+}
+
+.fx-streak {
+  isolation: isolate;
+}
+
+.fx-streak::after {
+  content: "";
+  position: absolute;
+  top: -35%;
+  bottom: -35%;
+  left: -24%;
+  width: 18%;
+  pointer-events: none;
+  opacity: 0.13;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 104, 112, 0.8), transparent);
+  mix-blend-mode: screen;
+  animation: fx-light-streak 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.fx-neon-border {
+  animation: fx-neon-border 6s ease-in-out infinite;
+}
+
+@keyframes fx-hero-gradient {
+  0% { background-position: 0% 10%, 100% 90%, 0% 50%; }
+  100% { background-position: 72% 80%, 18% 12%, 100% 50%; }
+}
+
+@keyframes fx-spectrum-drift {
+  0% { background-position: 0% 0%, 100% 100%, 0% 50%; }
+  100% { background-position: 75% 45%, 20% 70%, 100% 50%; }
+}
+
+@keyframes fx-grid-scan {
+  0% { background-position: 0 0, 0 0, 0% 50%; }
+  100% { background-position: 44px 44px, -44px -44px, 100% 50%; }
+}
+
+@keyframes fx-pulse-glow {
+  0%, 100% { background-position: 50% 0%, 0% 100%, 50% 0%; }
+  50% { background-position: 50% 72%, 75% 18%, 50% 100%; }
+}
+
+@keyframes fx-orbit-drift {
+  0% { background-position: 0% 50%, 100% 0%, 0% 0%; }
+  100% { background-position: 76% 45%, 14% 76%, 100% 100%; }
+}
+
+@keyframes fx-contact-gradient {
+  0% { background-position: 50% 0%, 0% 100%, 0% 50%; }
+  100% { background-position: 50% 100%, 100% 0%, 100% 50%; }
+}
+
+@keyframes fx-footer-gradient {
+  0% { background-position: 50% 100%, 0% 50%; }
+  100% { background-position: 50% 0%, 100% 50%; }
+}
+
+@keyframes fx-marquee-glow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+@keyframes fx-light-streak {
+  0%, 12% { transform: translateX(0) skewX(-18deg); opacity: 0; }
+  24% { opacity: 0.13; }
+  58%, 100% { transform: translateX(760%) skewX(-18deg); opacity: 0; }
+}
+
+@keyframes fx-neon-border {
+  0%, 100% { box-shadow: 0 0 38px rgba(229, 9, 20, 0.38), 0 0 0 rgba(255, 80, 90, 0); }
+  50% { box-shadow: 0 0 62px rgba(255, 26, 38, 0.66), 0 0 18px rgba(255, 80, 90, 0.24); }
+}
+
 /* Backdrop filters are expensive on smaller GPUs. Keep the tinted surfaces,
    but remove the blur while the user is scrolling on mobile. */
 @media (max-width: 767px) {
@@ -130,6 +280,19 @@
   .font-display,
   .font-mono {
     text-wrap: pretty;
+  }
+
+  .fx-animated-section {
+    animation-duration: 30s;
+  }
+
+  .fx-streak::after {
+    opacity: 0.07;
+    animation-duration: 21s;
+  }
+
+  .fx-neon-border {
+    animation-duration: 9s;
   }
 
   .backdrop-blur-sm,
@@ -197,5 +360,11 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .fx-animated-section,
+  .fx-streak::after,
+  .fx-neon-border {
+    animation: none !important;
   }
 }

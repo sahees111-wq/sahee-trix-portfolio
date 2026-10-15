@@ -23,7 +23,7 @@ export function SkillsGrid() {
   };
 
   return (
-    <section className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section className="fx-animated-section fx-pulse-glow fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">

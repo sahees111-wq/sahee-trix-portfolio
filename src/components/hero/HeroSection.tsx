@@ -48,7 +48,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#060608]">
+    <section className="fx-animated-section fx-hero-radiance relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#060608]">
       {/* 3D Canvas Background */}
       {showScene && <HeroScene />}
 
@@ -208,7 +208,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] xl:max-w-[390px] rounded-3xl p-1.5 bg-gradient-to-b from-red-500 via-red-900 to-red-950 shadow-[0_0_50px_rgba(229,9,20,0.45)] backdrop-blur-xl group ml-auto flex flex-col"
+            className="fx-neon-border relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] xl:max-w-[390px] rounded-3xl p-1.5 bg-gradient-to-b from-red-500 via-red-900 to-red-950 shadow-[0_0_50px_rgba(229,9,20,0.45)] backdrop-blur-xl group ml-auto flex flex-col"
           >
             {/* Glowing Red Backdrop */}
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-red-600/60 via-rose-600/40 to-red-900/50 blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

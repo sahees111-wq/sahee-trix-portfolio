@@ -18,7 +18,7 @@ export function TestimonialSection() {
   };
 
   return (
-    <section className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section className="fx-animated-section fx-pulse-glow fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#8b5cf6]/5 rounded-full blur-[160px] pointer-events-none" />
 

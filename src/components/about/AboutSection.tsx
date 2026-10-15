@@ -7,7 +7,7 @@ import { CheckCircle2, Award, Zap, Compass, Cpu, Palette } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section id="about" className="fx-animated-section fx-spectrum fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute top-1/2 -right-32 w-96 h-96 bg-[#00e5ff]/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 -left-32 w-96 h-96 bg-[#8b5cf6]/5 rounded-full blur-[140px] pointer-events-none" />

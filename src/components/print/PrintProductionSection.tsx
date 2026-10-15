@@ -78,7 +78,7 @@ export function PrintProductionSection() {
   const current = PRINT_TECH_LIST.find((t) => t.id === selectedTech) || PRINT_TECH_LIST[0];
 
   return (
-    <section id="print" className="relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section id="print" className="fx-animated-section fx-grid-scan fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       {/* Registration marks background decorative accents */}
       <div className="absolute top-12 left-12 opacity-20 hidden md:block">
         <span className="registration-mark inline-block" />
