@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 6 6 8;
+    --foreground: 244 244 245;
+    --font-inter: Inter, system-ui, sans-serif;
+    --font-syne: Syne, system-ui, sans-serif;
+    --font-jetbrains-mono: "JetBrains Mono", Consolas, monospace;
+    --font-space-grotesk: "Space Grotesk", system-ui, sans-serif;
+  }
+
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #060608;
+    color: #f4f4f5;
+    font-family: var(--font-syne), var(--font-space-grotesk), system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #060608;
+    color: #f4f4f5;
+    overflow-x: hidden;
+    position: relative;
+    selection-background-color: #ff1a26;
+    selection-color: #ffffff;
+  }
+
+  ::selection {
+    background: #ff1a26;
+    color: #ffffff;
+  }
+}
+
+/* Custom Scrollbar - Bright Crimson Red */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060608;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #990000;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1a26;
+  box-shadow: 0 0 10px rgba(255, 26, 38, 0.8);
+}
+
+/* Signature '+' Technical Crosshair & Dot Pattern from SAHEETRIX Flyer */
+.bg-plus-pattern {
+  background-image: 
+    radial-gradient(rgba(255, 26, 38, 0.18) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ff1a26' fill-opacity='0.12' fill-rule='evenodd'%3E%3Cpath d='M29 25h2v4h4v2h-4v4h-2v-4h-4v-2h4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 20px 20px, 60px 60px;
+}
+
+.bg-plus-pattern-subtle {
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M23 20h2v3h3v2h-3v3h-2v-3h-3v-2h3v-3z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 48px 48px;
+}
+
+/* Glassmorphism helpers with Red Tint options */
+.glass-panel {
+  background: rgba(14, 14, 18, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-red {
+  background: rgba(229, 9, 20, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 26, 38, 0.2);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(25, 12, 14, 0.85);
+  border-color: rgba(255, 26, 38, 0.45);
+  box-shadow: 0 10px 35px -10px rgba(229, 9, 20, 0.3);
+}
+
+/* Red Glow Utilities */
+.glow-red {
+  text-shadow: 0 0 25px rgba(255, 26, 38, 0.6), 0 0 50px rgba(229, 9, 20, 0.3);
+}
+
+.glow-red-box {
+  box-shadow: 0 0 30px rgba(255, 26, 38, 0.35);
+}
+
+.glow-red-border {
+  border-color: rgba(255, 26, 38, 0.5);
+  box-shadow: 0 0 15px rgba(255, 26, 38, 0.25);
+}
+
+/* Technical registration mark */
+.registration-mark-red {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(255, 26, 38, 0.4);
+  border-radius: 50%;
+}
+.registration-mark-red::before,
+.registration-mark-red::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 26, 38, 0.6);
+}
+.registration-mark-red::before {
+  top: 50%;
+  left: -4px;
+  right: -4px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+.registration-mark-red::after {
+  left: 50%;
+  top: -4px;
+  bottom: -4px;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
