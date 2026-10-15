@@ -55,7 +55,7 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
           {/* Registration marks at corners for print vibe */}
           <div className="absolute top-8 left-8 flex items-center gap-2 opacity-30 text-[10px] font-mono">
             <span className="registration-mark inline-block" />
-            <span>CAL_001 / RGB_TO_CMYK</span>
+            <span>CAL_001 / RGB + CMYK WORKFLOW</span>
           </div>
           <div className="absolute bottom-8 right-8 flex items-center gap-2 opacity-30 text-[10px] font-mono">
             <span>DPI: 300 // RASTER_OK</span>
@@ -83,7 +83,7 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
                   initial={{ y: "110%", rotateX: 45 }}
                   animate={stage !== "sahee" ? { y: 0, rotateX: 0 } : { y: "110%" }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-gradient-to-r from-[#00e5ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(0,229,255,0.4)]"
+                  className="intro-gradient-text bg-gradient-to-r from-[#00e5ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(0,229,255,0.4)]"
                 >
                   TRIX
                 </motion.span>

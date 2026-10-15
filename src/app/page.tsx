@@ -10,7 +10,6 @@ import { AboutSection } from "@/components/about/AboutSection";
 import { ServicesSection } from "@/components/services/ServicesSection";
 import { PortfolioSection } from "@/components/portfolio/PortfolioSection";
 import { JerseyShowcase } from "@/components/jersey/JerseyShowcase";
-import { BillingTechPackSection } from "@/components/techpack/BillingTechPackSection";
 import { PrintProductionSection } from "@/components/print/PrintProductionSection";
 import { BeforeAfterSlider } from "@/components/transformation/BeforeAfterSlider";
 import { SkillsGrid } from "@/components/skills/SkillsGrid";
@@ -54,10 +53,7 @@ export default function Home() {
       {/* 05. "From Screen to Fabric" Jersey & Apparel Stage */}
       <JerseyShowcase />
 
-      {/* 06. Official SAHEETRIX Billing & Tech-Pack Spec Card */}
-      <BillingTechPackSection />
-
-      {/* 07. Industrial Print & Prepress Engine */}
+      {/* 06. Industrial Print & Prepress Engine */}
       <PrintProductionSection />
 
       {/* 08. Before & After Transformation Slider */}

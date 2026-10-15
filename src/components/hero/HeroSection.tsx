@@ -67,7 +67,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-red-500/40 bg-red-950/40 backdrop-blur-md self-start shadow-[0_0_20px_rgba(229,9,20,0.25)]"
+            className="inline-flex max-w-full flex-wrap items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full border border-red-500/40 bg-red-950/40 backdrop-blur-md self-start shadow-[0_0_20px_rgba(229,9,20,0.25)]"
           >
             {/* Origami Star */}
             <div className="w-4 h-4 shrink-0">
@@ -79,8 +79,8 @@ export function HeroSection() {
                 <polygon points="5,50 50,50 38,38" fill="#730505" />
               </svg>
             </div>
-            <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] uppercase text-red-100 font-bold">
-              GRAPHIC DESIGNING &amp; CLOTHING SOLUTIONS
+            <span className="font-mono text-[9px] sm:text-xs tracking-[0.12em] sm:tracking-[0.2em] leading-snug text-center uppercase text-red-100 font-bold">
+              CREATIVE GRAPHIC DESIGNING AND MARKETING
             </span>
           </motion.div>
 
@@ -197,7 +197,7 @@ export function HeroSection() {
             </div>
             <div className="flex items-center gap-1.5">
               <Printer className="w-3.5 h-3.5 text-red-400" />
-              <span>Prepress CMYK</span>
+              <span>RGB + CMYK</span>
             </div>
           </motion.div>
         </div>
@@ -224,7 +224,7 @@ export function HeroSection() {
               <div className="relative w-full aspect-[4/4.6] overflow-hidden bg-[#0a0a0f]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/sahee-portrait.jpg"
+                  src="images/sahee-portrait.jpg"
                   alt="Tharmaraja Saheevan (SAHEETRIX)"
                   width={780}
                   height={897}

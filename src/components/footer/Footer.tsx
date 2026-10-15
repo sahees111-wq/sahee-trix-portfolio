@@ -51,7 +51,7 @@ export function Footer() {
               </div>
               <div>
                 <span className="font-mono text-xs text-red-500 uppercase tracking-[0.25em] font-bold block">
-                  GRAPHIC DESIGNING AND CLOTHING SOLUTIONS
+                  CREATIVE GRAPHIC DESIGNING AND MARKETING
                 </span>
                 <div className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-wider">
                   SAHEETRIX

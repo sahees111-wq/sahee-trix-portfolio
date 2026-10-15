@@ -58,8 +58,8 @@ const PRINT_TECH_LIST: PrintTechItem[] = [
     accentColor: "#ffea00",
   },
   {
-    id: "prepress-cmyk",
-    title: "PREPRESS & CMYK COLOR MANAGEMENT",
+    id: "prepress-color",
+    title: "PREPRESS & RGB + CMYK COLOR MANAGEMENT",
     category: "Spectral Color Calibration & RIP",
     specs: "ICC spectrophotometer profiling for zero color variance.",
     description: "Custom profiling for distinct substrates to eliminate color shift between on-screen sRGB and on-press CMYK + Spot Pantone inks.",
@@ -114,7 +114,7 @@ export function PrintProductionSection() {
         {/* CMYK Calibration Color Bar Visual */}
         <div className="mb-10 p-3 rounded-2xl glass-panel flex flex-wrap items-center justify-between gap-4 font-mono text-xs border border-white/10">
           <div className="flex items-center gap-2">
-            <span className="text-zinc-300">CMYK TARGET:</span>
+            <span className="text-zinc-300">RGB + CMYK:</span>
             <div className="flex items-center gap-1">
               <span className="w-5 h-5 rounded bg-[#00a4e4] text-[9px] text-white flex items-center justify-center font-bold">C</span>
               <span className="w-5 h-5 rounded bg-[#e4007f] text-[9px] text-white flex items-center justify-center font-bold">M</span>

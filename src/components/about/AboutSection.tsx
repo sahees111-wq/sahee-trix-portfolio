@@ -56,7 +56,7 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-sans text-sm sm:text-base text-zinc-400 leading-relaxed"
             >
-              Most designers deliver flat digital files and hope for the best at the printing house. Having managed commercial printing floors, large-format sublimation presses, DTF printers, and prepress RIP systems, I engineer artwork with strict adherence to CMYK color chemistry, ink dot gain, bleed allowances, and fabric stretch dynamics.
+              Most designers deliver flat digital files and hope for the best at the printing house. Having managed commercial printing floors, large-format sublimation presses, DTF printers, and prepress RIP systems, I engineer artwork across accurate RGB and CMYK color workflows, ink dot gain, bleed allowances, and fabric stretch dynamics.
             </motion.p>
 
             {/* Core Pillars */}

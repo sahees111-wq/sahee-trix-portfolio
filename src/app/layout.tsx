@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.brandName,
     images: [
       {
-        url: "/images/sahee-portrait.jpg",
+        url: "https://saheetrix.com/images/sahee-portrait.jpg",
         width: 1200,
         height: 630,
         alt: "SAHEE TRIX Portfolio Cover",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
     creator: "@saheetrix",
-    images: ["/images/sahee-portrait.jpg"],
+    images: ["https://saheetrix.com/images/sahee-portrait.jpg"],
   },
   robots: {
     index: true,

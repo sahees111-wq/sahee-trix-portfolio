@@ -103,9 +103,35 @@
   box-shadow: 0 10px 35px -10px rgba(229, 9, 20, 0.3);
 }
 
+/* Keep the intro gradient clipped to the letters in every Chromium/WebKit
+   implementation so no rectangular background appears behind “TRIX”. */
+.intro-gradient-text {
+  display: inline-block;
+  background-color: transparent !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 /* Backdrop filters are expensive on smaller GPUs. Keep the tinted surfaces,
    but remove the blur while the user is scrolling on mobile. */
 @media (max-width: 767px) {
+  section,
+  main,
+  body {
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+
+  .font-display,
+  .font-mono {
+    text-wrap: pretty;
+  }
+
   .backdrop-blur-sm,
   .backdrop-blur-md,
   .backdrop-blur-xl,

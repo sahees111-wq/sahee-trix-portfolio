@@ -4,13 +4,14 @@ import { fileURLToPath } from 'url';
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
+const useCustomDomain = process.env.CUSTOM_DOMAIN === 'true';
 const repositoryName = 'sahee-trix-portfolio';
 
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: isGitHubPages ? `/${repositoryName}` : '',
-  assetPrefix: isGitHubPages ? `/${repositoryName}/` : '',
+  basePath: isGitHubPages && !useCustomDomain ? `/${repositoryName}` : '',
+  assetPrefix: isGitHubPages && !useCustomDomain ? `/${repositoryName}/` : '',
   images: {
     unoptimized: true,
     remotePatterns: [

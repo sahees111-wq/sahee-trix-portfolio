@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Tharmaraja Saheevan",
   brandName: "SAHEETRIX",
   brandHandle: "@saheetrix",
-  tagline: "GRAPHIC DESIGNING AND CLOTHING SOLUTIONS",
+  tagline: "CREATIVE GRAPHIC DESIGNING AND MARKETING",
   slogan: "WORLD CLASS PRODUCTS AND SERVICES FOR WORLDWIDE BRANDS",
   heroStatement: "I DESIGN IDEAS INTO EXPERIENCES.",
   primaryRoles: [
@@ -14,8 +14,8 @@ export const siteConfig = {
   ],
   bio: "Senior Graphic Designer, Printing Manager, and Apparel Specialist with 3+ years of end-to-end expertise delivering world class graphic design, industrial sublimation printing, custom team jerseys, and next-gen AI creative workflows.",
   aboutText: [
-    "Design is more than what you see — it is what you experience. With over three years delivering graphic designing and clothing solutions for worldwide brands, I transform complex concepts into championship-grade athletic apparel, high-octane branding, and industrial print products.",
-    "From precision vector patterning to 215°C sublimation heat calendering, DTF silicone crests, close-hole moisture wicking fabrics, and prepress CMYK chemistry, I oversee the complete manufacturing journey from screen to fabric.",
+    "Design is more than what you see — it is what you experience. With over three years delivering creative graphic design and marketing systems for worldwide brands, I transform complex concepts into memorable campaigns, championship-grade apparel, and high-impact brand experiences.",
+    "From precision vector patterning to 215°C sublimation heat calendering, DTF silicone crests, close-hole moisture-wicking fabrics, and accurate RGB + CMYK color workflows, I oversee the complete journey from first idea to final output.",
   ],
   stats: [
     { value: "3+", label: "Years Experience", suffix: "" },
@@ -41,7 +41,6 @@ export const siteConfig = {
   ],
   navLinks: [
     { name: "WORK", href: "#work" },
-    { name: "TECH-PACK & INVOICE", href: "#billing-techpack" },
     { name: "ABOUT", href: "#about" },
     { name: "SERVICES", href: "#services" },
     { name: "JERSEY", href: "#jersey" },
@@ -49,18 +48,18 @@ export const siteConfig = {
     { name: "CONTACT", href: "#contact" },
   ],
   meta: {
-    title: "SAHEETRIX — Graphic Designing and Clothing Solutions | Tharmaraja Saheevan",
-    description: "Official portfolio of Tharmaraja Saheevan (SAHEETRIX) — Senior Graphic Designer, Printing Manager, and Apparel Specialist. World class products and services for worldwide brands.",
+    title: "SAHEETRIX — Creative Graphic Designing and Marketing | Tharmaraja Saheevan",
+    description: "Official portfolio of Tharmaraja Saheevan (SAHEETRIX) — creative graphic designer, marketing specialist, apparel designer, and print production expert for worldwide brands.",
     keywords: [
       "SAHEETRIX",
       "Tharmaraja Saheevan",
-      "Graphic Designing and Clothing Solutions",
+      "Creative Graphic Designing and Marketing",
       "Jersey Designer Sri Lanka",
       "Sublimation Jersey Designer",
       "Sub T Shirt Manufacturer",
       "DTF Printing Sri Lanka",
       "Band of Brothers Surgers Jersey",
-      "Clothing Solutions",
+      "Brand Marketing",
       "Senior Graphic Designer Sri Lanka",
     ],
   },

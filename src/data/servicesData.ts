@@ -59,7 +59,7 @@ export const servicesData: ServiceItem[] = [
     id: "print-production",
     number: "05",
     title: "PRINT PRODUCTION",
-    tagline: "CMYK color chemistry, prepress RIP management, and physical craftsmanship",
+    tagline: "RGB + CMYK color management, prepress RIP control, and physical craftsmanship",
     description: "Bridging the gap between digital design and press. Comprehensive expertise in sublimation printing, DTF, large format eco-solvent, offset prepress, die-cuts, and quality inspection.",
     deliverables: ["PDF/X-1a Prepress Files", "Spot Color & White Layer RIP", "Color Calibration Profiles", "Die-cut & Dieline Engineering", "Press Oversight"],
     tools: ["Wasatch RIP", "Mimaki RasterLink", "Acrobat DC", "CorelDRAW"],
