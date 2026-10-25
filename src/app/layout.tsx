@@ -3,13 +3,23 @@ import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 
 const siteUrl = "https://saheetrix.com";
+const socialPreviewImage = "/images/sahee-portrait.jpg";
 
 export const metadata: Metadata = {
-  title: siteConfig.meta.title,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteConfig.meta.title,
+    template: "%s | SAHEETRIX",
+  },
   description: siteConfig.meta.description,
   keywords: siteConfig.meta.keywords,
   authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
+  publisher: siteConfig.brandName,
+  applicationName: siteConfig.brandName,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -19,10 +29,10 @@ export const metadata: Metadata = {
     siteName: siteConfig.brandName,
     images: [
       {
-        url: `${siteUrl}/images/sahee-portrait.jpg`,
+        url: socialPreviewImage,
         width: 1200,
         height: 630,
-        alt: "SAHEE TRIX Portfolio Cover",
+        alt: "SAHEETRIX creative design portfolio",
       },
     ],
   },
@@ -31,11 +41,18 @@ export const metadata: Metadata = {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
     creator: "@saheetrix",
-    images: [`${siteUrl}/images/sahee-portrait.jpg`],
+    images: [socialPreviewImage],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -46,25 +63,45 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: siteConfig.name,
-    alternateName: siteConfig.brandName,
-    url: siteUrl,
-    jobTitle: "Senior Graphic Designer & Printing Manager",
-    knowsAbout: [
-      "Graphic Design",
-      "Brand Identity",
-      "Sublimation Printing",
-      "DTF Printing",
-      "Prepress Production",
-      "AI Creative Direction",
-      "Jersey & Apparel Design",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteUrl}/#person`,
+        name: siteConfig.name,
+        alternateName: siteConfig.brandName,
+        url: siteUrl,
+        image: `${siteUrl}${socialPreviewImage}`,
+        jobTitle: "Senior Graphic Designer & Printing Manager",
+        description: siteConfig.meta.description,
+        knowsAbout: [
+          "Graphic Design",
+          "Web Design",
+          "Social Media Management",
+          "Marketing Campaigns",
+          "Brand Identity",
+          "Sublimation Printing",
+          "DTF Printing",
+          "Prepress Production",
+          "AI Creative Direction",
+          "Jersey & Apparel Design",
+        ],
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "Sri Lanka",
+        },
+        sameAs: siteConfig.socialLinks.map((s) => s.url),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: siteConfig.brandName,
+        description: siteConfig.meta.description,
+        publisher: {
+          "@id": `${siteUrl}/#person`,
+        },
+      },
     ],
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "Sri Lanka",
-    },
-    sameAs: siteConfig.socialLinks.map((s) => s.url),
   };
 
   return (
