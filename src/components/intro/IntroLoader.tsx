@@ -21,15 +21,15 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
         }
         return prev + 4;
       });
-    }, 24);
+    }, 16);
 
     // Staged typography reveals
     const trixTimer = setTimeout(() => setStage("trix"), 350);
     const taglineTimer = setTimeout(() => setStage("tagline"), 700);
     const exitTimer = setTimeout(() => {
       setStage("exit");
-      setTimeout(onComplete, 450);
-    }, 1500);
+      setTimeout(onComplete, 300);
+    }, 900);
 
     return () => {
       clearInterval(timer);
