@@ -22,8 +22,8 @@ const COMPARISONS: ComparisonItem[] = [
     category: "Corporate Rebrand & Modernization",
     beforeLabel: "BEFORE (OUTDATED 2020 IDENTITY)",
     afterLabel: "AFTER (SAHEE TRIX 3D SYSTEM)",
-    beforeImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
-    afterImage: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop",
+    beforeImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
+    afterImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
     description: "Reimagined a legacy corporate identity into a high-octane modular grid system with bespoke geometric typography and 3D kinetic assets.",
   },
   {
@@ -32,8 +32,8 @@ const COMPARISONS: ComparisonItem[] = [
     category: "AI Concepting & Retouching",
     beforeLabel: "BEFORE (RAW UNGRADED PROTOTYPE)",
     afterLabel: "AFTER (MASTER 8K COLOR GRADED)",
-    beforeImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop",
-    afterImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop",
+    beforeImage: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
+    afterImage: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
     description: "Transformed flat conceptual prototypes into an ultra-sharp luxury fashion key visual using frequency separation retouching and studio lighting grades.",
   },
   {
@@ -42,8 +42,8 @@ const COMPARISONS: ComparisonItem[] = [
     category: "Screen to Physical Manufacturing",
     beforeLabel: "BEFORE (2D FLAT VECTOR ARTWORK)",
     afterLabel: "AFTER (SUBLIMATED FABRIC PRODUCT)",
-    beforeImage: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
-    afterImage: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop",
+    beforeImage: "https://images.unsplash.com/photo-1618354691373-d851c5c3c990?q=80&w=1200&auto=format&fit=crop",
+    afterImage: "/images/Valkyrie Championship Pro Jersey Showcase.png",
     description: "Bridging 2D vector die-cut patterns into 215°C sublimation heat transfer onto 180 GSM moisture-wicking interlock fabric.",
   },
 ];
