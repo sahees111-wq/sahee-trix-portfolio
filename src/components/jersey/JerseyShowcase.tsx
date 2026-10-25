@@ -28,7 +28,7 @@ const JERSEY_STAGES: JerseyStage[] = [
       "Size-Graded Patterns (XS through 4XL)",
       "3mm Seam Overlap Tolerance",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "https://img.magnific.com/psd-premium/mockup-de-camisa-de-futebol-preto-e-dourado-com-opcoes-de-personalizacao_691590-211.jpg?q=80&semt=ais_hybrid&w=1400",
     caption: "High-resolution vector layout showing front, back, collar, and raglan sleeve panels.",
   },
   {
@@ -43,7 +43,7 @@ const JERSEY_STAGES: JerseyStage[] = [
       "360° Sponsor Placement Verification",
       "Stitch Tension & Hem Line Inspection",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/Valkyrie Championship Pro Jersey Showcase.png",
     caption: "3D parametric drape simulation validating chest sponsor readability and shoulder alignment.",
   },
   {
@@ -58,7 +58,7 @@ const JERSEY_STAGES: JerseyStage[] = [
       "3D Silicone High-Density Heat-Transfer Crests",
       "Flatlock Anti-Chafe Heavy-Duty Stitching",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
     caption: "Physical heat-press transfer onto 180 GSM moisture-wicking interlock poly-spandex.",
   },
   {
@@ -73,7 +73,7 @@ const JERSEY_STAGES: JerseyStage[] = [
       "Vibrant Stadium Lighting Pop",
       "International Tournament Certified",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1200&auto=format&fit=crop",
     caption: "Final championship kit worn in international arena finals with zero distortion.",
   },
 ];
@@ -165,7 +165,7 @@ export function JerseyShowcase() {
                   alt={currentStage.name}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${currentStage.id === "stage-2" ? "object-contain p-3 sm:p-6" : "object-cover"} transition-transform duration-500`}
                 />
                 <div className="absolute top-4 left-4 font-mono text-xs px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00e5ff] border border-white/10">
                   STAGE {currentStage.stepNumber} // {currentStage.name}
