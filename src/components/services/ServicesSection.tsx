@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { servicesData, ServiceItem } from "@/data/servicesData";
-import { ArrowUpRight, Check, Sparkles, Layers, Box, Shirt, Printer, Share2, Megaphone } from "lucide-react";
+import { ArrowUpRight, Check, Sparkles, Layers, Box, Shirt, Printer, Share2, Megaphone, Globe } from "lucide-react";
 
 export function ServicesSection() {
   const [activeService, setActiveService] = useState<string | null>(servicesData[0].id);
@@ -11,6 +11,7 @@ export function ServicesSection() {
   const getServiceIcon = (id: string) => {
     switch (id) {
       case "graphic-design": return <Layers className="w-5 h-5 text-[#00e5ff]" />;
+      case "web-design": return <Globe className="w-5 h-5 text-[#f97316]" />;
       case "brand-identity": return <Sparkles className="w-5 h-5 text-[#8b5cf6]" />;
       case "social-media": return <Share2 className="w-5 h-5 text-[#ec4899]" />;
       case "jersey-apparel": return <Shirt className="w-5 h-5 text-[#3b82f6]" />;
@@ -42,11 +43,11 @@ export function ServicesSection() {
             </h2>
           </div>
           <p className="font-sans text-sm text-zinc-400 max-w-md">
-            From strategic visual brand systems to factory-floor print calibration and next-gen generative AI solutions.
+            Graphic design is the core — extended into responsive web design, social media management, marketing campaigns, apparel, packaging, and print production.
           </p>
         </div>
 
-        {/* 8 Services Grid */}
+        {/* 9 Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {servicesData.map((service, index) => {
             const isHovered = activeService === service.id;
