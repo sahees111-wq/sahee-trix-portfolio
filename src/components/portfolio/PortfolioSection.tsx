@@ -96,7 +96,7 @@ export function PortfolioSection() {
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={project.thumbnail}
+                    src={project.heroImage}
                     alt={project.title}
                     loading={idx < 2 ? "eager" : "lazy"}
                     decoding="async"
