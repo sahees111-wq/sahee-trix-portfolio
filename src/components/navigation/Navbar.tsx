@@ -54,7 +54,7 @@ export function Navbar() {
             </div>
           </a>
 
-          {/* Center: Desktop Nav Links */
+          {/* Center: Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-5 lg:gap-7 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
             {siteConfig.navLinks.map((link) => (
               <a
