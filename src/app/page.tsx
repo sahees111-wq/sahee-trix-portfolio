@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IntroLoader } from "@/components/intro/IntroLoader";
 import { FloatingWhatsApp } from "@/components/floating/FloatingWhatsApp";
 import { MouseGradientMesh } from "@/components/effects/MouseGradientMesh";
@@ -21,6 +21,44 @@ import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
   const [introCompleted, setIntroCompleted] = useState(false);
+
+  useEffect(() => {
+    const cleanUrl = () => {
+      if (window.location.search || window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    };
+
+    const handleAnchorClick = (event: MouseEvent) => {
+      const anchor = (event.target as HTMLElement).closest<HTMLAnchorElement>(
+        'a[href^="#"]',
+      );
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+
+      event.preventDefault();
+
+      if (href === "#") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        document.querySelector(href)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      window.history.replaceState(null, "", window.location.pathname);
+    };
+
+    cleanUrl();
+    document.addEventListener("click", handleAnchorClick);
+
+    return () => {
+      document.removeEventListener("click", handleAnchorClick);
+    };
+  }, []);
 
   return (
     <main className="relative min-h-screen bg-[#08080a] text-zinc-100 selection:bg-[#e50914] selection:text-white">
