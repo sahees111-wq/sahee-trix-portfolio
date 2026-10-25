@@ -2,22 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 
+const siteUrl = "https://saheetrix.com";
+
 export const metadata: Metadata = {
   title: siteConfig.meta.title,
   description: siteConfig.meta.description,
   keywords: siteConfig.meta.keywords,
-  authors: [{ name: siteConfig.name, url: "https://sahees111-wq.github.io/sahee-trix-portfolio" }],
+  authors: [{ name: siteConfig.name, url: siteUrl }],
   creator: siteConfig.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://sahees111-wq.github.io/sahee-trix-portfolio",
+    url: siteUrl,
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
     siteName: siteConfig.brandName,
     images: [
       {
-        url: "https://sahees111-wq.github.io/sahee-trix-portfolio/images/sahee-portrait.jpg",
+        url: `${siteUrl}/images/sahee-portrait.jpg`,
         width: 1200,
         height: 630,
         alt: "SAHEE TRIX Portfolio Cover",
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
     title: siteConfig.meta.title,
     description: siteConfig.meta.description,
     creator: "@saheetrix",
-    images: ["https://sahees111-wq.github.io/sahee-trix-portfolio/images/sahee-portrait.jpg"],
+    images: [`${siteUrl}/images/sahee-portrait.jpg`],
   },
   robots: {
     index: true,
@@ -47,7 +49,7 @@ export default function RootLayout({
     "@type": "Person",
     name: siteConfig.name,
     alternateName: siteConfig.brandName,
-    url: "https://sahees111-wq.github.io/sahee-trix-portfolio",
+    url: siteUrl,
     jobTitle: "Senior Graphic Designer & Printing Manager",
     knowsAbout: [
       "Graphic Design",
