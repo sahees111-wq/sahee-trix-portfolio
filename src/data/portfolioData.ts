@@ -41,19 +41,19 @@ export const portfolioProjects: Project[] = [
     year: "2024",
     tagline: "Dynamic cyber-armor sublimation jersey for world championship league",
     description: "End-to-end concept design, 3D parametric apparel mockup, vector separation, and industrial all-over sublimation printing for an international esports team.",
-    thumbnail: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "/images/Valkyrie Championship Pro Jersey Showcase.png",
     heroImage: "/images/Valkyrie Championship Pro Jersey Showcase.png",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop",
         caption: "Front & Back Sublimation Layout with Micro-mesh Perforation Zones",
       },
       {
-        url: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=1200&auto=format&fit=crop",
         caption: "High-density Silicon Crest & CMYK+Fluorescent Ink Separation",
       },
       {
-        url: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1200&auto=format&fit=crop",
         caption: "Final Tailored Poly-Spandex Jersey Worn in Arena Finals",
       },
     ],
@@ -85,15 +85,15 @@ export const portfolioProjects: Project[] = [
     year: "2024",
     tagline: "Ultra-premium matte black packaging with multi-level brass foil stamping and tactile emboss",
     description: "Complete identity, structural carton dieline engineering, and prepress mastery for a premium botanical skincare collection featuring spot UV and hot stamping.",
-    thumbnail: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1610245169254-1cfd8bd165bf?q=80&w=1200&auto=format&fit=crop",
     heroImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?q=80&w=1200&auto=format&fit=crop",
         caption: "Packaging Unboxing Experience & Foil Calibration",
       },
       {
-        url: "https://images.unsplash.com/photo-1608248597359-20f590b4d458?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1200&auto=format&fit=crop",
         caption: "Prepress Dielines, Creasing Matrix & Registration Target Marks",
       },
     ],
@@ -124,15 +124,15 @@ export const portfolioProjects: Project[] = [
     year: "2024",
     tagline: "Dynamic visual identity and generative design system for an advanced robotics lab",
     description: "Modular brand identity system, custom grid typography, dynamic iconography, design guidelines, and cohesive corporate stationery.",
-    thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
     heroImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
         caption: "Geometric Glyph Construction & Responsive Logo Scaling",
       },
       {
-        url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
         caption: "Stationery Suite & Industrial Signage Manual",
       },
     ],
@@ -157,15 +157,15 @@ export const portfolioProjects: Project[] = [
     year: "2023",
     tagline: "Omnichannel launch campaign spanning digital ads, billboard prints, and influencer kits",
     description: "End-to-end creative direction for a national energy beverage launch, merging 3D can renders, high-energy social media assets, and large-format outdoor billboards.",
-    thumbnail: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=1200&auto=format&fit=crop",
     heroImage: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=1200&auto=format&fit=crop",
         caption: "3D Kinetic Can Visuals & Liquid Simulation Compositing",
       },
       {
-        url: "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1738278708862-9da0af92f617?q=80&w=1200&auto=format&fit=crop",
         caption: "Large Format 40ft Highway Billboard Prepress & Color Match",
       },
     ],
@@ -196,15 +196,15 @@ export const portfolioProjects: Project[] = [
     year: "2024",
     tagline: "Futuristic editorial lookbook blending prompt engineering, digital painting, and composite retouching",
     description: "Cutting-edge AI-assisted visual campaign creating impossible haute-couture apparel landscapes and photorealistic textile renders for a seasonal lookbook.",
-    thumbnail: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
     heroImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
         caption: "Bespoke AI Prompt Architecture & Controlled Seed Composition",
       },
       {
-        url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop",
         caption: "Photoshop Micro-Retouching, Frequency Separation & Grain Grading",
       },
     ],
@@ -237,7 +237,7 @@ export const portfolioProjects: Project[] = [
         caption: "Lineup Reveal Carousels & Dynamic Typography Motion",
       },
       {
-        url: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
         caption: "VIP Holographic Passes & Lanyard Sublimation Artwork",
       },
     ],
@@ -262,15 +262,15 @@ export const portfolioProjects: Project[] = [
     year: "2024",
     tagline: "Professional cricket match jersey, training kit & supporter apparel",
     description: "Comprehensive apparel design from initial sketch through to factory dye-sublimation manufacturing and DTF silicone badge transfers for a premier cricket franchise.",
-    thumbnail: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1200&auto=format&fit=crop",
     heroImage: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1200&auto=format&fit=crop",
         caption: "Matchday Full Kit & Gradient Halftone Transition",
       },
       {
-        url: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop",
         caption: "DTF 3D Silicone Team Crest Transfer & Gold Trim",
       },
     ],
@@ -301,15 +301,15 @@ export const portfolioProjects: Project[] = [
     year: "2023",
     tagline: "Swiss-bound editorial portfolio with spot varnishes, Japanese paper and CMYK+Silver metallic inks",
     description: "High-end hardcover corporate architectural monograph featuring multi-fold pull-outs, layflat binding, and rigorous prepress color management.",
-    thumbnail: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1200&auto=format&fit=crop",
+    thumbnail: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop",
     heroImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop",
         caption: "Layflat Swiss Binding & Spot UV Architectural Highlights",
       },
       {
-        url: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=1200&auto=format&fit=crop",
         caption: "Pantone 877C Metallic Silver Ink on Uncoated Cotton Stock",
       },
     ],
