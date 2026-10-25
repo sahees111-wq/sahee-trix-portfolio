@@ -90,16 +90,24 @@ export function CaseStudyModal({
                 {project.tagline}
               </p>
 
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10">
+              <div
+                className={`relative w-full rounded-2xl overflow-hidden border border-white/10 bg-[#050507] ${
+                  project.slug === "valkyrie-esports-championship-kit" ? "aspect-[4/5]" : "aspect-video"
+                }`}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.heroImage}
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${
+                    project.slug === "valkyrie-esports-championship-kit" ? "object-contain p-2 sm:p-4" : "object-cover"
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c10] via-transparent to-transparent opacity-60" />
+                {project.slug !== "valkyrie-esports-championship-kit" && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c10] via-transparent to-transparent opacity-60" />
+                )}
               </div>
             </div>
 
