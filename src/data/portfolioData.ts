@@ -86,7 +86,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Ultra-premium matte black packaging with multi-level brass foil stamping and tactile emboss",
     description: "Complete identity, structural carton dieline engineering, and prepress mastery for a premium botanical skincare collection featuring spot UV and hot stamping.",
     thumbnail: "https://images.unsplash.com/photo-1610245169254-1cfd8bd165bf?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1610245169254-1cfd8bd165bf?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?q=80&w=1200&auto=format&fit=crop",
@@ -125,7 +125,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Dynamic visual identity and generative design system for an advanced robotics lab",
     description: "Modular brand identity system, custom grid typography, dynamic iconography, design guidelines, and cohesive corporate stationery.",
     thumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
@@ -158,7 +158,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Omnichannel launch campaign spanning digital ads, billboard prints, and influencer kits",
     description: "End-to-end creative direction for a national energy beverage launch, merging 3D can renders, high-energy social media assets, and large-format outdoor billboards.",
     thumbnail: "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=1200&auto=format&fit=crop",
@@ -197,7 +197,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Futuristic editorial lookbook blending prompt engineering, digital painting, and composite retouching",
     description: "Cutting-edge AI-assisted visual campaign creating impossible haute-couture apparel landscapes and photorealistic textile renders for a seasonal lookbook.",
     thumbnail: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1200&auto=format&fit=crop",
@@ -230,7 +230,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Viral animated social grid, artist lineup reveals, and stage visuals",
     description: "Complete social media design package with 60+ kinetic story templates, feed carousels, VIP badge print files, and animated stage loop screens.",
     thumbnail: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200&auto=format&fit=crop",
@@ -263,7 +263,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Professional cricket match jersey, training kit & supporter apparel",
     description: "Comprehensive apparel design from initial sketch through to factory dye-sublimation manufacturing and DTF silicone badge transfers for a premier cricket franchise.",
     thumbnail: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1200&auto=format&fit=crop",
@@ -302,7 +302,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Swiss-bound editorial portfolio with spot varnishes, Japanese paper and CMYK+Silver metallic inks",
     description: "High-end hardcover corporate architectural monograph featuring multi-fold pull-outs, layflat binding, and rigorous prepress color management.",
     thumbnail: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=1800&auto=format&fit=crop",
+    heroImage: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1800&auto=format&fit=crop",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop",
