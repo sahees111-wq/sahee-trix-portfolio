@@ -28,17 +28,19 @@ export function HeroSection() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const hasEnoughMemory = !("deviceMemory" in navigator) || (navigator as Navigator & { deviceMemory?: number }).deviceMemory! >= 4;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const slowConnection = connection?.saveData || /2g|3g/.test(connection?.effectiveType ?? "");
 
-    if (reduceMotion || coarsePointer || window.innerWidth < 900 || !hasEnoughMemory) return;
+    if (reduceMotion || coarsePointer || window.innerWidth < 900 || !hasEnoughMemory || slowConnection) return;
 
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
     const loadScene = () => setShowScene(true);
 
     if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(loadScene, { timeout: 1800 });
+      idleId = window.requestIdleCallback(loadScene, { timeout: 4200 });
     } else {
-      timeoutId = globalThis.setTimeout(loadScene, 1200);
+      timeoutId = globalThis.setTimeout(loadScene, 2500);
     }
 
     return () => {
