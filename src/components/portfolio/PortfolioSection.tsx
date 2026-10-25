@@ -98,7 +98,9 @@ export function PortfolioSection() {
                   <img
                     src={project.heroImage}
                     alt={project.title}
-                    loading={idx < 2 ? "eager" : "lazy"}
+                    loading="lazy"
+                    fetchPriority="low"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     decoding="async"
                     className={`w-full h-full ${project.slug === "valkyrie-esports-championship-kit" ? "object-contain bg-[#050507] p-2 sm:p-4 group-hover:scale-[1.02]" : "object-cover object-center group-hover:scale-105"} transition-transform duration-700 ease-out`}
                   />
