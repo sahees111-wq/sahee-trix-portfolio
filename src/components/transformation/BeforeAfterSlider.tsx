@@ -244,6 +244,7 @@ export function BeforeAfterSlider() {
                 animate={{ scale: [1, 1.08, 1], rotate: [0, 4, 0] }}
                 transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#08080a] border-2 border-[#00e5ff] text-[#00e5ff] flex items-center justify-center shadow-[0_0_25px_rgba(0,229,255,0.55)]"
+              >
                 <ArrowLeftRight className="w-4 h-4" />
               </motion.div>
             </div>
