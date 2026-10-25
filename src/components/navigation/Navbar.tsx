@@ -31,20 +31,30 @@ export function Navbar() {
               : "bg-transparent"
           }`}
         >
-          {/* Left: SAHEETRIX Logo */}
-          <a href="#" className="flex items-center group shrink-0" aria-label="SAHEETRIX home">
-            <img
-              src="/images/codex-clipboard-4a66c2dd-2996-4344-9bdf-af1d19dad9cd.png"
-              alt="SAHEETRIX — Clothing & Design"
-              width={194}
-              height={64}
-              loading="eager"
-              decoding="async"
-              className="w-[142px] sm:w-[176px] h-auto object-contain group-hover:scale-[1.02] transition-transform"
-            />
+          {/* Left: Star Geometric Logo + Brand Logo */}
+          <a href="#" className="flex items-center gap-3 group">
+            {/* Origami 4-point Star Logo */}
+            <div className="w-8 h-8 shrink-0 filter drop-shadow-[0_0_8px_rgba(229,9,20,0.6)] group-hover:scale-110 transition-transform">
+              <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
+                <polygon points="50,5 62,38 95,50 62,62 50,95 38,62 5,50 38,38" fill="#ffffff" />
+                <polygon points="50,5 50,50 38,38" fill="#e50914" opacity="0.85" />
+                <polygon points="95,50 50,50 62,62" fill="#990000" opacity="0.85" />
+                <polygon points="50,95 50,50 62,62" fill="#e50914" opacity="0.65" />
+                <polygon points="5,50 50,50 38,38" fill="#730505" opacity="0.75" />
+              </svg>
+            </div>
+
+            <div>
+              <div className="font-display font-extrabold tracking-tight text-lg text-white leading-none">
+                <span>SAHEETRIX</span>
+              </div>
+              <span className="font-mono text-[8px] text-zinc-300 uppercase tracking-wider block mt-0.5">
+                CLOTHING &amp; DESIGN
+              </span>
+            </div>
           </a>
 
-          {/* Center: Desktop Nav Links */}
+          {/* Center: Desktop Nav Links */
           <div className="hidden md:flex items-center gap-5 lg:gap-7 font-mono text-[11px] uppercase tracking-widest text-zinc-300">
             {siteConfig.navLinks.map((link) => (
               <a
