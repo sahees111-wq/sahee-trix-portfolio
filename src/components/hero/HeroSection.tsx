@@ -224,10 +224,11 @@ export function HeroSection() {
               <div className="relative w-full aspect-[4/4.6] overflow-hidden bg-[#0a0a0f]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="images/sahee-portrait.jpg"
+                  src="/images/sahee-portrait.jpg"
                   alt="Tharmaraja Saheevan (SAHEETRIX)"
                   width={780}
                   height={897}
+                  sizes="(max-width: 1024px) 88vw, 390px"
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
