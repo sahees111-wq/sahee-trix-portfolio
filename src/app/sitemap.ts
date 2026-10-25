@@ -1,39 +1,41 @@
 ﻿import { MetadataRoute } from "next";
 
+const siteUrl = "https://saheetrix.com";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://sahees111-wq.github.io/sahee-trix-portfolio",
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://sahees111-wq.github.io/sahee-trix-portfolio/#work",
+      url: `${siteUrl}/#work`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: "https://sahees111-wq.github.io/sahee-trix-portfolio/#services",
+      url: `${siteUrl}/#services`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://sahees111-wq.github.io/sahee-trix-portfolio/#jersey",
+      url: `${siteUrl}/#jersey`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://sahees111-wq.github.io/sahee-trix-portfolio/#print",
+      url: `${siteUrl}/#print`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://sahees111-wq.github.io/sahee-trix-portfolio/#contact",
+      url: `${siteUrl}/#contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
