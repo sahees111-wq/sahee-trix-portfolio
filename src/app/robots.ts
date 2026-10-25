@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://sahees111-wq.github.io/sahee-trix-portfolio/sitemap.xml",
+    sitemap: "https://saheetrix.com/sitemap.xml",
   };
 }
