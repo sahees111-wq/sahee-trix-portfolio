@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/images/codex-clipboard-a9576f08-9cd8-4176-ab1d-21c5a4fc84a1.png",
+    apple: "/images/codex-clipboard-a9576f08-9cd8-4176-ab1d-21c5a4fc84a1.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
