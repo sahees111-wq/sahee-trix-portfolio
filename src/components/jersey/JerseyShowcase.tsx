@@ -28,7 +28,7 @@ const JERSEY_STAGES: JerseyStage[] = [
       "Size-Graded Patterns (XS through 4XL)",
       "3mm Seam Overlap Tolerance",
     ],
-    imageUrl: "https://img.magnific.com/psd-premium/mockup-de-camisa-de-futebol-preto-e-dourado-com-opcoes-de-personalizacao_691590-211.jpg?q=80&semt=ais_hybrid&w=1400",
+    imageUrl: "/images/Valkyrie Championship Pro Jersey Showcase.png",
     caption: "High-resolution vector layout showing front, back, collar, and raglan sleeve panels.",
   },
   {
@@ -165,7 +165,7 @@ export function JerseyShowcase() {
                   alt={currentStage.name}
                   loading="lazy"
                   decoding="async"
-                  className={`w-full h-full ${currentStage.id === "stage-2" ? "object-contain p-3 sm:p-6" : "object-cover"} transition-transform duration-500`}
+                  className={`w-full h-full ${currentStage.id === "stage-1" || currentStage.id === "stage-2" ? "object-contain p-3 sm:p-6" : "object-cover"} transition-transform duration-500`}
                 />
                 <div className="absolute top-4 left-4 font-mono text-xs px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#00e5ff] border border-white/10">
                   STAGE {currentStage.stepNumber} // {currentStage.name}
