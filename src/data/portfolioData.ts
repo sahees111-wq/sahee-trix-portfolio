@@ -42,7 +42,7 @@ export const portfolioProjects: Project[] = [
     tagline: "Dynamic cyber-armor sublimation jersey for world championship league",
     description: "End-to-end concept design, 3D parametric apparel mockup, vector separation, and industrial all-over sublimation printing for an international esports team.",
     thumbnail: "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1200&auto=format&fit=crop",
-    heroImage: "/images/valkyrie-championship-pro-jersey-showcase.png",
+    heroImage: "/images/Valkyrie Championship Pro Jersey Showcase.png",
     gallery: [
       {
         url: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
