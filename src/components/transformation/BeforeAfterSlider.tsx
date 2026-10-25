@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, SlidersHorizontal, ArrowLeftRight, Layers } from "lucide-react";
+import { Sparkles, SlidersHorizontal, ArrowLeftRight, Layers, ScanLine, Zap } from "lucide-react";
 
 interface ComparisonItem {
   id: string;
@@ -48,6 +48,12 @@ const COMPARISONS: ComparisonItem[] = [
   },
 ];
 
+const TRANSFORM_META: Record<string, { source: string; output: string; palette: string; signal: string }> = {
+  branding: { source: "ARCHIVE IDENTITY", output: "3D BRAND SYSTEM", palette: "RGB + HEX", signal: "MODULAR GRID" },
+  campaign: { source: "RAW CONCEPT", output: "8K KEY VISUAL", palette: "RGB + CMYK", signal: "COLOR GRADE" },
+  apparel: { source: "VECTOR MASTER", output: "FABRIC PRODUCT", palette: "CMYK + SPOT", signal: "PRESS READY" },
+};
+
 export function BeforeAfterSlider() {
   const [activeTab, setActiveTab] = useState<string>("branding");
   const [sliderPosition, setSliderPosition] = useState<number>(50);
@@ -55,6 +61,7 @@ export function BeforeAfterSlider() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const activeItem = COMPARISONS.find((c) => c.id === activeTab) || COMPARISONS[0];
+  const activeMeta = TRANSFORM_META[activeItem.id] || TRANSFORM_META.branding;
 
   const handleMove = useCallback(
     (clientX: number) => {
@@ -80,6 +87,18 @@ export function BeforeAfterSlider() {
   return (
     <section className="fx-animated-section fx-spectrum fx-streak relative w-full py-28 px-4 sm:px-6 lg:px-12 bg-[#08080a] border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-8 px-1 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-500">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00e5ff] opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00e5ff]" />
+            </span>
+            <span>LIVE TRANSFORMATION ENGINE</span>
+            <span className="hidden sm:inline text-[#00e5ff]">/ ONLINE</span>
+          </div>
+          <span>SAHEETRIX // 06</span>
+        </div>
+
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
           <div>
@@ -99,7 +118,8 @@ export function BeforeAfterSlider() {
           </div>
 
           {/* Switcher tabs */}
-          <div className="flex items-center gap-2 p-1.5 rounded-full bg-zinc-900/80 border border-white/10 self-start">
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-zinc-900/80 border border-white/10 self-start shadow-[0_0_25px_rgba(139,92,246,0.12)]">
+            <SlidersHorizontal className="w-4 h-4 ml-2 text-[#00e5ff]" />
             {COMPARISONS.map((item) => (
               <button
                 key={item.id}
@@ -120,8 +140,10 @@ export function BeforeAfterSlider() {
         </div>
 
         {/* Interactive Comparison Container */}
-        <div className="glass-panel p-6 sm:p-10 rounded-3xl border border-white/10 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="glass-panel relative p-3 sm:p-5 lg:p-6 rounded-[2rem] border border-white/10 space-y-6 overflow-hidden shadow-[0_0_60px_rgba(139,92,246,0.08)]">
+          <div className="absolute -top-32 -right-24 w-80 h-80 rounded-full bg-[#8b5cf6]/10 blur-[90px] pointer-events-none" />
+          <div className="absolute -bottom-40 -left-24 w-96 h-96 rounded-full bg-[#00e5ff]/[0.06] blur-[110px] pointer-events-none" />
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2 sm:px-3">
             <div>
               <span className="font-mono text-xs text-[#8b5cf6] uppercase font-bold">
                 {activeItem.category}
@@ -135,6 +157,23 @@ export function BeforeAfterSlider() {
             </p>
           </div>
 
+          <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-2 px-2 sm:px-3">
+            {[
+              ["SOURCE", activeMeta.source],
+              ["OUTPUT", activeMeta.output],
+              ["COLOR", activeMeta.palette],
+              ["SIGNAL", activeMeta.signal],
+            ].map(([label, value], index) => (
+              <div key={label} className="rounded-xl border border-white/10 bg-black/30 px-3 py-2.5 hover:border-[#00e5ff]/40 transition-colors">
+                <div className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest text-zinc-500">
+                  {index === 0 ? <Layers className="w-3 h-3 text-[#8b5cf6]" /> : index === 1 ? <Sparkles className="w-3 h-3 text-[#ec4899]" /> : index === 2 ? <Zap className="w-3 h-3 text-amber-300" /> : <ScanLine className="w-3 h-3 text-[#00e5ff]" />}
+                  {label}
+                </div>
+                <div className="mt-1 truncate font-mono text-[10px] font-bold text-white">{value}</div>
+              </div>
+            ))}
+          </div>
+
           {/* Draggable Dual View Canvas */}
           <div
             ref={containerRef}
@@ -145,7 +184,7 @@ export function BeforeAfterSlider() {
             onTouchMove={handleTouchMove}
             onClick={(e) => handleMove(e.clientX)}
             
-            className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl bg-black"
+            className="relative isolate w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl bg-black ring-1 ring-inset ring-white/5"
           >
             {/* AFTER IMAGE (Background / Full Width) */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -182,20 +221,37 @@ export function BeforeAfterSlider() {
               </div>
             </div>
 
+            <div className="absolute inset-0 z-[5] pointer-events-none opacity-25 mix-blend-screen bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:44px_44px]" />
+            <motion.div
+              aria-hidden="true"
+              animate={{ x: ["-140%", "360%"] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-y-0 left-0 z-[6] w-1/3 pointer-events-none bg-gradient-to-r from-transparent via-white/20 to-transparent blur-xl"
+            />
+            <div className="absolute top-3 left-3 z-[11] rounded-md border border-white/10 bg-black/50 px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-white/70 backdrop-blur-sm">
+              INPUT // {activeMeta.source}
+            </div>
+            <div className="absolute bottom-3 right-3 z-[11] rounded-md border border-[#00e5ff]/20 bg-black/50 px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-[#00e5ff] backdrop-blur-sm">
+              OUTPUT // {activeMeta.output}
+            </div>
+
             {/* DRAG HANDLE BAR */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-20"
+              className="absolute top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#00e5ff] via-white to-[#ec4899] shadow-[0_0_18px_rgba(0,229,255,0.9)] z-20"
               style={{ left: `${sliderPosition}%` }}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#08080a] border-2 border-[#00e5ff] text-[#00e5ff] flex items-center justify-center shadow-2xl">
+              <motion.div
+                animate={{ scale: [1, 1.08, 1], rotate: [0, 4, 0] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-[#08080a] border-2 border-[#00e5ff] text-[#00e5ff] flex items-center justify-center shadow-[0_0_25px_rgba(0,229,255,0.55)]"
                 <ArrowLeftRight className="w-4 h-4" />
-              </div>
+              </motion.div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-xs font-mono text-zinc-300">
-            <span>← DRAG OR CLICK TO REVEAL BEFORE / AFTER</span>
-            <span>SPLIT: {Math.round(sliderPosition)}%</span>
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-2 sm:px-3 text-xs font-mono text-zinc-300">
+            <span className="flex items-center gap-2 text-zinc-400"><ScanLine className="w-4 h-4 text-[#00e5ff]" /> ← DRAG OR CLICK TO REVEAL BEFORE / AFTER</span>
+            <span className="flex items-center gap-2"><span className="text-[10px] uppercase tracking-widest text-zinc-500">LIVE SPLIT</span><span className="rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-3 py-1 text-[#00e5ff]">{Math.round(sliderPosition)}%</span></span>
           </div>
         </div>
       </div>
