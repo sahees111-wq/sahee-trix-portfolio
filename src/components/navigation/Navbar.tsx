@@ -32,7 +32,7 @@ export function Navbar() {
           }`}
         >
           {/* Left: Star Geometric Logo + Brand Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" data-swarm-logo className="flex items-center gap-3 group">
             {/* Origami 4-point Star Logo */}
             <div className="w-8 h-8 shrink-0 filter drop-shadow-[0_0_8px_rgba(229,9,20,0.6)] group-hover:scale-110 transition-transform">
               <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
