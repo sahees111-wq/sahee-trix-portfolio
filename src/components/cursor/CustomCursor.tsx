@@ -41,7 +41,7 @@ export function CustomCursor() {
   useEffect(() => {
     // Check touch device
     const checkTouch = () => {
-      if (window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window) {
+      if (window.matchMedia("(pointer: coarse)").matches) { // A fine mouse on a touchscreen laptop should still get the custom cursor.
         setIsTouchDevice(true);
       } else {
         setIsTouchDevice(false);
