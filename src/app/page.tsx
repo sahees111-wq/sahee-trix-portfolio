@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { IntroLoader } from "@/components/intro/IntroLoader";
 import { FloatingWhatsApp } from "@/components/floating/FloatingWhatsApp";
 import { MouseGradientMesh } from "@/components/effects/MouseGradientMesh";
+import { CustomCursor } from "@/components/cursor/CustomCursor";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
@@ -69,6 +70,9 @@ export default function Home() {
 
       {/* Interactive Mouse-Reactive Colorful Gradient Mesh Background */}
       <MouseGradientMesh />
+
+      {/* Soft cursor trail, hover ring, and click ripples */}
+      <CustomCursor />
 
       {/* Floating WhatsApp Quick Chat */}
       <FloatingWhatsApp />
