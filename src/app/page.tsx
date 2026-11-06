@@ -5,7 +5,6 @@ import { IntroLoader } from "@/components/intro/IntroLoader";
 import { FloatingWhatsApp } from "@/components/floating/FloatingWhatsApp";
 import { MouseGradientMesh } from "@/components/effects/MouseGradientMesh";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
-import { SwarmRebuild } from "@/components/swarm/SwarmRebuild";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
@@ -75,8 +74,6 @@ export default function Home() {
       {/* Soft cursor trail, hover ring, and click ripples */}
       <CustomCursor />
 
-      {/* Original Swarm-style page rebuild mode */}
-      <SwarmRebuild />
 
       {/* Floating WhatsApp Quick Chat */}
       <FloatingWhatsApp />
