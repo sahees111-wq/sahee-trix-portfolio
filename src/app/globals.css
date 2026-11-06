@@ -43,6 +43,12 @@
     background: #ff1a26;
     color: #ffffff;
   }
+
+  /* Hide the native pointer only after the custom cursor is mounted. */
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none !important;
+  }
 }
 
 /* Custom Scrollbar - Bright Crimson Red */
