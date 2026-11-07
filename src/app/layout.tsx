@@ -158,7 +158,7 @@ export default function RootLayout({
       <head>
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.paypal.com https://www.sandbox.paypal.com; connect-src 'self' https://www.paypal.com https://www.sandbox.paypal.com https://*.paypal.com; frame-src https://www.paypal.com https://www.sandbox.paypal.com https://*.paypal.com; form-action 'self' https://www.paypal.com https://www.sandbox.paypal.com; img-src 'self' data: blob: https://images.unsplash.com https://illustrations.popsy.co https://www.paypalobjects.com https://*.paypalobjects.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob:; worker-src 'self' blob:; upgrade-insecure-requests;"
+          content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.paypal.com https://www.sandbox.paypal.com https://www.paypalobjects.com; connect-src 'self' https://www.paypal.com https://www.sandbox.paypal.com https://*.paypal.com https://www.paypalobjects.com; frame-src https://www.paypal.com https://www.sandbox.paypal.com https://*.paypal.com; form-action 'self' https://www.paypal.com https://www.sandbox.paypal.com; img-src 'self' data: blob: https://images.unsplash.com https://illustrations.popsy.co https://www.paypalobjects.com https://*.paypalobjects.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob:; worker-src 'self' blob:; upgrade-insecure-requests;"
         />
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="//images.unsplash.com" />
