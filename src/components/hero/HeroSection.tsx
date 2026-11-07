@@ -122,16 +122,16 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-display font-black tracking-tight leading-[0.95] text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
+              className="font-display font-black tracking-tight leading-[0.95] text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl"
             >
               <span className="block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
-                TOURNAMENT-GRADE
+                SPORTSWEAR
               </span>
               <span className="block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
-                SPORTSWEAR DESIGN &amp;
+                BUILT FOR THE
               </span>
               <span className="block bg-gradient-to-r from-red-500 via-rose-400 to-white bg-clip-text text-transparent glow-red mt-1">
-                PRECISION SUBLIMATION PREPRESS
+                BIG STAGE.
               </span>
             </motion.h1>
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.24em] text-zinc-400">
