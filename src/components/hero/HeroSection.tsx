@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Layers, Printer, Shirt, MessageCircle } from "lucide-react";
 import dynamic from "next/dynamic";
 import { siteConfig } from "@/data/siteConfig";
+import { Magnetic } from "@/components/effects/Magnetic";
 
 const HeroScene = dynamic(
   () => import("@/components/3d/HeroScene").then((mod) => mod.HeroScene),
@@ -181,6 +182,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1"
           >
+            <Magnetic strength={0.24}>
             <a
               href="#work"
               className="group relative inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full bg-gradient-to-r from-[#ff1a26] via-[#e50914] to-[#990000] text-white font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_30px_rgba(255,26,38,0.5)] hover:shadow-[0_0_45px_rgba(255,26,38,0.8)] transition-all duration-300 hover:scale-105 active:scale-95"
@@ -188,7 +190,9 @@ export function HeroSection() {
               <span>EXPLORE SELECTED WORK</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
+            </Magnetic>
 
+            <Magnetic strength={0.2}>
             <a
               href="https://wa.me/94762007356?text=Hi%20Sahee%2C%20I%20would%20like%20to%20hire%20your%20custom%20clothing%20/%20graphic%20design%20services."
               target="_blank"
@@ -198,6 +202,7 @@ export function HeroSection() {
               <MessageCircle className="w-4 h-4 text-emerald-400" />
               <span>HIRE ME: +94 76 200 7356</span>
             </a>
+            </Magnetic>
           </motion.div>
 
           {/* Micro Badges */}
