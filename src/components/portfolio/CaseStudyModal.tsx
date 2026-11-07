@@ -35,6 +35,10 @@ export function CaseStudyModal({
     };
   }, [project, onClose]);
 
+  useEffect(() => {
+    setLightboxIndex(null);
+  }, [project?.slug]);
+
   if (!project) return null;
 
   const selectedGalleryImage =
