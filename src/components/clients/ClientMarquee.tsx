@@ -30,7 +30,7 @@ export function ClientMarquee() {
     <section id="clients" data-marquee-version="single-line-v2" className="fx-animated-section fx-marquee-glow relative w-full py-20 bg-[#08080a] border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-8 flex flex-col items-center text-center">
         <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-[0.3em] font-bold">
-          // 09. BRANDS & COLLABORATORS
+          // BRANDS & COLLABORATORS
         </span>
         <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight mt-2">
           TRUSTED TO CREATE.
