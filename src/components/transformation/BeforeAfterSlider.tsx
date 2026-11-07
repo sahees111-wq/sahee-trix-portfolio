@@ -184,7 +184,7 @@ export function BeforeAfterSlider() {
             onTouchMove={handleTouchMove}
             onClick={(e) => handleMove(e.clientX)}
             
-            className="relative isolate w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl bg-black ring-1 ring-inset ring-white/5"
+            className="comparison-canvas relative isolate w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl bg-black ring-1 ring-inset ring-white/5"
           >
             {/* AFTER IMAGE (Background / Full Width) */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
