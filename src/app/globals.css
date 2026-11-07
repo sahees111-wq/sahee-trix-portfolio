@@ -376,14 +376,7 @@
 
 
 /* Interactive polish: cards feel responsive without adding heavy scripts. */
-.portfolio-card,
-.service-card,
-.contact-panel,
-.client-marquee-card,
-.comparison-canvas {
-  will-change: transform, box-shadow;
-}
-
+/* Keep compositor hints scoped to moving layers instead of every card. */
 .portfolio-card {
   isolation: isolate;
   transition: border-color 0.45s ease, box-shadow 0.45s ease;
