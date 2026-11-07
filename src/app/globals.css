@@ -566,3 +566,130 @@ main.scroll-reveal-enabled > section.is-scroll-revealed {
     transition: none !important;
   }
 }
+
+
+/* Ambient red particle field and occasional light streak. */
+.ambient-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.68;
+  mix-blend-mode: screen;
+}
+
+.ambient-particles::before {
+  content: "";
+  position: absolute;
+  top: -35%;
+  bottom: -35%;
+  left: -24%;
+  width: 15%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 26, 38, 0.22), transparent);
+  filter: blur(12px);
+  animation: ambient-light-streak 14s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.ambient-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: #ff3344;
+  box-shadow: 0 0 12px rgba(255, 26, 38, 0.82);
+  opacity: 0;
+  animation: ambient-particle-float 8s ease-in-out infinite;
+}
+
+.ambient-particles span:nth-child(4n) {
+  width: 5px;
+  height: 5px;
+  background: #ff6b75;
+  box-shadow: 0 0 18px rgba(255, 26, 38, 0.95);
+}
+
+.ambient-particles span:nth-child(7n) {
+  background: #00e5ff;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.75);
+}
+
+@keyframes ambient-particle-float {
+  0%, 100% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.55);
+  }
+  35% {
+    opacity: 0.72;
+  }
+  70% {
+    opacity: 0.3;
+    transform: translate3d(20px, -34px, 0) scale(1);
+  }
+}
+
+@keyframes ambient-light-streak {
+  0%, 12% {
+    opacity: 0;
+    transform: translateX(0) skewX(-18deg);
+  }
+  24% {
+    opacity: 0.8;
+  }
+  58%, 100% {
+    opacity: 0;
+    transform: translateX(820%) skewX(-18deg);
+  }
+}
+
+/* Mobile portfolio cards become a deliberate swipe rail. */
+.portfolio-swipe-row {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-padding-inline: 1rem;
+}
+
+.portfolio-swipe-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* The direct WhatsApp CTA gets a gentle live pulse. */
+.contact-whatsapp-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: 0 0 0 rgba(37, 211, 102, 0);
+  animation: whatsapp-cta-glow 3.2s ease-in-out infinite;
+}
+
+.contact-whatsapp-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(37, 211, 102, 0.55);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: whatsapp-cta-ring 3.2s ease-in-out infinite;
+}
+
+@keyframes whatsapp-cta-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(37, 211, 102, 0), 0 10px 30px -20px rgba(37, 211, 102, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(37, 211, 102, 0.26), 0 16px 34px -18px rgba(37, 211, 102, 0.65);
+  }
+}
+
+@keyframes whatsapp-cta-ring {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
