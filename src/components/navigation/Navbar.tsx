@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
 import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
+import { Magnetic } from "@/components/effects/Magnetic";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,6 +79,7 @@ export function Navbar() {
 
           {/* Right: CTA & Mobile Trigger */}
           <div className="flex items-center gap-3">
+            <Magnetic strength={0.18} className="hidden sm:inline-flex">
             <a
               href="https://wa.me/94762007356?text=Hi%20Sahee%2C%20I%20saw%20your%20SAHEETRIX%20portfolio!%20I%20would%20like%20to%20order%20a%20design%20/%20apparel%20project."
               target="_blank"
@@ -87,6 +89,7 @@ export function Navbar() {
               <MessageCircle className="w-3.5 h-3.5 fill-white" />
               <span>HIRE ME: +94 76 200 7356</span>
             </a>
+            </Magnetic>
 
             {/* Mobile Hamburger Toggle */}
             <button
@@ -123,6 +126,7 @@ export function Navbar() {
               ))}
             </div>
 
+            <Magnetic strength={0.16} className="w-full">
             <a
               href="https://wa.me/94762007356"
               target="_blank"
@@ -133,6 +137,7 @@ export function Navbar() {
               <MessageCircle className="w-4 h-4 fill-white" />
               <span>WHATSAPP: +94 76 200 7356</span>
             </a>
+            </Magnetic>
           </motion.div>
         )}
       </AnimatePresence>
