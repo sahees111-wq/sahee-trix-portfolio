@@ -26,7 +26,7 @@ export function ClientMarquee() {
           {repeatedClients.map((client, idx) => (
             <div
               key={`${client.name}-${idx}`}
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl glass-panel border border-white/5 hover:border-white/20 transition-all duration-300 group/item cursor-pointer"
+              className="client-marquee-card flex items-center gap-3 px-8 py-4 rounded-2xl glass-panel border border-white/5 hover:border-white/20 transition-all duration-300 group/item cursor-pointer"
             >
               <div
                 className="w-2.5 h-2.5 rounded-full filter grayscale group-hover/item:grayscale-0 transition-all"
