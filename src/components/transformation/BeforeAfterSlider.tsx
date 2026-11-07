@@ -3,6 +3,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, SlidersHorizontal, ArrowLeftRight, Layers, ScanLine, Zap } from "lucide-react";
+import { optimizeImageUrl } from "@/lib/imageOptimization";
 
 interface ComparisonItem {
   id: string;
@@ -189,7 +190,7 @@ export function BeforeAfterSlider() {
             {/* AFTER IMAGE (Background / Full Width) */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={activeItem.afterImage}
+              src={optimizeImageUrl(activeItem.afterImage, 1400)}
               alt={activeItem.afterLabel}
               loading="lazy"
               decoding="async"
@@ -206,7 +207,7 @@ export function BeforeAfterSlider() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={activeItem.beforeImage}
+                src={optimizeImageUrl(activeItem.beforeImage, 1400)}
                 alt={activeItem.beforeLabel}
                 loading="lazy"
                 decoding="async"
