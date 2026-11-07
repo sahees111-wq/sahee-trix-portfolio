@@ -498,16 +498,19 @@
   width: max-content;
   gap: 1.5rem;
   padding: 0.5rem 0;
-  animation: marquee-clients-forward 24s linear infinite;
+  animation: marquee-clients-forward 18s linear infinite !important;
+  animation-duration: 18s !important;
+  animation-iteration-count: infinite !important;
+  animation-play-state: running !important;
   will-change: transform;
 }
 
 .marquee-track-forward {
-  animation: marquee-clients-forward 24s linear infinite;
+  animation: marquee-clients-forward 18s linear infinite !important;
 }
 
 .marquee-track-reverse {
-  animation: marquee-clients-reverse 24s linear infinite;
+  animation: marquee-clients-reverse 18s linear infinite !important;
 }
 
 /* Keep the client strip moving even when the custom cursor is over it. */
@@ -528,6 +531,7 @@
 @media (max-width: 767px) {
   .marquee-track,
   .marquee-track-forward {
-    animation-duration: 20s;
+    animation-duration: 16s !important;
+    animation-iteration-count: infinite !important;
   }
 }
