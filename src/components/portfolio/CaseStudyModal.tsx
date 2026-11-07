@@ -153,7 +153,7 @@ export function CaseStudyModal({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
                 <div className="flex items-center gap-2 text-rose-400 font-mono text-xs uppercase tracking-wider font-bold">
-                  <span>// 03. THE CHALLENGE</span>
+                  <span>// THE CHALLENGE</span>
                 </div>
                 <p className="font-sans text-sm text-zinc-300 leading-relaxed">
                   {project.challenge}
@@ -162,7 +162,7 @@ export function CaseStudyModal({
 
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
                 <div className="flex items-center gap-2 text-[#00e5ff] font-mono text-xs uppercase tracking-wider font-bold">
-                  <span>// 04. CREATIVE STRATEGY</span>
+                  <span>// CREATIVE STRATEGY</span>
                 </div>
                 <p className="font-sans text-sm text-zinc-300 leading-relaxed">
                   {project.creativeDirection}
@@ -174,7 +174,7 @@ export function CaseStudyModal({
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-widest font-bold">
-                  // 05. EXECUTION & PROCESS
+                  // EXECUTION & PROCESS
                 </span>
                 <div className="h-[1px] flex-1 bg-white/5" />
               </div>
@@ -198,7 +198,7 @@ export function CaseStudyModal({
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs text-[#8b5cf6] uppercase tracking-widest font-bold">
-                    // 06. VISUAL ARTIFACTS
+                    // VISUAL ARTIFACTS
                   </span>
                   <div className="h-[1px] flex-1 bg-white/5" />
                 </div>
