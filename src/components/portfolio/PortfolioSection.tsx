@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { portfolioProjects, Project } from "@/data/portfolioData";
 import { ArrowUpRight, Sparkles, Filter, Eye } from "lucide-react";
 import { CaseStudyModal } from "./CaseStudyModal";
+import { optimizeImageUrl } from "@/lib/imageOptimization";
 
 const CATEGORIES = [
   "ALL",
@@ -97,7 +98,7 @@ export function PortfolioSection() {
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={project.heroImage}
+                    src={optimizeImageUrl(project.heroImage, 1600)}
                     alt={project.title}
                     loading="lazy"
                     fetchPriority="low"
