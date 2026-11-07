@@ -510,8 +510,9 @@
   animation: marquee-clients-reverse 24s linear infinite;
 }
 
+/* Keep the client strip moving even when the custom cursor is over it. */
 .marquee-lane:hover .marquee-track {
-  animation-play-state: paused;
+  animation-play-state: running;
 }
 
 @keyframes marquee-clients-forward {
