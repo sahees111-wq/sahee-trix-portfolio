@@ -496,18 +496,16 @@
   width: max-content;
   gap: 1.5rem;
   padding: 0.5rem 0;
-  animation-duration: 34s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: marquee-clients-forward 24s linear infinite;
   will-change: transform;
 }
 
 .marquee-track-forward {
-  animation-name: marquee-clients-forward;
+  animation: marquee-clients-forward 24s linear infinite;
 }
 
 .marquee-track-reverse {
-  animation-name: marquee-clients-reverse;
+  animation: marquee-clients-reverse 24s linear infinite;
 }
 
 .marquee-lane:hover .marquee-track {
@@ -515,17 +513,18 @@
 }
 
 @keyframes marquee-clients-forward {
-  from { transform: translateX(0); }
-  to { transform: translateX(-33.3333%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-33.3333%, 0, 0); }
 }
 
 @keyframes marquee-clients-reverse {
-  from { transform: translateX(-33.3333%); }
-  to { transform: translateX(0); }
+  from { transform: translate3d(-33.3333%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 @media (max-width: 767px) {
-  .marquee-track {
-    animation-duration: 27s;
+  .marquee-track,
+  .marquee-track-forward {
+    animation-duration: 20s;
   }
 }
