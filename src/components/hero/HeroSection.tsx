@@ -168,13 +168,13 @@ export function HeroSection() {
             className="border-l-4 border-red-500 pl-4 sm:pl-5 py-1 bg-gradient-to-r from-red-950/20 to-transparent rounded-r-2xl"
           >
             <p className="font-display font-extrabold text-lg sm:text-xl lg:text-2xl text-white tracking-tight leading-snug">
-              WORLD CLASS <span className="text-red-500">SPORTSWEAR DESIGN, WEB &amp; MARKETING</span> FOR{" "}
+              WORLD CLASS <span className="text-red-500">GRAPHIC DESIGN, WEB DEVELOPMENT &amp; MARKETING</span> FOR{" "}
               <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
                 WORLDWIDE BRANDS.
               </span>
             </p>
             <p className="font-sans text-xs sm:text-sm text-zinc-300 mt-1.5 max-w-xl leading-relaxed">
-              Delivering tournament-grade sports jerseys, custom apparel tech packs, 3D mockups, sublimation vector layouts, and precision prepress for global brands.
+              Building bold brand identities, responsive websites, social media systems, marketing campaigns, apparel designs, and precision print experiences for global brands.
             </p>
           </motion.div>
 
