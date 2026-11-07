@@ -5,6 +5,7 @@ import { IntroLoader } from "@/components/intro/IntroLoader";
 import { FloatingWhatsApp } from "@/components/floating/FloatingWhatsApp";
 import { MouseGradientMesh } from "@/components/effects/MouseGradientMesh";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
+import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
@@ -63,6 +64,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-[#08080a] text-zinc-100 selection:bg-[#e50914] selection:text-white">
+      <ScrollReveal />
       {/* Intro Loader */}
       {!introCompleted && (
         <IntroLoader onComplete={() => setIntroCompleted(true)} />
