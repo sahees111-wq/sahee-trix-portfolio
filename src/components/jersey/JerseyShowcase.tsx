@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shirt, Sparkles, Layers, Sliders, CheckCircle2, ArrowRight } from "lucide-react";
+import { optimizeImageUrl } from "@/lib/imageOptimization";
 
 interface JerseyStage {
   id: string;
@@ -161,7 +162,7 @@ export function JerseyShowcase() {
               <div className="relative aspect-[16/11] rounded-2xl overflow-hidden border border-white/10 bg-black/60 shadow-2xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={currentStage.imageUrl}
+                  src={optimizeImageUrl(currentStage.imageUrl, 1400)}
                   alt={currentStage.name}
                   loading="lazy"
                   decoding="async"
