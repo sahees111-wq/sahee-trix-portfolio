@@ -541,3 +541,28 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
+
+
+/* Viewport-based section reveals: soft editorial fade + upward motion. */
+main.scroll-reveal-enabled > section {
+  opacity: 0;
+  transform: translate3d(0, 38px, 0) scale(0.985);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+main.scroll-reveal-enabled > section.is-scroll-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main.scroll-reveal-enabled > section,
+  main.scroll-reveal-enabled > section.is-scroll-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
