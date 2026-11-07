@@ -94,7 +94,7 @@ export function PrintProductionSection() {
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs text-[#00a4e4] uppercase tracking-widest font-bold flex items-center gap-1.5">
                 <Printer className="w-4 h-4" />
-                // 05. INDUSTRIAL PRINT ENGINE
+                // INDUSTRIAL PRINT ENGINE
               </span>
               <div className="h-[1px] w-12 bg-[#00a4e4]/30" />
             </div>
