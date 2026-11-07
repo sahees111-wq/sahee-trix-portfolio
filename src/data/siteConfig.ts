@@ -33,6 +33,12 @@ export const siteConfig = {
     location: "Sri Lanka",
     availability: "Available to Hire for Worldwide Projects, Apparel Tech Packs & Freelance",
   },
+  payment: {
+    paypalHostedButtonId: "DVGRXCM4RL9TY",
+    paypalUrl: "https://www.paypal.com/ncp/payment/DVGRXCM4RL9TY",
+    qrImage: "/images/saheetrix-qrcode.png",
+    currency: "USD",
+  },
   socialLinks: [
     { name: "WhatsApp", url: "https://wa.me/94762007356?text=Hi%20Sahee%2C%20I%20saw%20your%20SAHEETRIX%20portfolio!%20I%20would%20like%20to%20order%20a%20design%20/%20apparel%20project.", icon: "MessageCircle" },
     { name: "Instagram", url: "https://instagram.com/saheetrix", icon: "Instagram" },
