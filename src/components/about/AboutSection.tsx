@@ -16,7 +16,7 @@ export function AboutSection() {
         {/* Section Header Tag */}
         <div className="flex items-center gap-3 mb-6">
           <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-widest font-bold">
-            // 01. PHILOSOPHY & IDENTITY
+            // PHILOSOPHY & IDENTITY
           </span>
           <div className="h-[1px] w-12 bg-[#00e5ff]/30" />
         </div>
