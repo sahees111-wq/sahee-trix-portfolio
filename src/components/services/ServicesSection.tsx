@@ -59,8 +59,9 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ y: -8, scale: 1.015 }}
                 onMouseEnter={() => setActiveService(service.id)}
-                className="group relative p-6 rounded-2xl glass-panel glass-panel-hover flex flex-col justify-between min-h-[340px] cursor-pointer overflow-hidden transition-all duration-500"
+                className="service-card group relative p-6 rounded-2xl glass-panel glass-panel-hover flex flex-col justify-between min-h-[340px] cursor-pointer overflow-hidden transition-all duration-500"
               >
                 {/* Glow backdrop on hover */}
                 <div
