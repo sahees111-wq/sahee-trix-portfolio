@@ -1,9 +1,10 @@
 ﻿"use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Project } from "@/data/portfolioData";
 import { X, ArrowRight, ArrowLeft, CheckCircle2, Layers, Cpu, Printer, Sparkles, ExternalLink } from "lucide-react";
+import { optimizeImageUrl } from "@/lib/imageOptimization";
 
 interface CaseStudyModalProps {
   project: Project | null;
@@ -18,6 +19,8 @@ export function CaseStudyModal({
   onSelectProject,
   allProjects,
 }: CaseStudyModalProps) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -33,6 +36,17 @@ export function CaseStudyModal({
   }, [project, onClose]);
 
   if (!project) return null;
+
+  const selectedGalleryImage =
+    lightboxIndex !== null ? project.gallery[lightboxIndex] : null;
+
+  const artifactLabel = (index: number) => {
+    if (project.gallery.length >= 3) {
+      return ["FLAT VECTOR / ARTWORK", "MOCKUP / PRODUCTION PROOF", "FINAL OUTPUT / PRINTED RESULT"][index] || "VISUAL ARTIFACT";
+    }
+
+    return index === 0 ? "PRIMARY MOCKUP / ARTWORK" : "SUPPORTING OUTPUT / DETAIL";
+  };
 
   // Find next project
   const currentIndex = allProjects.findIndex((p) => p.slug === project.slug);
@@ -97,7 +111,7 @@ export function CaseStudyModal({
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={project.heroImage}
+                  src={optimizeImageUrl(project.heroImage, 1800)}
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
@@ -187,17 +201,29 @@ export function CaseStudyModal({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {project.gallery.map((img, i) => (
-                    <div key={i} className="space-y-2">
-                      <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3]">
+                    <div key={i} className="space-y-3">
+                      <button
+                        type="button"
+                        onClick={() => setLightboxIndex(i)}
+                        className="group relative block w-full overflow-hidden rounded-2xl border border-white/10 bg-black/30 text-left aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-[#00e5ff]/70"
+                        aria-label={`Open ${artifactLabel(i)} image`}
+                      >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={img.url}
+                          src={optimizeImageUrl(img.url, 1200)}
                           alt={img.caption}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 92vw, 45vw"
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
-                      </div>
+                        <span className="absolute inset-0 flex items-center justify-center bg-black/0 font-mono text-[10px] uppercase tracking-widest text-white opacity-0 transition-all duration-300 group-hover:bg-black/35 group-hover:opacity-100">
+                          OPEN FULLSCREEN
+                        </span>
+                        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/65 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#00e5ff] backdrop-blur-md">
+                          {artifactLabel(i)}
+                        </span>
+                      </button>
                       <p className="font-mono text-[11px] text-zinc-300 italic px-1">
                         {img.caption}
                       </p>
@@ -281,6 +307,68 @@ export function CaseStudyModal({
               </button>
             </div>
           </div>
+
+          {selectedGalleryImage && lightboxIndex !== null && (
+            <motion.div
+              className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <button
+                type="button"
+                aria-label="Close fullscreen image"
+                onClick={() => setLightboxIndex(null)}
+                className="absolute inset-0 bg-black/95 backdrop-blur-xl"
+              />
+              <div className="relative z-10 flex max-h-[90vh] w-full max-w-6xl flex-col items-center gap-4">
+                <img
+                  src={optimizeImageUrl(selectedGalleryImage.url, 1800)}
+                  alt={selectedGalleryImage.caption}
+                  className="max-h-[76vh] w-auto max-w-full rounded-2xl border border-white/15 object-contain shadow-[0_0_70px_rgba(0,229,255,0.16)]"
+                />
+                <div className="flex w-full max-w-4xl items-center justify-between gap-4 rounded-2xl border border-white/10 bg-[#0c0c10]/90 px-4 py-3 backdrop-blur-xl">
+                  <div className="min-w-0">
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-[#00e5ff]">
+                      {artifactLabel(lightboxIndex)}
+                    </span>
+                    <p className="truncate font-mono text-xs text-zinc-200">
+                      {selectedGalleryImage.caption}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex((lightboxIndex - 1 + project.gallery.length) % project.gallery.length)}
+                      className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-200 transition-colors hover:border-[#00e5ff]/50 hover:text-white"
+                      aria-label="Previous artifact"
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                    </button>
+                    <span className="font-mono text-[10px] text-zinc-400">
+                      {lightboxIndex + 1} / {project.gallery.length}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex((lightboxIndex + 1) % project.gallery.length)}
+                      className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-200 transition-colors hover:border-[#00e5ff]/50 hover:text-white"
+                      aria-label="Next artifact"
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setLightboxIndex(null)}
+                      className="rounded-full border border-red-500/30 bg-red-500/10 p-2 text-red-200 transition-colors hover:bg-red-500/20"
+                      aria-label="Close fullscreen image"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </AnimatePresence>
