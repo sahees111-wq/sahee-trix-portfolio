@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
+import { Magnetic } from "@/components/effects/Magnetic";
 
 export function FloatingWhatsApp() {
   const [showTooltip, setShowTooltip] = useState(true);
@@ -18,6 +19,7 @@ export function FloatingWhatsApp() {
       )}
 
       {/* Floating Button */}
+      <Magnetic strength={0.18}>
       <a
         href={siteConfig.socialLinks[0].url}
         target="_blank"
@@ -28,6 +30,7 @@ export function FloatingWhatsApp() {
       >
         <MessageCircle className="w-7 h-7 fill-white text-white group-hover:rotate-12 transition-transform" />
       </a>
+      </Magnetic>
     </div>
   );
 }
