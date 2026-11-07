@@ -223,7 +223,7 @@ export function ContactSection() {
                     paymentUrl={siteConfig.payment.paypalUrl}
                   />
                   <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500 mt-3">
-                    Currency: {siteConfig.payment.currency} • Protected by PayPal
+                    Add 10% for the transaction fee • Currency: {siteConfig.payment.currency} • Protected by PayPal
                   </p>
                 </div>
 
