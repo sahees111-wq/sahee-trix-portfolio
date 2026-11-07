@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Layers, Printer, Shirt, MessageCircle } from "lucide-react";
 import dynamic from "next/dynamic";
 import { siteConfig } from "@/data/siteConfig";
@@ -14,6 +14,10 @@ const HeroScene = dynamic(
 export function HeroSection() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [showScene, setShowScene] = useState(false);
+  const portraitTiltX = useMotionValue(0);
+  const portraitTiltY = useMotionValue(0);
+  const smoothTiltX = useSpring(portraitTiltX, { stiffness: 180, damping: 22, mass: 0.65 });
+  const smoothTiltY = useSpring(portraitTiltY, { stiffness: 180, damping: 22, mass: 0.65 });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,6 +52,20 @@ export function HeroSection() {
       if (timeoutId !== undefined) globalThis.clearTimeout(timeoutId);
     };
   }, []);
+
+  const handlePortraitMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+    portraitTiltX.set(-y * 10);
+    portraitTiltY.set(x * 12);
+  };
+
+  const resetPortraitTilt = () => {
+    portraitTiltX.set(0);
+    portraitTiltY.set(0);
+  };
 
   return (
     <section className="fx-animated-section fx-hero-radiance relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#060608]">
@@ -210,7 +228,15 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.9, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="fx-neon-border relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] xl:max-w-[390px] rounded-3xl p-1.5 bg-gradient-to-b from-red-500 via-red-900 to-red-950 shadow-[0_0_50px_rgba(229,9,20,0.45)] backdrop-blur-xl group ml-auto flex flex-col"
+            onMouseMove={handlePortraitMove}
+            onMouseLeave={resetPortraitTilt}
+            style={{
+              rotateX: smoothTiltX,
+              rotateY: smoothTiltY,
+              transformPerspective: 1000,
+              transformStyle: "preserve-3d",
+            }}
+            className="hero-portrait-tilt fx-neon-border relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[360px] xl:max-w-[390px] rounded-3xl p-1.5 bg-gradient-to-b from-red-500 via-red-900 to-red-950 shadow-[0_0_50px_rgba(229,9,20,0.45)] backdrop-blur-xl group ml-auto flex flex-col"
           >
             {/* Glowing Red Backdrop */}
             <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-red-600/60 via-rose-600/40 to-red-900/50 blur-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
