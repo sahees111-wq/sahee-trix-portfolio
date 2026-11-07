@@ -4,9 +4,7 @@ import React from "react";
 import { clientsData } from "@/data/experienceData";
 
 export function ClientMarquee() {
-  const forwardClients = [...clientsData, ...clientsData, ...clientsData];
-  const reverseSource = [...clientsData].reverse();
-  const reverseClients = [...reverseSource, ...reverseSource, ...reverseSource];
+  const repeatedClients = [...clientsData, ...clientsData, ...clientsData];
 
   const renderClient = (client: (typeof clientsData)[number], idx: number) => (
     <div
@@ -39,20 +37,14 @@ export function ClientMarquee() {
         </h2>
       </div>
 
-      {/* Continuous side-to-side client movement */}
-      <div className="relative w-full overflow-hidden space-y-4">
+      {/* One continuous side-scrolling line */}
+      <div className="relative w-full overflow-hidden">
         <div className="absolute top-0 bottom-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-[#08080a] to-transparent z-10 pointer-events-none" />
         <div className="absolute top-0 bottom-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-[#08080a] to-transparent z-10 pointer-events-none" />
 
         <div className="marquee-lane group">
           <div className="marquee-track marquee-track-forward">
-            {forwardClients.map(renderClient)}
-          </div>
-        </div>
-
-        <div className="marquee-lane group">
-          <div className="marquee-track marquee-track-reverse">
-            {reverseClients.map(renderClient)}
+            {repeatedClients.map(renderClient)}
           </div>
         </div>
       </div>
