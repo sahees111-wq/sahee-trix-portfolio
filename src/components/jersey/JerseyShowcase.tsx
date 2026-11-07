@@ -96,7 +96,7 @@ export function JerseyShowcase() {
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs text-[#3b82f6] uppercase tracking-widest font-bold flex items-center gap-1.5">
                 <Shirt className="w-4 h-4" />
-                // 04. APPAREL & ATHLETIC TECH
+                // APPAREL & ATHLETIC TECH
               </span>
               <div className="h-[1px] w-12 bg-[#3b82f6]/30" />
             </div>
