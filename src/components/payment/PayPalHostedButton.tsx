@@ -97,7 +97,7 @@ export function PayPalHostedButton({
 
       {status === "fallback" && (
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-amber-300/80">
-          PayPal button is unavailable right now. Use the secure checkout link below.
+          Add 10% for the transaction fee, then use the secure PayPal checkout link below.
         </p>
       )}
 
