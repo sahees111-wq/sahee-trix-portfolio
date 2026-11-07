@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { siteConfig } from "@/data/siteConfig";
 import { ArrowUp, Heart, Sparkles, MessageCircle, Mail, Phone } from "lucide-react";
+import { Magnetic } from "@/components/effects/Magnetic";
 
 export function Footer() {
   const [time, setTime] = useState<string>("");
@@ -26,6 +27,13 @@ export function Footer() {
   }, []);
 
   const scrollToTop = () => {
+    const pageTop = document.getElementById("site-top");
+
+    if (pageTop) {
+      pageTop.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -84,13 +92,17 @@ export function Footer() {
               <span className="text-white font-bold text-sm tracking-widest">{time || "20:45:00"}</span>
             </div>
 
-            <button
-              onClick={scrollToTop}
-              className="p-4 rounded-2xl glass-panel hover:border-red-500/40 text-zinc-300 hover:text-white flex items-center gap-2 transition-all group"
-            >
-              <span>TOP</span>
-              <ArrowUp className="w-4 h-4 text-red-500 group-hover:-translate-y-1 transition-transform" />
-            </button>
+            <Magnetic strength={0.16}>
+              <button
+                type="button"
+                onClick={scrollToTop}
+                aria-label="Scroll back to the top"
+                className="p-4 rounded-2xl glass-panel hover:border-red-500/40 text-zinc-300 hover:text-white flex items-center gap-2 transition-all group"
+              >
+                <span>TOP</span>
+                <ArrowUp className="w-4 h-4 text-red-500 group-hover:-translate-y-1 transition-transform" />
+              </button>
+            </Magnetic>
           </div>
         </div>
 
