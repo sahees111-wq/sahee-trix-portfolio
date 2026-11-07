@@ -27,7 +27,7 @@ export function ClientMarquee() {
   );
 
   return (
-    <section className="fx-animated-section fx-marquee-glow relative w-full py-20 bg-[#08080a] border-t border-white/5 overflow-hidden">
+    <section id="clients" data-marquee-version="single-line-v2" className="fx-animated-section fx-marquee-glow relative w-full py-20 bg-[#08080a] border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mb-8 flex flex-col items-center text-center">
         <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-[0.3em] font-bold">
           // 09. BRANDS & COLLABORATORS
@@ -43,7 +43,7 @@ export function ClientMarquee() {
         <div className="absolute top-0 bottom-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-[#08080a] to-transparent z-10 pointer-events-none" />
 
         <div className="marquee-lane group">
-          <div className="marquee-track marquee-track-forward">
+          <div className="marquee-track marquee-track-forward flex-nowrap whitespace-nowrap">
             {repeatedClients.map(renderClient)}
           </div>
         </div>
