@@ -78,7 +78,7 @@ export function PortfolioSection() {
         </div>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div layout className="portfolio-swipe-row flex md:grid md:grid-cols-2 gap-5 sm:gap-8 overflow-x-auto md:overflow-visible pb-5 md:pb-0 snap-x snap-mandatory no-scrollbar">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, idx) => (
               <motion.div
@@ -91,7 +91,7 @@ export function PortfolioSection() {
                 transition={{ duration: 0.45, delay: idx * 0.05 }}
                 onClick={() => setActiveModalProject(project)}
                 
-                className="portfolio-card group relative rounded-3xl overflow-hidden glass-panel border border-white/10 cursor-pointer flex flex-col justify-between"
+                className="portfolio-card group relative w-[86vw] sm:w-[70vw] md:w-auto min-w-[86vw] sm:min-w-[70vw] md:min-w-0 snap-start rounded-3xl overflow-hidden glass-panel border border-white/10 cursor-pointer flex flex-col justify-between"
               >
                 {/* Image Container with Zoom */}
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900">
