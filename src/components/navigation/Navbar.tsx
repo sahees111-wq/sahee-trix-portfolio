@@ -8,10 +8,13 @@ import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -19,6 +22,11 @@ export function Navbar() {
 
   return (
     <>
+      <motion.div
+        aria-hidden="true"
+        className="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-red-500 via-rose-400 to-amber-300 shadow-[0_0_14px_rgba(255,26,38,0.9)]"
+        style={{ scaleX: scrollProgress / 100 }}
+      />
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex justify-center ${
           scrolled ? "py-3 px-4 sm:px-6" : "py-6 px-6 sm:px-12"
