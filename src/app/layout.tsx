@@ -1,9 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 
 const siteUrl = "https://saheetrix.com";
 const socialPreviewImage = "/images/sahee-portrait.jpg";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#08080a",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
