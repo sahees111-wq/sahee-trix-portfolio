@@ -99,7 +99,7 @@ export function PortfolioSection() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={optimizeImageUrl(project.heroImage, 1600)}
-                    alt={project.title}
+                    alt={`${project.title} — ${project.services.slice(0, 2).join(" and ")} portfolio case study visual`}
                     loading="lazy"
                     fetchPriority="low"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -162,6 +162,15 @@ export function PortfolioSection() {
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
+
+                  <a
+                    href={`/work/${project.slug}`}
+                    onClick={(event) => event.stopPropagation()}
+                    className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500 transition-colors hover:text-[#00e5ff]"
+                  >
+                    Open indexable case study
+                    <ArrowUpRight className="h-3 w-3" />
+                  </a>
                 </div>
               </motion.div>
             ))}
