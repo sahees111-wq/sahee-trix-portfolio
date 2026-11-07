@@ -219,7 +219,6 @@ export function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-center gap-5">
                 <div className="min-w-0">
                   <PayPalHostedButton
-                    hostedButtonId={siteConfig.payment.paypalHostedButtonId}
                     paymentUrl={siteConfig.payment.paypalUrl}
                   />
                   <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500 mt-3">
