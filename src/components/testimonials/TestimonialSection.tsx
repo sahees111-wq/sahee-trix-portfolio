@@ -25,7 +25,7 @@ export function TestimonialSection() {
       <div className="max-w-5xl mx-auto text-center space-y-12">
         <div className="flex flex-col items-center gap-2">
           <span className="font-mono text-xs text-[#8b5cf6] uppercase tracking-[0.3em] font-bold">
-            // 10. CLIENT ENDORSEMENTS
+            // CLIENT ENDORSEMENTS
           </span>
           <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-white">
             WORDS FROM DIRECTORS & FOUNDERS
