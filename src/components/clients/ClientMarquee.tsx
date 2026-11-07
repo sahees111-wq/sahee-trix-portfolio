@@ -1,10 +1,32 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import { clientsData } from "@/data/experienceData";
 
 export function ClientMarquee() {
-  const repeatedClients = [...clientsData, ...clientsData, ...clientsData];
+  const forwardClients = [...clientsData, ...clientsData, ...clientsData];
+  const reverseSource = [...clientsData].reverse();
+  const reverseClients = [...reverseSource, ...reverseSource, ...reverseSource];
+
+  const renderClient = (client: (typeof clientsData)[number], idx: number) => (
+    <div
+      key={client.name + "-" + idx}
+      className="client-marquee-card flex shrink-0 items-center gap-3 px-8 py-4 rounded-2xl glass-panel border border-white/5 hover:border-white/20 transition-all duration-300 group/item cursor-pointer"
+    >
+      <div
+        className="w-2.5 h-2.5 rounded-full filter grayscale group-hover/item:grayscale-0 transition-all"
+        style={{ backgroundColor: client.accent }}
+      />
+      <div>
+        <span className="font-display font-bold text-sm sm:text-base text-zinc-400 group-hover/item:text-white transition-colors tracking-wide">
+          {client.name}
+        </span>
+        <span className="block font-mono text-[10px] text-zinc-300">
+          {client.category}
+        </span>
+      </div>
+    </div>
+  );
 
   return (
     <section className="fx-animated-section fx-marquee-glow relative w-full py-20 bg-[#08080a] border-t border-white/5 overflow-hidden">
@@ -17,31 +39,21 @@ export function ClientMarquee() {
         </h2>
       </div>
 
-      {/* Marquee Track with gradient fade edges */}
-      <div className="relative w-full overflow-hidden group">
+      {/* Continuous side-to-side client movement */}
+      <div className="relative w-full overflow-hidden space-y-4">
         <div className="absolute top-0 bottom-0 left-0 w-24 sm:w-48 bg-gradient-to-r from-[#08080a] to-transparent z-10 pointer-events-none" />
         <div className="absolute top-0 bottom-0 right-0 w-24 sm:w-48 bg-gradient-to-l from-[#08080a] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max animate-marquee-scroll hover:[animation-play-state:paused] gap-6 py-4">
-          {repeatedClients.map((client, idx) => (
-            <div
-              key={`${client.name}-${idx}`}
-              className="client-marquee-card flex items-center gap-3 px-8 py-4 rounded-2xl glass-panel border border-white/5 hover:border-white/20 transition-all duration-300 group/item cursor-pointer"
-            >
-              <div
-                className="w-2.5 h-2.5 rounded-full filter grayscale group-hover/item:grayscale-0 transition-all"
-                style={{ backgroundColor: client.accent }}
-              />
-              <div>
-                <span className="font-display font-bold text-sm sm:text-base text-zinc-400 group-hover/item:text-white transition-colors tracking-wide">
-                  {client.name}
-                </span>
-                <span className="block font-mono text-[10px] text-zinc-300">
-                  {client.category}
-                </span>
-              </div>
-            </div>
-          ))}
+        <div className="marquee-lane group">
+          <div className="marquee-track marquee-track-forward">
+            {forwardClients.map(renderClient)}
+          </div>
+        </div>
+
+        <div className="marquee-lane group">
+          <div className="marquee-track marquee-track-reverse">
+            {reverseClients.map(renderClient)}
+          </div>
         </div>
       </div>
     </section>
