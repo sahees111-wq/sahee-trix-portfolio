@@ -122,15 +122,21 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-display font-black tracking-tight leading-[0.95] text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
+              className="font-display font-black tracking-tight leading-[0.95] text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
             >
               <span className="block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
-                THARMARAJA
+                TOURNAMENT-GRADE
+              </span>
+              <span className="block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
+                SPORTSWEAR DESIGN &amp;
               </span>
               <span className="block bg-gradient-to-r from-red-500 via-rose-400 to-white bg-clip-text text-transparent glow-red mt-1">
-                SAHEEVAN
+                PRECISION SUBLIMATION PREPRESS
               </span>
             </motion.h1>
+            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.24em] text-zinc-400">
+              THARMARAJA SAHEEVAN / SAHEETRIX
+            </p>
           </div>
 
           {/* Animated Role Badge Pill */}
@@ -165,13 +171,13 @@ export function HeroSection() {
             className="border-l-4 border-red-500 pl-4 sm:pl-5 py-1 bg-gradient-to-r from-red-950/20 to-transparent rounded-r-2xl"
           >
             <p className="font-display font-extrabold text-lg sm:text-xl lg:text-2xl text-white tracking-tight leading-snug">
-              WORLD CLASS <span className="text-red-500">GRAPHIC DESIGN, WEB &amp; MARKETING</span> FOR{" "}
+              WORLD CLASS <span className="text-red-500">SPORTSWEAR DESIGN, WEB &amp; MARKETING</span> FOR{" "}
               <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
                 WORLDWIDE BRANDS.
               </span>
             </p>
             <p className="font-sans text-xs sm:text-sm text-zinc-300 mt-1.5 max-w-xl leading-relaxed">
-              Transforming creative ideas into high-impact graphic design, responsive websites, social media systems, marketing campaigns, tournament-grade apparel, and precision print production.
+              Delivering tournament-grade sports jerseys, custom apparel tech packs, 3D mockups, sublimation vector layouts, and precision prepress for global brands.
             </p>
           </motion.div>
 
@@ -258,7 +264,7 @@ export function HeroSection() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/sahee-portrait.jpg"
-                  alt="Tharmaraja Saheevan (SAHEETRIX)"
+                  alt="Tharmaraja Saheevan of SAHEETRIX — senior sportswear designer and sublimation prepress specialist"
                   width={780}
                   height={897}
                   sizes="(max-width: 1024px) 88vw, 390px"
