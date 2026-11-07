@@ -63,7 +63,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-[#08080a] text-zinc-100 selection:bg-[#e50914] selection:text-white">
+    <main id="site-top" className="relative min-h-screen bg-[#08080a] text-zinc-100 selection:bg-[#e50914] selection:text-white">
       <ScrollReveal />
       {/* Intro Loader */}
       {!introCompleted && (
