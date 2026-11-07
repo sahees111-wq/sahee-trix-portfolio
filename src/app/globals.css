@@ -535,3 +535,9 @@
     animation-iteration-count: infinite !important;
   }
 }
+
+
+.hero-portrait-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
