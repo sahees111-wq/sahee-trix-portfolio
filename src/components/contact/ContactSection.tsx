@@ -110,7 +110,7 @@ export function ContactSection() {
                   href={siteConfig.socialLinks[0].url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-[#25D366]/10 border border-white/5 hover:border-[#25D366]/40 text-zinc-300 hover:text-white transition-all group"
+                  className="contact-whatsapp-cta flex items-center justify-between p-4 rounded-2xl bg-white/5 hover:bg-[#25D366]/10 border border-white/5 hover:border-[#25D366]/40 text-zinc-300 hover:text-white transition-all group"
                 >
                   <div className="flex items-center gap-3">
                     <MessageCircle className="w-5 h-5 text-[#25D366]" />
