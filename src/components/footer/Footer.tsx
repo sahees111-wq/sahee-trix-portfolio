@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/siteConfig";
 import { ArrowUp, Heart, Sparkles, MessageCircle, Mail, Phone } from "lucide-react";
 import { Magnetic } from "@/components/effects/Magnetic";
 
 export function Footer() {
   const [time, setTime] = useState<string>("");
+  const scrollFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const updateTime = () => {
@@ -27,15 +28,38 @@ export function Footer() {
   }, []);
 
   const scrollToTop = () => {
-    const pageTop = document.getElementById("site-top");
-
-    if (pageTop) {
-      pageTop.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
+    if (scrollFrameRef.current !== null) {
+      window.cancelAnimationFrame(scrollFrameRef.current);
     }
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const startY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+    const duration = 1100;
+    const startedAt = performance.now();
+
+    const easeOutCubic = (progress: number) => 1 - Math.pow(1 - progress, 3);
+
+    const animate = (now: number) => {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+      window.scrollTo(0, Math.round(startY * (1 - easedProgress)));
+
+      if (progress < 1) {
+        scrollFrameRef.current = window.requestAnimationFrame(animate);
+      } else {
+        scrollFrameRef.current = null;
+      }
+    };
+
+    scrollFrameRef.current = window.requestAnimationFrame(animate);
   };
+
+  useEffect(() => {
+    return () => {
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+    };
+  }, []);
 
   return (
     <footer className="fx-animated-section fx-footer-radiance relative w-full bg-[#050507] border-t border-red-500/20 pt-20 pb-12 px-4 sm:px-6 lg:px-12 overflow-hidden">
