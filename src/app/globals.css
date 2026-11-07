@@ -493,6 +493,8 @@
 
 .marquee-track {
   display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   width: max-content;
   gap: 1.5rem;
   padding: 0.5rem 0;
