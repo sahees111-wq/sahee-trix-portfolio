@@ -163,7 +163,7 @@ export function JerseyShowcase() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={optimizeImageUrl(currentStage.imageUrl, 1400)}
-                  alt={currentStage.name}
+                  alt={`${currentStage.name} — ${currentStage.title} sportswear production stage`}
                   loading="lazy"
                   decoding="async"
                   className={`w-full h-full ${currentStage.id === "stage-1" || currentStage.id === "stage-2" ? "object-contain p-3 sm:p-6" : "object-cover"} transition-transform duration-500`}
