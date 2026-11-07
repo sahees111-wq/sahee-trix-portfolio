@@ -81,7 +81,7 @@ export function ContactSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#00e5ff] animate-ping" />
             <span className="font-mono text-xs tracking-widest uppercase text-zinc-300">
-              // 11. START A COLLABORATION
+              // START A COLLABORATION
             </span>
           </div>
 
