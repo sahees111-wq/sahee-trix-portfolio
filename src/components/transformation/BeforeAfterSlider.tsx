@@ -97,7 +97,7 @@ export function BeforeAfterSlider() {
             <span>LIVE TRANSFORMATION ENGINE</span>
             <span className="hidden sm:inline text-[#00e5ff]">/ ONLINE</span>
           </div>
-          <span>SAHEETRIX // 06</span>
+          <span>SAHEETRIX //</span>
         </div>
 
         {/* Header */}
@@ -106,7 +106,7 @@ export function BeforeAfterSlider() {
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs text-[#8b5cf6] uppercase tracking-widest font-bold flex items-center gap-1.5">
                 <ArrowLeftRight className="w-4 h-4" />
-                // 06. TRANSFORMATION BENCHMARK
+                // TRANSFORMATION BENCHMARK
               </span>
               <div className="h-[1px] w-12 bg-[#8b5cf6]/30" />
             </div>
