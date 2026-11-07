@@ -69,7 +69,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="fx-animated-section fx-hero-radiance relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#060608]">
+    <section className="hero-safe-screen fx-animated-section fx-hero-radiance relative w-full min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#060608]">
       {/* 3D Canvas Background */}
       {showScene && <HeroScene />}
 
