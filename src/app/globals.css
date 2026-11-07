@@ -482,3 +482,50 @@
     box-shadow: 0 0 48px rgba(139, 92, 246, 0.58), 0 0 18px rgba(0, 229, 255, 0.42);
   }
 }
+
+
+/* Two continuous client lanes: one moves left, the other returns right. */
+.marquee-lane {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+  animation-duration: 34s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.marquee-track-forward {
+  animation-name: marquee-clients-forward;
+}
+
+.marquee-track-reverse {
+  animation-name: marquee-clients-reverse;
+}
+
+.marquee-lane:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-clients-forward {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+
+@keyframes marquee-clients-reverse {
+  from { transform: translateX(-33.3333%); }
+  to { transform: translateX(0); }
+}
+
+@media (max-width: 767px) {
+  .marquee-track {
+    animation-duration: 27s;
+  }
+}
