@@ -31,7 +31,7 @@ export function SkillsGrid() {
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-widest font-bold flex items-center gap-1.5">
                 <Wrench className="w-4 h-4" />
-                // 07. TOOL MATRIX & WORKFLOWS
+                // TOOL MATRIX & WORKFLOWS
               </span>
               <div className="h-[1px] w-12 bg-[#00e5ff]/30" />
             </div>
