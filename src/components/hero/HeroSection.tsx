@@ -125,13 +125,10 @@ export function HeroSection() {
               className="font-display font-black tracking-tight leading-[0.95] text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl"
             >
               <span className="block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
-                SPORTSWEAR
-              </span>
-              <span className="block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
-                BUILT FOR THE
+                THE MOST WANTED
               </span>
               <span className="block bg-gradient-to-r from-red-500 via-rose-400 to-white bg-clip-text text-transparent glow-red mt-1">
-                BIG STAGE.
+                DESIGNER / DEVELOPER.
               </span>
             </motion.h1>
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.24em] text-zinc-400">
