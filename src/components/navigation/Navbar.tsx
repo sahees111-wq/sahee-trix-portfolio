@@ -10,19 +10,89 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
+  const [logoBurst, setLogoBurst] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0);
+
+      const probeLine = window.innerHeight * 0.34;
+      const currentLink = [...siteConfig.navLinks]
+        .filter((link) => {
+          const section = document.querySelector(link.href);
+          return section && section.getBoundingClientRect().top <= probeLine;
+        })
+        .at(-1);
+
+      setActiveSection(currentLink?.href ?? "");
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setLogoBurst(true);
+    window.setTimeout(() => setLogoBurst(false), 1200);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
+      <AnimatePresence>
+        {logoBurst && (
+          <motion.div
+            aria-hidden="true"
+            className="fixed inset-0 z-[70] pointer-events-none overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.div
+              className="absolute left-1/2 top-1/3 w-36 h-36 -translate-x-1/2 -translate-y-1/2 rounded-full border border-red-500/70 shadow-[0_0_70px_rgba(255,26,38,0.55)]"
+              initial={{ scale: 0.2, opacity: 0.9 }}
+              animate={{ scale: 3.2, opacity: 0 }}
+              transition={{ duration: 1.05, ease: "easeOut" }}
+            />
+            {Array.from({ length: 12 }).map((_, index) => {
+              const angle = (index / 12) * Math.PI * 2;
+              return (
+                <motion.span
+                  key={index}
+                  className="absolute left-1/2 top-1/3 w-2 h-2 rounded-full"
+                  style={{ backgroundColor: index % 2 ? "#00e5ff" : "#ff1a26" }}
+                  initial={{ x: 0, y: 0, scale: 0, opacity: 1 }}
+                  animate={{
+                    x: Math.cos(angle) * 260,
+                    y: Math.sin(angle) * 260,
+                    scale: [0, 1.4, 0],
+                    opacity: [1, 1, 0],
+                  }}
+                  transition={{ duration: 1.1, ease: "easeOut" }}
+                />
+              );
+            })}
+            <motion.div
+              className="absolute inset-x-0 top-1/3 flex justify-center"
+              initial={{ opacity: 0, y: 12, scale: 0.9 }}
+              animate={{ opacity: [0, 1, 0], y: [12, 0, -8], scale: [0.9, 1, 1.04] }}
+              transition={{ duration: 1.15, ease: "easeOut" }}
+            >
+              <span className="rounded-full border border-red-400/40 bg-black/70 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.3em] text-red-100 backdrop-blur-md">
+                SAHEETRIX // CREATIVE MODE
+              </span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.div
         aria-hidden="true"
         className="fixed top-0 left-0 right-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-red-500 via-rose-400 to-amber-300 shadow-[0_0_14px_rgba(255,26,38,0.9)]"
@@ -41,7 +111,7 @@ export function Navbar() {
           }`}
         >
           {/* Left: Star Geometric Logo + Brand Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" onClick={handleLogoClick} aria-label="SAHEETRIX home and secret animation" className="flex items-center gap-3 group">
             {/* Origami 4-point Star Logo */}
             <div className="w-8 h-8 shrink-0 filter drop-shadow-[0_0_8px_rgba(229,9,20,0.6)] group-hover:scale-110 transition-transform">
               <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
@@ -69,10 +139,13 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="hover:text-white transition-colors relative py-1 group"
+                aria-current={activeSection === link.href ? "page" : undefined}
+                className={`relative py-1 transition-colors group ${activeSection === link.href ? "text-white" : "text-zinc-300 hover:text-white"}`}
               >
                 <span>{link.name}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-red-500 transition-all duration-300 group-hover:w-full" />
+                <span
+                  className={`absolute bottom-0 left-0 h-[1.5px] bg-red-500 transition-all duration-300 ${activeSection === link.href ? "w-full shadow-[0_0_8px_rgba(255,26,38,0.9)]" : "w-0 group-hover:w-full"}`}
+                />
               </a>
             ))}
           </div>
