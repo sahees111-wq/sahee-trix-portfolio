@@ -41,11 +41,14 @@ export function CustomCursor() {
   useEffect(() => {
     // Check touch device
     const checkTouch = () => {
-      if (window.matchMedia("(pointer: coarse)").matches) { // A fine mouse on a touchscreen laptop should still get the custom cursor.
-        setIsTouchDevice(true);
-      } else {
-        setIsTouchDevice(false);
-      }
+      const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const deviceMemory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+      const lowMemory = typeof deviceMemory === "number" && deviceMemory <= 2;
+      const lowCpu = typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 2;
+
+      // Keep the native cursor on touch, reduced-motion, and low-power devices.
+      setIsTouchDevice(coarsePointer || reduceMotion || lowMemory || lowCpu);
     };
 
     checkTouch();
