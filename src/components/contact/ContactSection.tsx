@@ -100,7 +100,7 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Direct Coordinates & Social Channels */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="p-8 rounded-3xl glass-panel border border-white/10 space-y-6">
+            <div className="contact-panel p-8 rounded-3xl glass-panel border border-white/10 space-y-6">
               <h3 className="font-display font-bold text-xl text-white">
                 DIRECT CHANNELS
               </h3>
@@ -169,7 +169,7 @@ export function ContactSection() {
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
-              className="p-8 sm:p-10 rounded-3xl glass-panel border border-white/10 space-y-6"
+              className="contact-panel p-8 sm:p-10 rounded-3xl glass-panel border border-white/10 space-y-6"
             >
               <div className="flex items-center justify-between">
                 <h3 className="font-display font-bold text-xl text-white">
@@ -286,7 +286,7 @@ export function ContactSection() {
               <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#00e5ff] to-[#8b5cf6] text-[#08080a] font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] hover:scale-[1.02] active:scale-98 transition-all"
+                  className="contact-submit-button w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#00e5ff] to-[#8b5cf6] text-[#08080a] font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_40px_rgba(0,229,255,0.6)] hover:scale-[1.02] active:scale-98 transition-all"
                 >
                   <Send className="w-4 h-4" />
                   <span>START A PROJECT → SUBMIT ON WHATSAPP</span>
