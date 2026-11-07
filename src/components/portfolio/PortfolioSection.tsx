@@ -87,10 +87,11 @@ export function PortfolioSection() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                whileHover={{ y: -8, scale: 1.01 }}
                 transition={{ duration: 0.45, delay: idx * 0.05 }}
                 onClick={() => setActiveModalProject(project)}
                 
-                className="group relative rounded-3xl overflow-hidden glass-panel border border-white/10 cursor-pointer flex flex-col justify-between"
+                className="portfolio-card group relative rounded-3xl overflow-hidden glass-panel border border-white/10 cursor-pointer flex flex-col justify-between"
               >
                 {/* Image Container with Zoom */}
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900">
