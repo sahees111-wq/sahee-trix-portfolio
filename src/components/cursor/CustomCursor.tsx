@@ -48,7 +48,9 @@ export function CustomCursor() {
       const lowCpu = typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 2;
 
       // Keep the native cursor on touch, reduced-motion, and low-power devices.
-      setIsTouchDevice(coarsePointer || reduceMotion || lowMemory || lowCpu);
+      const disableCustomCursor = coarsePointer || reduceMotion || lowMemory || lowCpu;
+      setIsTouchDevice(disableCustomCursor);
+      document.documentElement.classList.toggle("has-custom-cursor", !disableCustomCursor);
     };
 
     checkTouch();
@@ -95,8 +97,6 @@ export function CustomCursor() {
     window.addEventListener("click", handleClick);
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
-    document.documentElement.classList.add("has-custom-cursor");
-
     return () => {
       window.removeEventListener("resize", checkTouch);
       window.removeEventListener("mousemove", handleMouseMove);
