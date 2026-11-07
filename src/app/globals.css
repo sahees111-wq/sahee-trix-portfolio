@@ -693,3 +693,50 @@ main.scroll-reveal-enabled > section.is-scroll-revealed {
     transform: scale(1.015);
   }
 }
+
+
+/* Cross-browser viewport and device compatibility. */
+html {
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.hero-safe-screen {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+}
+
+.portfolio-swipe-row {
+  overscroll-behavior-x: contain;
+}
+
+@media (max-width: 767px) {
+  .ambient-particles {
+    opacity: 0.4;
+  }
+
+  .ambient-particles span:nth-child(n + 9) {
+    display: none;
+  }
+
+  .ambient-particles::before {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-data: reduce) {
+  .ambient-particles,
+  .fx-streak::after {
+    display: none !important;
+  }
+
+  .fx-animated-section {
+    animation: none !important;
+  }
+}
