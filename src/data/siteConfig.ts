@@ -27,8 +27,8 @@ export const siteConfig = {
   ],
   contact: {
     email: "saheetrix@gmail.com",
-    whatsapp: "+94762007356",
-    whatsappFormatted: "+94 76 200 7356",
+    whatsapp: "+94754739447",
+    whatsappFormatted: "+94 75 473 9447",
     whatsappMessage: "Hi Sahee, I saw your SAHEETRIX portfolio! I'd like to discuss a graphic design / web design / social media / marketing project.",
     location: "Sri Lanka",
     availability: "Available to Hire for Worldwide Projects, Apparel Tech Packs & Freelance",
@@ -40,7 +40,7 @@ export const siteConfig = {
     currency: "USD",
   },
   socialLinks: [
-    { name: "WhatsApp", url: "https://wa.me/94762007356?text=Hi%20Sahee%2C%20I%20saw%20your%20SAHEETRIX%20portfolio!%20I%20would%20like%20to%20order%20a%20design%20/%20apparel%20project.", icon: "MessageCircle" },
+    { name: "WhatsApp", url: "https://wa.me/94754739447?text=Hi%20Sahee%2C%20I%20saw%20your%20SAHEETRIX%20portfolio!%20I%20would%20like%20to%20order%20a%20design%20/%20apparel%20project.", icon: "MessageCircle" },
     { name: "Instagram", url: "https://instagram.com/saheetrix", icon: "Instagram" },
     { name: "LinkedIn", url: "https://linkedin.com/in/saheetrix", icon: "Linkedin" },
     { name: "Facebook", url: "https://facebook.com/saheetrix", icon: "Facebook" },
