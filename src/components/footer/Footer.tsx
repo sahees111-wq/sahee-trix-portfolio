@@ -101,13 +101,13 @@ export function Footer() {
             <div className="p-4 rounded-2xl glass-panel border border-red-500/30 space-y-1">
               <span className="text-zinc-300 block text-[10px]">DIRECT HOTLINE &amp; WHATSAPP</span>
               <a
-                href="https://wa.me/94762007356"
+                href="https://wa.me/94754739447"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white font-bold text-sm tracking-wider hover:text-red-400 transition-colors flex items-center gap-2"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-400" />
-                <span>+94 76 200 7356</span>
+                <span>+94 75 473 9447</span>
               </a>
             </div>
 
@@ -146,7 +146,7 @@ export function Footer() {
           <div className="flex items-center gap-4 text-zinc-300">
             <span>saheetrix@gmail.com</span>
             <span>•</span>
-            <span className="text-white font-bold">+94 76 200 7356</span>
+            <span className="text-white font-bold">+94 75 473 9447</span>
           </div>
 
           <div className="text-[11px] text-zinc-300">
