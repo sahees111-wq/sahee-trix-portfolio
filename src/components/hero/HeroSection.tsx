@@ -156,7 +156,7 @@ export function HeroSection() {
               </motion.span>
             </div>
             <span className="text-red-400 font-mono text-xs font-bold hidden sm:inline-block">
-              // NO: +94 76 200 7356
+              // NO: +94 75 473 9447
             </span>
           </motion.div>
 
@@ -197,13 +197,13 @@ export function HeroSection() {
 
             <Magnetic strength={0.2}>
             <a
-              href="https://wa.me/94762007356?text=Hi%20Sahee%2C%20I%20would%20like%20to%20hire%20your%20custom%20clothing%20/%20graphic%20design%20services."
+              href="https://wa.me/94754739447?text=Hi%20Sahee%2C%20I%20would%20like%20to%20hire%20your%20custom%20clothing%20/%20graphic%20design%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 sm:px-6 py-3.5 rounded-full border border-red-500/40 bg-black/60 text-white font-mono font-bold text-xs uppercase tracking-wider hover:bg-red-950/40 hover:border-red-400 backdrop-blur-md shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>HIRE ME: +94 76 200 7356</span>
+              <span>HIRE ME: +94 75 473 9447</span>
             </a>
             </Magnetic>
           </motion.div>
