@@ -154,13 +154,13 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <Magnetic strength={0.18} className="hidden sm:inline-flex">
             <a
-              href="https://wa.me/94762007356?text=Hi%20Sahee%2C%20I%20saw%20your%20SAHEETRIX%20portfolio!%20I%20would%20like%20to%20order%20a%20design%20/%20apparel%20project."
+              href="https://wa.me/94754739447?text=Hi%20Sahee%2C%20I%20saw%20your%20SAHEETRIX%20portfolio!%20I%20would%20like%20to%20order%20a%20design%20/%20apparel%20project."
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 border border-red-400/30 text-white font-mono text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(229,9,20,0.35)] backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 group"
             >
               <MessageCircle className="w-3.5 h-3.5 fill-white" />
-              <span>HIRE ME: +94 76 200 7356</span>
+              <span>HIRE ME: +94 75 473 9447</span>
             </a>
             </Magnetic>
 
@@ -201,14 +201,14 @@ export function Navbar() {
 
             <Magnetic strength={0.16} className="w-full">
             <a
-              href="https://wa.me/94762007356"
+              href="https://wa.me/94754739447"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3.5 rounded-full bg-gradient-to-r from-red-600 to-rose-600 text-white font-mono font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
-              <span>WHATSAPP: +94 76 200 7356</span>
+              <span>WHATSAPP: +94 75 473 9447</span>
             </a>
             </Magnetic>
           </motion.div>
