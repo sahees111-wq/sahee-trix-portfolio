@@ -101,7 +101,7 @@ export function HeroSection() {
               </svg>
             </div>
             <span className="font-mono text-[9px] sm:text-xs tracking-[0.12em] sm:tracking-[0.2em] leading-snug text-center uppercase text-red-100 font-bold">
-              GRAPHIC DESIGN • WEB DESIGN • SOCIAL MEDIA • MARKETING
+              DESIGN • DEVELOPMENT • DIGITAL EXPERIENCES
             </span>
           </motion.div>
 
@@ -115,7 +115,7 @@ export function HeroSection() {
             >
               <span>AKA SAHEETRIX</span>
               <span className="h-[2px] w-10 bg-red-500" />
-              <span className="text-[10px] text-zinc-400 font-normal hidden sm:inline">WORLD CLASS PRODUCTS</span>
+              <span className="text-[10px] text-zinc-400 font-normal hidden sm:inline">DESIGN & DEVELOPMENT</span>
             </motion.p>
 
             <motion.h1
@@ -174,13 +174,13 @@ export function HeroSection() {
             className="border-l-4 border-red-500 pl-4 sm:pl-5 py-1 bg-gradient-to-r from-red-950/20 to-transparent rounded-r-2xl"
           >
             <p className="font-display font-extrabold text-lg sm:text-xl lg:text-2xl text-white tracking-tight leading-snug">
-              WORLD CLASS <span className="text-red-500">GRAPHIC DESIGN, WEB DEVELOPMENT &amp; MARKETING</span> FOR{" "}
+              CREATIVE <span className="text-red-500">DESIGN &amp; DEVELOPMENT</span> FOR{" "}
               <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
                 WORLDWIDE BRANDS.
               </span>
             </p>
             <p className="font-sans text-xs sm:text-sm text-zinc-300 mt-1.5 max-w-xl leading-relaxed">
-              Building bold brand identities, responsive websites, social media systems, marketing campaigns, apparel designs, and precision print experiences for global brands.
+              Building distinctive brand identities, intuitive digital experiences, and responsive websites that help worldwide brands stand out.
             </p>
           </motion.div>
 
@@ -267,7 +267,7 @@ export function HeroSection() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/sahee-portrait.jpg"
-                  alt="Tharmaraja Saheevan of SAHEETRIX — senior sportswear designer and sublimation prepress specialist"
+                  alt="Tharmaraja Saheevan of SAHEETRIX — graphic designer and web developer"
                   width={780}
                   height={897}
                   sizes="(max-width: 1024px) 88vw, 390px"
@@ -295,7 +295,7 @@ export function HeroSection() {
                 <div className="flex items-baseline justify-between pt-0.5">
                   <div>
                     <h3 className="font-display font-extrabold text-lg text-white leading-tight">Tharmaraja Saheevan</h3>
-                    <p className="font-mono text-[11px] text-red-400 font-semibold mt-0.5">Senior Designer &amp; Apparel Specialist</p>
+                    <p className="font-mono text-[11px] text-red-400 font-semibold mt-0.5">Designer &amp; Developer</p>
                   </div>
                   <div className="text-right">
                     <span className="font-mono font-black text-sm text-white">SAHEETRIX</span>
