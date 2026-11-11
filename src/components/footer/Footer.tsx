@@ -83,7 +83,7 @@ export function Footer() {
               </div>
               <div>
                 <span className="font-mono text-xs text-red-500 uppercase tracking-[0.25em] font-bold block">
-                  CREATIVE GRAPHIC DESIGNING AND MARKETING
+                  DESIGN &amp; DEVELOPMENT
                 </span>
                 <div className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-wider">
                   SAHEETRIX
@@ -92,7 +92,7 @@ export function Footer() {
             </div>
 
             <p className="font-mono text-xs text-zinc-400 uppercase tracking-widest max-w-lg">
-              WORLD CLASS PRODUCTS AND SERVICES FOR WORLDWIDE BRANDS
+              DESIGN &amp; DEVELOPMENT FOR WORLDWIDE BRANDS
             </p>
           </div>
 
