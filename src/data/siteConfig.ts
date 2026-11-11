@@ -54,8 +54,8 @@ export const siteConfig = {
     { name: "CONTACT", href: "#contact" },
   ],
   meta: {
-    title: "SAHEETRIX | Design & Development Studio",
-    description: "SAHEETRIX is a creative design and development studio building distinctive brand identities, graphic design systems, responsive websites, and digital experiences for worldwide brands.",
+    title: "SAHEETRIX | Design & Development",
+    description: "SAHEETRIX — Design & Development. Creative graphic design, brand identity, UI/UX, and professional website development for businesses and brands worldwide.",
     keywords: [
       "SAHEETRIX",
       "Tharmaraja Saheevan",
