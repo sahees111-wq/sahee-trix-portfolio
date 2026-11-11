@@ -128,7 +128,7 @@ export function Navbar() {
                 <span>SAHEETRIX</span>
               </div>
               <span className="font-mono text-[8px] text-zinc-300 uppercase tracking-wider block mt-0.5">
-                CLOTHING &amp; DESIGN
+                DESIGN &amp; DEVELOPMENT
               </span>
             </div>
           </a>
