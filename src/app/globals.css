@@ -733,3 +733,19 @@ body {
     animation: none !important;
   }
 }
+
+
+/* Brand consistency, keyboard focus and reduced-motion support. */
+:where([class*="text-[#00e5ff]"],[class*="text-[#8b5cf6]"],[class*="text-[#ec4899]"],[class*="text-[#3b82f6]"],[class*="text-[#00a4e4]"],[class*="text-[#10b981]"],[class*="text-[#f59e0b]"],[class*="text-[#a855f7]"]) { color: #ff3344 !important; }
+:where([class*="bg-[#00e5ff]"],[class*="bg-[#8b5cf6]"],[class*="bg-[#ec4899]"],[class*="bg-[#3b82f6]"],[class*="bg-[#00a4e4]"],[class*="bg-[#10b981]"],[class*="bg-[#f59e0b]"],[class*="bg-[#a855f7]"]) { background-color: #e50914 !important; }
+:where([class*="border-[#00e5ff]"],[class*="border-[#8b5cf6]"],[class*="border-[#ec4899]"],[class*="border-[#3b82f6]"],[class*="border-[#00a4e4]"],[class*="border-[#10b981]"],[class*="border-[#f59e0b]"],[class*="border-[#a855f7]"]) { border-color: rgba(255, 26, 38, 0.42) !important; }
+:where([class*="from-[#00e5ff]"],[class*="from-[#8b5cf6]"],[class*="from-[#ec4899]"],[class*="from-[#3b82f6]"],[class*="from-[#00a4e4]"],[class*="from-[#10b981]"],[class*="from-[#f59e0b]"],[class*="from-[#a855f7]"]) { --tw-gradient-from: #ff1a26 var(--tw-gradient-from-position) !important; --tw-gradient-to: rgb(255 26 38 / 0) var(--tw-gradient-to-position) !important; }
+:where([class*="via-[#00e5ff]"],[class*="via-[#8b5cf6]"],[class*="via-[#ec4899]"],[class*="via-[#3b82f6]"],[class*="via-[#00a4e4]"],[class*="via-[#10b981]"],[class*="via-[#f59e0b]"],[class*="via-[#a855f7]"]) { --tw-gradient-via: #cc1623 var(--tw-gradient-via-position) !important; }
+:where([class*="to-[#00e5ff]"],[class*="to-[#8b5cf6]"],[class*="to-[#ec4899]"],[class*="to-[#3b82f6]"],[class*="to-[#00a4e4]"],[class*="to-[#10b981]"],[class*="to-[#f59e0b]"],[class*="to-[#a855f7]"]) { --tw-gradient-to: #ff6b75 var(--tw-gradient-to-position) !important; }
+:focus-visible { outline: 2px solid #ff3344; outline-offset: 3px; }
+[id] { scroll-margin-top: 7rem; }
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+  .ambient-particles, .fx-streak::after { display: none !important; }
+}

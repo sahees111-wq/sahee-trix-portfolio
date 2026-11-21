@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -20,15 +20,15 @@ export function ExperienceTimeline() {
               <div className="h-[1px] w-12 bg-[#00e5ff]/30" />
             </div>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight">
-              PROVEN TRACK RECORD. <br className="hidden sm:inline" />
+              DESIGN + PRODUCTION. <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-[#00e5ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
-                PRODUCTION JOURNEY.
+                REAL-WORLD EXPERIENCE.
               </span>
             </h2>
           </div>
 
           <p className="font-sans text-sm text-zinc-400 max-w-md">
-            Over 3 years of continuous evolution across design studios, commercial printing factories, and global freelance contracts.
+            Over 3 years of experience connecting graphic design, digital printing and apparel production, alongside independent creative work.
           </p>
         </div>
 
