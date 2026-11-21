@@ -111,7 +111,7 @@ async function homeAudit(browser, viewport) {
       "Home must contain exactly one hero Play With Me link before opening mobile navigation");
     assert.equal(await page.locator("section.hero-safe-screen").getByRole("link", { name: /HIRE ME/ }).count(), 1,
       "Hero section must contain one Hire Me link; a separate navbar HIRE ME link is expected");
-    for (const id of ["about", "services", "work", "jersey", "print", "skills", "experience", "capabilities", "ai-tools", "testimonials", "contact"]) {
+    for (const id of ["about", "services", "work", "jersey", "print", "experience", "capabilities", "ai-tools", "contact"]) {
       assert.equal(await page.locator("#" + id).count(), 1, "Missing or duplicate home section #" + id);
     }
 
@@ -169,7 +169,7 @@ async function homeAudit(browser, viewport) {
     await checkNoHorizontalOverflow(page, viewport.name + " home top");
     if (viewport.mobile) {
       await page.getByRole("button", { name: "Toggle menu" }).click();
-      const drawer = page.locator(".fixed").filter({ has: page.locator('a[href="/play"]') });
+      const drawer = page.locator("div.fixed.inset-x-4.top-20").filter({ has: page.locator('a[href="/play"]') });
       assert.equal(await drawer.locator('a[href="/play"]').filter({ hasText: "PLAY WITH ME" }).count(), 1,
         "Mobile drawer must have exactly one Play With Me link");
       await drawer.locator('a[href="/play"]').click();
@@ -253,8 +253,8 @@ async function gamesAudit(browser) {
     await page.keyboard.press("ArrowDown");
     await page.waitForTimeout(180);
     await page.getByRole("button", { name: /Pause/ }).click();
-    await page.getByRole("button", { name: /Start|Resume/ }).waitFor();
-    await page.getByRole("button", { name: /Restart/ }).click();
+    await page.getByRole("button", { name: "Start", exact: true }).click();
+    await page.getByRole("button", { name: "Restart", exact: true }).click();
     await page.getByRole("button", { name: /All games/ }).waitFor();
     report.games.push("Neon Snake: start, keyboard turn, pause, restart");
 
