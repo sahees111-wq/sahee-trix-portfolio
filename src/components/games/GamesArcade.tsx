@@ -1,15 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Gamepad2, Trophy, RotateCcw,
   Play, Pause, Sparkles, Brain, Zap, Grid3X3, Palette, Apple, Crown,
-  MousePointer2, ChevronLeft, Home, WandSparkles,
+  MousePointer2, ChevronLeft, Home, WandSparkles, Target, BrainCircuit,
 } from "lucide-react";
 import { ChessGame } from "./ChessGame";
+import { advanceSnake, has2048Moves, move2048Grid, getTicTacToeResult, checkSimonGuess } from "./gameLogic";
 
-type GameId = "snake" | "chess" | "memory" | "2048" | "reaction" | "pixel";
+type GameId = "snake" | "chess" | "memory" | "2048" | "reaction" | "pixel" | "whack" | "tictactoe" | "simon";
 type GameInfo = { id: GameId; title: string; genre: string; description: string; icon: typeof Gamepad2; accent: string; };
 const GAMES: GameInfo[] = [
   { id:"snake",title:"Neon Snake",genre:"ARCADE CLASSIC",description:"Eat the glowing cores, grow longer and don't crash into yourself.",icon:Gamepad2,accent:"red" },
@@ -18,9 +19,12 @@ const GAMES: GameInfo[] = [
   { id:"2048",title:"2048 Rush",genre:"NUMBER PUZZLE",description:"Combine matching tiles, build bigger numbers and reach 2048.",icon:Grid3X3,accent:"orange" },
   { id:"reaction",title:"Reaction Lab",genre:"SPEED CHALLENGE",description:"Wait for the signal. Tap at the perfect moment. How fast are you?",icon:Zap,accent:"rose" },
   { id:"pixel",title:"Pixel Studio",genre:"CREATIVE PLAYGROUND",description:"Make tiny pixel-art creations with a neon palette. Your canvas, your rules.",icon:Palette,accent:"red" },
+  { id:"whack",title:"Whack-a-Glitch",genre:"ARCADE • SPEED",description:"Zap the rogue glitches before they disappear. Fast fingers, clean screen.",icon:Target,accent:"red" },
+  { id:"tictactoe",title:"Tic-Tac-Toe",genre:"LOCAL • 2 PLAYER",description:"A quick head-to-head classic. Line up three marks before your rival.",icon:Grid3X3,accent:"rose" },
+  { id:"simon",title:"Simon Sequence",genre:"MEMORY • PATTERN",description:"Watch the colour sequence, repeat it and see how long your memory lasts.",icon:BrainCircuit,accent:"red" },
 ];
 
-function ActionButton({children,onClick,variant="primary",disabled=false}:{children:React.ReactNode;onClick:()=>void;variant?:"primary"|"ghost";disabled?:boolean}) {
+function ActionButton({children,onClick,variant="primary",disabled=false}:{children:ReactNode;onClick:()=>void;variant?:"primary"|"ghost";disabled?:boolean}) {
   return <button type="button" disabled={disabled} onClick={onClick} className={`inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-wider transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 ${variant==="primary"?"bg-red-600 text-white shadow-[0_0_20px_rgba(229,9,20,0.22)] hover:bg-red-500":"border border-white/10 bg-white/[0.03] text-zinc-300 hover:border-red-500/40 hover:text-white"}`}>{children}</button>;
 }
 
@@ -29,34 +33,32 @@ function SnakeGame(){
   const size=16,initial:Point[]=[{x:7,y:8},{x:6,y:8},{x:5,y:8}];
   const [snake,setSnake]=useState<Point[]>(initial),snakeRef=useRef<Point[]>(initial);
   const [food,setFood]=useState<Point>({x:11,y:8}),foodRef=useRef<Point>({x:11,y:8});
-  const [direction,setDirection]=useState<Direction>("right"),directionRef=useRef<Direction>("right");
+  const directionRef=useRef<Direction>("right");
   const [score,setScore]=useState(0),[playing,setPlaying]=useState(false),[over,setOver]=useState(false);
   const spawn=(body:Point[])=>{let p:Point;do{p={x:Math.floor(Math.random()*size),y:Math.floor(Math.random()*size)}}while(body.some(s=>s.x===p.x&&s.y===p.y));return p;};
-  const turn=(next:Direction)=>{const current=directionRef.current;const opposite:Record<Direction,Direction>={up:"down",down:"up",left:"right",right:"left"};if(opposite[current]===next)return;directionRef.current=next;setDirection(next);};
-  const restart=()=>{const body=[...initial.map(p=>({...p}))];snakeRef.current=body;setSnake(body);const f=spawn(body);foodRef.current=f;setFood(f);directionRef.current="right";setDirection("right");setScore(0);setOver(false);setPlaying(true);};
+  const turn=(next:Direction)=>{const current=directionRef.current;const opposite:Record<Direction,Direction>={up:"down",down:"up",left:"right",right:"left"};if(opposite[current]===next)return;directionRef.current=next;};
+  const restart=()=>{const body=[...initial.map(p=>({...p}))];snakeRef.current=body;setSnake(body);const f=spawn(body);foodRef.current=f;setFood(f);directionRef.current="right";setScore(0);setOver(false);setPlaying(true);};
   useEffect(()=>{if(!playing||over)return;const timer=window.setInterval(()=>{
-    const dir=directionRef.current,body=snakeRef.current,head=body[0];
-    const next={x:head.x+(dir==="right"?1:dir==="left"?-1:0),y:head.y+(dir==="down"?1:dir==="up"?-1:0)};
-    const eating=next.x===foodRef.current.x&&next.y===foodRef.current.y;
-    const collisionBody=eating?body:body.slice(0,-1);
-    if(next.x<0||next.x>=size||next.y<0||next.y>=size||collisionBody.some(p=>p.x===next.x&&p.y===next.y)){setPlaying(false);setOver(true);return;}
-    const updated=[next,...body.slice(0,eating?body.length:body.length-1)];snakeRef.current=updated;setSnake(updated);
-    if(eating){setScore(s=>s+10);const f=spawn(updated);foodRef.current=f;setFood(f);}
+    const body=snakeRef.current;
+    const step=advanceSnake(body,directionRef.current,foodRef.current,size);
+    if(step.crashed){setPlaying(false);setOver(true);return;}
+    snakeRef.current=step.body;setSnake(step.body);
+    if(step.ate){setScore(s=>s+10);const f=spawn(step.body);foodRef.current=f;setFood(f);}
   },125);return()=>window.clearInterval(timer);},[playing,over]);
-  useEffect(()=>{const key=(e:KeyboardEvent)=>{const map:Record<string,Direction>={ArrowUp:"up",w:"up",ArrowDown:"down",s:"down",ArrowLeft:"left",a:"left",ArrowRight:"right",d:"right"};const next=map[e.key];if(next){e.preventDefault();turn(next);}if(e.code==="Space"&&over){e.preventDefault();restart();}};window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);});
+  useEffect(()=>{const key=(e:KeyboardEvent)=>{const map:Record<string,Direction>={ArrowUp:"up",w:"up",ArrowDown:"down",s:"down",ArrowLeft:"left",a:"left",ArrowRight:"right",d:"right"};const next=map[e.key];if(next&&playing){e.preventDefault();turn(next);}if(e.code==="Space"&&over){e.preventDefault();restart();}};window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);},[over,playing]);
   return <div className="grid gap-5 lg:grid-cols-[minmax(280px,440px)_1fr]">
     <div className="mx-auto w-full max-w-[440px]">
       <div className="mb-3 flex items-center justify-between"><div><span className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">SCORE</span><div className="font-display text-2xl font-extrabold text-white">{score.toString().padStart(4,"0")}</div></div><div className="rounded-xl border border-red-500/20 bg-red-950/25 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-red-200">{over?"GAME OVER":playing?"RUNNING":"READY"}</div></div>
       <div className="grid aspect-square grid-cols-16 gap-[2px] rounded-2xl border border-red-500/25 bg-[#09090c] p-2 shadow-[0_20px_60px_-30px_rgba(229,9,20,0.5)]" style={{gridTemplateColumns:"repeat(16,minmax(0,1fr))"}}>
         {Array.from({length:size*size},(_,i)=>{const x=i%size,y=Math.floor(i/size),isHead=snake[0]?.x===x&&snake[0]?.y===y,isBody=snake.some((p,j)=>j>0&&p.x===x&&p.y===y),isFood=food.x===x&&food.y===y;return <div key={i} className={`aspect-square rounded-[3px] ${isHead?"bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]":isBody?"bg-red-500 shadow-[0_0_9px_rgba(239,68,68,0.45)]":isFood?"bg-amber-300 shadow-[0_0_12px_rgba(252,211,77,0.8)]":"bg-white/[0.035]"}`}/>;})}
       </div>
-      <div className="mt-4 flex flex-wrap justify-center gap-2"><ActionButton onClick={restart}><RotateCcw className="h-3.5 w-3.5"/> {over?"Play again":playing?"Restart":"Start game"}</ActionButton><ActionButton variant="ghost" onClick={()=>setPlaying(p=>!p)} disabled={over||snake.length===0}>{playing?<><Pause className="h-3.5 w-3.5"/> Pause</>:<><Play className="h-3.5 w-3.5"/> Resume</>}</ActionButton></div>
+      <div className="mt-4 flex flex-wrap justify-center gap-2"><ActionButton onClick={restart}><RotateCcw className="h-3.5 w-3.5"/> {over?"Play again":playing?"Restart":"Start game"}</ActionButton><ActionButton variant="ghost" onClick={()=>setPlaying(p=>!p)} disabled={over||snake.length===0}>{playing?<><Pause className="h-3.5 w-3.5"/> Pause</>:<><Play className="h-3.5 w-3.5"/> {score>0?"Resume":"Start"}</>}</ActionButton></div>
     </div>
     <aside className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
       <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-red-400">// HOW TO PLAY</p><h3 className="mt-2 font-display text-xl font-extrabold text-white">Chase the glow.</h3><p className="mt-2 text-sm leading-6 text-zinc-400">Collect the amber energy dot to grow your snake and earn 10 points. Avoid the walls and your own tail.</p>
       <div className="mt-5 grid grid-cols-3 gap-2 sm:max-w-[190px]">
-        <span/><button onClick={()=>turn("up")} className="arcade-dpad"><ArrowUp className="h-4 w-4"/></button><span/>
-        <button onClick={()=>turn("left")} className="arcade-dpad"><ArrowLeft className="h-4 w-4"/></button><button onClick={()=>turn("down")} className="arcade-dpad"><ArrowDown className="h-4 w-4"/></button><button onClick={()=>turn("right")} className="arcade-dpad"><ArrowRight className="h-4 w-4"/></button>
+        <span/><button type="button" aria-label="Move up" onClick={()=>turn("up")} className="arcade-dpad"><ArrowUp className="h-4 w-4"/></button><span/>
+        <button type="button" aria-label="Move left" onClick={()=>turn("left")} className="arcade-dpad"><ArrowLeft className="h-4 w-4"/></button><button type="button" aria-label="Move down" onClick={()=>turn("down")} className="arcade-dpad"><ArrowDown className="h-4 w-4"/></button><button type="button" aria-label="Move right" onClick={()=>turn("right")} className="arcade-dpad"><ArrowRight className="h-4 w-4"/></button>
       </div>
       <div className="mt-5 flex flex-wrap gap-2"><span className="arcade-key">↑</span><span className="arcade-key">↓</span><span className="arcade-key">←</span><span className="arcade-key">→</span><span className="text-xs text-zinc-500">or WASD</span></div>
       <p className="mt-4 text-xs text-zinc-500">Mobile players: use the direction pad. Space restarts after a crash.</p>
@@ -83,14 +85,11 @@ function MemoryGame(){
 type Grid2048=number[][];
 function emptyGrid():Grid2048{return Array.from({length:4},()=>[0,0,0,0]);}
 function addTile(grid:Grid2048):Grid2048{const next=grid.map(r=>[...r]),empty:number[]=[];next.forEach((row,r)=>row.forEach((v,c)=>{if(!v)empty.push(r*4+c);}));if(empty.length){const at=empty[Math.floor(Math.random()*empty.length)],r=Math.floor(at/4),c=at%4;next[r][c]=Math.random()<0.9?2:4;}return next;}
-function slideLine(line:number[]):{line:number[];score:number}{const values=line.filter(Boolean),out:number[]=[];let score=0;for(let i=0;i<values.length;i++){if(values[i]===values[i+1]){const merged=values[i]*2;out.push(merged);score+=merged;i++;}else out.push(values[i]);}while(out.length<4)out.push(0);return {line:out,score};}
-function shifted(grid:Grid2048,direction:"left"|"right"|"up"|"down"):{grid:Grid2048;score:number}{const next=emptyGrid();let points=0;for(let i=0;i<4;i++){const coords=Array.from({length:4},(_,j)=>direction==="left"?[i,j]:direction==="right"?[i,3-j]:direction==="up"?[j,i]:[3-j,i]);const values=coords.map(([r,c])=>grid[r][c]);const result=slideLine(values);points+=result.score;coords.forEach(([r,c],j)=>next[r][c]=result.line[j]);}return {grid:next,score:points};}
-function has2048Moves(grid:Grid2048){for(let r=0;r<4;r++)for(let c=0;c<4;c++){if(!grid[r][c])return true;if(c<3&&grid[r][c]===grid[r][c+1])return true;if(r<3&&grid[r][c]===grid[r+1][c])return true;}return false;}
 function Game2048(){
   const initial=()=>addTile(addTile(emptyGrid()));
   const [grid,setGrid]=useState<Grid2048>(initial),[score,setScore]=useState(0),[best,setBest]=useState(0),[won,setWon]=useState(false),[over,setOver]=useState(false);
   const reset=()=>{setGrid(initial());setScore(0);setWon(false);setOver(false);};
-  const move=useCallback((direction:"left"|"right"|"up"|"down")=>{if(over)return;setGrid(current=>{const result=shifted(current,direction);const changed=result.grid.some((row,r)=>row.some((v,c)=>v!==current[r][c]));if(!changed)return current;const next=addTile(result.grid);setScore(s=>{const value=s+result.score;setBest(b=>Math.max(b,value));return value;});if(!won&&next.some(row=>row.includes(2048)))setWon(true);if(!has2048Moves(next))setOver(true);return next;});},[over,won]);
+  const move=useCallback((direction:"left"|"right"|"up"|"down")=>{if(over)return;const result=move2048Grid(grid,direction);const changed=result.grid.some((row,r)=>row.some((v,c)=>v!==grid[r][c]));if(!changed)return;const next=addTile(result.grid);const nextScore=score+result.score;setGrid(next);setScore(nextScore);setBest(bestScore=>Math.max(bestScore,nextScore));if(!won&&next.some(row=>row.includes(2048)))setWon(true);if(!has2048Moves(next))setOver(true);},[over,won,grid,score]);
   useEffect(()=>{const key=(e:KeyboardEvent)=>{const keys:Record<string,"left"|"right"|"up"|"down">={ArrowLeft:"left",a:"left",ArrowRight:"right",d:"right",ArrowUp:"up",w:"up",ArrowDown:"down",s:"down"};if(keys[e.key]){e.preventDefault();move(keys[e.key]);}};window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);},[move]);
   return <div className="mx-auto w-full max-w-[470px]">
     <div className="mb-4 flex items-center justify-between"><div className="flex gap-3"><div className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2"><span className="block font-mono text-[9px] text-zinc-500">SCORE</span><b className="font-display text-xl text-white">{score}</b></div><div className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2"><span className="block font-mono text-[9px] text-zinc-500">BEST</span><b className="font-display text-xl text-red-300">{best}</b></div></div><ActionButton onClick={reset}><RotateCcw className="h-3.5 w-3.5"/> Restart</ActionButton></div>
@@ -117,6 +116,35 @@ function ReactionGame(){
     <div className="mt-4 flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.025] p-4"><div><span className="block font-mono text-[9px] uppercase tracking-widest text-zinc-500">PERSONAL BEST</span><b className="font-display text-2xl text-white">{best===null?"—":best+" ms"}</b></div><ActionButton onClick={begin}><Zap className="h-3.5 w-3.5"/> {phase==="ready"?"Start test":"Try again"}</ActionButton></div>
     <p className="mt-3 text-center text-xs text-zinc-500">A random delay keeps the test fair. Lower milliseconds mean faster reactions.</p>
   </div>;
+}
+
+function WhackGame(){
+  const [playing,setPlaying]=useState(false),[seconds,setSeconds]=useState(20),[score,setScore]=useState(0),[misses,setMisses]=useState(0),[target,setTarget]=useState(-1);
+  const start=()=>{setScore(0);setMisses(0);setSeconds(20);setTarget(Math.floor(Math.random()*9));setPlaying(true);};
+  useEffect(()=>{if(!playing)return;const spawnTimer=window.setInterval(()=>setTarget(Math.floor(Math.random()*9)),620);const clock=window.setInterval(()=>setSeconds(s=>{if(s<=1){setPlaying(false);setTarget(-1);return 0;}return s-1;}),1000);return()=>{window.clearInterval(spawnTimer);window.clearInterval(clock);};},[playing]);
+  const hit=(index:number)=>{if(!playing)return;if(index===target){setScore(s=>s+10);setTarget(Math.floor(Math.random()*9));}else setMisses(m=>m+1);};
+  return <div className="mx-auto grid w-full max-w-[650px] gap-5 lg:grid-cols-[1fr_230px]"><div><div className="mb-4 flex items-center justify-between"><div><span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">GLITCHES CLEARED</span><p className="font-display text-3xl font-black text-white">{score}</p></div><div className="text-right"><span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">TIME LEFT</span><p className="font-display text-3xl font-black text-red-300">{seconds}s</p></div></div><div className="grid grid-cols-3 gap-3 rounded-3xl border border-red-500/20 bg-[#09090c] p-3 sm:gap-4 sm:p-5">{Array.from({length:9},(_,i)=><button key={i} type="button" aria-label={target===i?"Whack active glitch":"Empty glitch slot"} onClick={()=>hit(i)} className={`flex aspect-square items-center justify-center rounded-2xl border transition duration-100 ${target===i&&playing?"scale-[0.97] border-red-400 bg-red-600/25 shadow-[0_0_30px_rgba(239,68,68,0.32)]":"border-white/5 bg-white/[0.025] hover:border-red-500/25"}`}>{target===i&&playing?<span className="text-3xl sm:text-5xl">👾</span>:<span className="font-mono text-lg text-zinc-800">+</span>}</button>)}</div><div className="mt-4 flex flex-wrap justify-center gap-2"><ActionButton onClick={start}><Play className="h-3.5 w-3.5"/>{playing?"Restart round":"Start 20-second round"}</ActionButton></div></div><aside className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><p className="font-mono text-[10px] uppercase tracking-[0.2em] text-red-400">// GLITCH HUNT</p><h3 className="mt-2 font-display text-xl font-extrabold text-white">Catch the chaos.</h3><p className="mt-2 text-sm leading-6 text-zinc-400">Tap the red glitch before it jumps to another slot. Correct hits add 10 points; missed taps count as misses.</p><div className="mt-5 rounded-xl border border-white/10 bg-black/20 p-3"><span className="font-mono text-[9px] text-zinc-500">MISSED TAPS</span><p className="font-display text-2xl font-bold text-zinc-200">{misses}</p></div><p className="mt-4 text-xs text-zinc-500">{playing?"Round in progress. Keep your eyes sharp.":seconds===0?"Round complete — try to beat your score.":"You have 20 seconds. Ready?"}</p></aside></div>;
+}
+
+function TicTacToeGame(){
+  type Mark="X"|"O"|null;
+  const [board,setBoard]=useState<Mark[]>(Array(9).fill(null)),[turn,setTurn]=useState<"X"|"O">("X");
+  const result=getTicTacToeResult(board),restart=()=>{setBoard(Array(9).fill(null));setTurn("X");};
+  const play=(index:number)=>{if(board[index]||result)return;const next=[...board];next[index]=turn;setBoard(next);setTurn(turn==="X"?"O":"X");};
+  const status=result==="DRAW"?"DRAW GAME":result?`${result} WINS THE ROUND`:`PLAYER ${turn==="X"?"ONE":"TWO"} • YOUR TURN`;
+  return <div className="mx-auto grid w-full max-w-[610px] gap-5 md:grid-cols-[minmax(260px,380px)_1fr]"><div><div className="mb-4 flex items-center justify-between"><span className="rounded-full border border-red-500/25 bg-red-950/25 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-red-200">{status}</span><ActionButton onClick={restart} variant="ghost"><RotateCcw className="h-3.5 w-3.5"/> Reset</ActionButton></div><div className="grid grid-cols-3 gap-2 rounded-2xl border border-red-500/25 bg-[#0b0a0e] p-3">{board.map((mark,i)=><button key={i} type="button" onClick={()=>play(i)} disabled={Boolean(mark)||Boolean(result)} aria-label={`Square ${i+1} ${mark||"empty"}`} className="flex aspect-square items-center justify-center rounded-xl border border-white/10 bg-white/[0.035] font-display text-5xl font-black transition hover:border-red-500/50 hover:bg-red-950/20 disabled:cursor-default sm:text-6xl">{mark&&<span className={mark==="X"?"text-red-400":"text-white"}>{mark}</span>}</button>)}</div></div><aside className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><p className="font-mono text-[10px] uppercase tracking-[0.2em] text-red-400">// LOCAL TWO PLAYER</p><h3 className="mt-2 font-display text-xl font-extrabold text-white">Three in a row.</h3><p className="mt-2 text-sm leading-6 text-zinc-400">Take turns on one screen. First player to connect three Xs or Os horizontally, vertically or diagonally wins.</p><div className="mt-5 grid grid-cols-2 gap-2"><div className="rounded-xl border border-red-500/20 bg-red-950/20 p-3"><span className="font-mono text-[9px] text-zinc-500">PLAYER ONE</span><p className="mt-1 font-display text-2xl font-black text-red-400">X</p></div><div className="rounded-xl border border-white/10 bg-black/20 p-3"><span className="font-mono text-[9px] text-zinc-500">PLAYER TWO</span><p className="mt-1 font-display text-2xl font-black text-white">O</p></div></div>{result&&<p className="mt-4 text-sm font-bold text-red-200">{status}</p>}</aside></div>;
+}
+
+function SimonGame(){
+  const [sequence,setSequence]=useState<number[]>([]),[stage,setStage]=useState<"ready"|"show"|"input"|"over">("ready"),[inputIndex,setInputIndex]=useState(0),[flash,setFlash]=useState<number|null>(null);
+  const timeouts=useRef<ReturnType<typeof setTimeout>[]>([]);
+  const pads=[{name:"RED",color:"bg-red-600",active:"bg-red-300 shadow-[0_0_40px_rgba(248,113,113,0.8)]"},{name:"AMBER",color:"bg-amber-500",active:"bg-amber-200 shadow-[0_0_40px_rgba(251,191,36,0.8)]"},{name:"VIOLET",color:"bg-violet-600",active:"bg-violet-300 shadow-[0_0_40px_rgba(167,139,250,0.8)]"},{name:"CYAN",color:"bg-cyan-600",active:"bg-cyan-200 shadow-[0_0_40px_rgba(103,232,249,0.8)]"}];
+  const clearTimers=()=>{timeouts.current.forEach(clearTimeout);timeouts.current=[];};
+  useEffect(()=>{if(stage!=="show"||sequence.length===0)return;clearTimers();setFlash(null);sequence.forEach((pad,index)=>{timeouts.current.push(setTimeout(()=>setFlash(pad),350+index*650));timeouts.current.push(setTimeout(()=>setFlash(null),620+index*650));});timeouts.current.push(setTimeout(()=>{setInputIndex(0);setStage("input");},350+sequence.length*650));return clearTimers;},[stage,sequence]);
+  useEffect(()=>()=>clearTimers(),[]);
+  const start=()=>{clearTimers();setSequence([Math.floor(Math.random()*4)]);setInputIndex(0);setFlash(null);setStage("show");};
+  const choose=(index:number)=>{if(stage!=="input")return;const result=checkSimonGuess(sequence,inputIndex,index);if(result==="wrong"){setStage("over");setFlash(index);return;}if(result==="complete"){setSequence(current=>[...current,Math.floor(Math.random()*4)]);setStage("show");setInputIndex(0);}else setInputIndex(i=>i+1);};
+  return <div className="mx-auto grid w-full max-w-[650px] gap-5 md:grid-cols-[minmax(260px,380px)_1fr]"><div><div className="mb-4 flex items-center justify-between"><div><span className="font-mono text-[9px] uppercase tracking-widest text-zinc-500">SEQUENCE</span><p className="font-display text-3xl font-black text-white">{sequence.length}</p></div><span className="rounded-full border border-red-500/20 bg-red-950/25 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-red-200">{stage==="show"?"WATCH":stage==="input"?"YOUR TURN":stage==="over"?"SEQUENCE BROKEN":"READY"}</span></div><div className="grid grid-cols-2 gap-3 rounded-3xl border border-white/10 bg-black/30 p-4">{pads.map((pad,index)=><button key={pad.name} type="button" disabled={stage!=="input"} onClick={()=>choose(index)} aria-label={`${pad.name} sequence pad`} className={`aspect-square rounded-2xl border border-white/10 transition duration-150 disabled:cursor-default ${flash===index?pad.active:pad.color+" opacity-75"} ${stage==="input"?"hover:scale-[0.98] hover:opacity-100":""}`}><span className="font-mono text-xs font-black tracking-widest text-white drop-shadow-md">{pad.name}</span></button>)}</div><div className="mt-4 flex justify-center"><ActionButton onClick={start}><Play className="h-3.5 w-3.5"/>{stage==="ready"?"Start sequence":"Restart sequence"}</ActionButton></div></div><aside className="rounded-2xl border border-white/10 bg-white/[0.025] p-5"><p className="font-mono text-[10px] uppercase tracking-[0.2em] text-red-400">// PATTERN MEMORY</p><h3 className="mt-2 font-display text-xl font-extrabold text-white">Watch. Remember. Repeat.</h3><p className="mt-2 text-sm leading-6 text-zinc-400">The four pads flash in a growing sequence. Repeat the complete pattern in the same order. One wrong tap ends the run.</p><p className="mt-5 text-xs text-zinc-500">{stage==="over"?`You reached sequence ${sequence.length}. Try again.`:stage==="input"?"Repeat the colours in order.":"Watch the pattern closely."}</p></aside></div>;
 }
 
 function PixelStudio(){
@@ -150,6 +178,12 @@ export function GamesArcade(){
       case "2048":return <Game2048/>;
       case "reaction":return <ReactionGame/>;
       case "pixel":return <PixelStudio/>;
+      case "whack":return <WhackGame/>;
+      case "tictactoe":return <TicTacToeGame/>;
+      case "simon":return <SimonGame/>;
+      case "whack":return <WhackGame/>;
+      case "tictactoe":return <TicTacToeGame/>;
+      case "simon":return <SimonGame/>;
       default:return null;
     }
   };
@@ -164,7 +198,7 @@ export function GamesArcade(){
             <h1 className="font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-6xl">{active?<><span className="text-red-500">PLAY</span> {active.title}</>:<>PLAY WITH <span className="text-red-500">ME.</span></>}</h1>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400 sm:text-base">{active?active.description:"Take a break. Choose a game. Challenge your reflexes, train your brain or build something creative — all inside the SAHEETRIX playground."}</p>
           </div>
-          <div className="flex shrink-0 flex-wrap gap-2"><span className="rounded-full border border-red-500/20 bg-red-950/20 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-red-200">6 MINI GAMES</span><span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-zinc-400">NO SIGN-UP • FREE PLAY</span></div>
+          <div className="flex shrink-0 flex-wrap gap-2"><span className="rounded-full border border-red-500/20 bg-red-950/20 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-red-200">9 MINI GAMES</span><span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-zinc-400">NO SIGN-UP • FREE PLAY</span></div>
         </div>
         {active? <div className="mt-7">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3"><button type="button" onClick={()=>setActiveGame(null)} className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-300 transition hover:border-red-500/40 hover:text-white"><ChevronLeft className="h-3.5 w-3.5"/> All games</button><span className="font-mono text-[9px] uppercase tracking-widest text-zinc-600">{active.genre}</span></div>

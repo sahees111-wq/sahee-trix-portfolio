@@ -219,11 +219,7 @@ export function HeroSection() {
               </a>
             </Magnetic>
 
-            <Magnetic strength={0.16}>
-              <a href="/play" aria-label="Open the SAHEETRIX Play With Me games portal" className="group inline-flex items-center gap-2 px-5 sm:px-6 py-3.5 rounded-full border border-red-500/50 bg-red-950/35 text-red-100 font-mono font-bold text-xs uppercase tracking-wider hover:bg-red-600 hover:border-red-400 hover:text-white backdrop-blur-md shadow-[0_0_22px_rgba(229,9,20,0.16)] transition-all duration-300 hover:scale-105 active:scale-95">
-                <Gamepad2 className="w-4 h-4 text-red-300 group-hover:text-white"/><span>PLAY WITH ME</span><ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"/>
-              </a>
-            </Magnetic>
+
           </motion.div>
 
           {/* Micro Badges */}
