@@ -49,6 +49,7 @@ export const siteConfig = {
     { name: "SERVICES", href: "#services" },
     { name: "JERSEY", href: "#jersey" },
     { name: "PRINT ENGINE", href: "#print" },
+    { name: "PROCESS", href: "#process" },
     { name: "CONTACT", href: "#contact" },
   ],
   meta: {
