@@ -51,13 +51,15 @@ export function ChessGame(){
           const isLight=(r+c)%2===0;
           const isSelected=selected?.r===r&&selected?.c===c;
           const isTarget=targetSet.has(r+"-"+c);
-          return <button key={r+"-"+c} type="button" role="gridcell" onClick={()=>status==="CHECKMATE"||status==="STALEMATE"?undefined:clickSquare(r,c)}
-            aria-label={`${squareName({r,c})} ${piece?((piece===piece.toUpperCase()?"White ":"Black ")+(pieceNames[piece.toLowerCase()]||"piece")):"empty"}`}
-            className={`relative flex aspect-square items-center justify-center text-[clamp(1.45rem,5vw,3rem)] leading-none transition-colors ${isLight?"bg-[#29262a]":"bg-[#151317]"} ${isSelected?"!bg-red-600/80":""} ${isTarget?"after:absolute after:inset-[38%] after:rounded-full after:bg-red-400/65 after:content-['']":""} ${isTarget&&piece?"after:inset-1 after:rounded-none after:border-[3px] after:border-red-400 after:bg-transparent":""} hover:brightness-125 focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-400`}>
-            {piece&&<span className={piece===piece.toUpperCase()?"drop-shadow-[0_2px_1px_rgba(0,0,0,0.5)] text-white":"drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)] text-[#ff5260]"}>{glyph[piece]}</span>}
-            {c===0&&<span className="absolute left-1 top-0.5 text-[8px] font-bold text-red-300/70">{8-r}</span>}
-            {r===7&&<span className="absolute bottom-0 right-1 text-[8px] font-bold text-red-300/70">{String.fromCharCode(97+c)}</span>}
-          </button>;
+          return <div key={r+"-"+c} role="gridcell" className="aspect-square">
+            <button type="button" onClick={()=>status==="CHECKMATE"||status==="STALEMATE"?undefined:clickSquare(r,c)}
+              aria-label={`${squareName({r,c})} ${piece?((piece===piece.toUpperCase()?"White ":"Black ")+(pieceNames[piece.toLowerCase()]||"piece")):"empty"}`}
+              className={`relative flex h-full w-full items-center justify-center text-[clamp(1.45rem,5vw,3rem)] leading-none transition-colors ${isLight?"bg-[#29262a]":"bg-[#151317]"} ${isSelected?"!bg-red-600/80":""} ${isTarget?"after:absolute after:inset-[38%] after:rounded-full after:bg-red-400/65 after:content-['']":""} ${isTarget&&piece?"after:inset-1 after:rounded-none after:border-[3px] after:border-red-400 after:bg-transparent":""} hover:brightness-125 focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-400`}>
+              {piece&&<span className={piece===piece.toUpperCase()?"drop-shadow-[0_2px_1px_rgba(0,0,0,0.5)] text-white":"drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)] text-[#ff5260]"}>{glyph[piece]}</span>}
+              {c===0&&<span className="absolute left-1 top-0.5 text-[8px] font-bold text-red-300/70">{8-r}</span>}
+              {r===7&&<span className="absolute bottom-0 right-1 text-[8px] font-bold text-red-300/70">{String.fromCharCode(97+c)}</span>}
+            </button>
+          </div>;
         }))}
       </div>
     </div>
