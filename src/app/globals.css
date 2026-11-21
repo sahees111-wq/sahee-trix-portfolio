@@ -749,3 +749,103 @@ body {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
   .ambient-particles, .fx-streak::after { display: none !important; }
 }
+
+
+/* AI model logo marquee — local SVG assets, seamless loop, reduced-motion safe. */
+.ai-specialist-section {
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(229, 9, 20, 0.08), transparent 48%);
+}
+.ai-model-marquee-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.5rem 0.25rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.ai-model-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: ai-model-marquee-scroll 82s linear infinite;
+  will-change: transform;
+}
+.ai-model-card {
+  display: flex;
+  flex: 0 0 270px;
+  align-items: center;
+  gap: 0.9rem;
+  height: 88px;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, rgba(17,17,21,0.94), rgba(9,9,12,0.97));
+  transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+.ai-model-card:hover {
+  border-color: rgba(255, 45, 55, 0.48);
+  background: linear-gradient(145deg, rgba(35,12,15,0.96), rgba(11,9,12,0.98));
+  transform: translateY(-2px);
+}
+.ai-model-logo-tile {
+  display: flex;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 45, 55, 0.24);
+  border-radius: 0.9rem;
+  background: rgba(229, 9, 20, 0.10);
+}
+.ai-model-logo-tile img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+.ai-model-name {
+  display: block;
+  overflow: hidden;
+  color: #f4f4f5;
+  font-family: var(--font-syne), system-ui, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ai-model-category {
+  display: block;
+  margin-top: 0.3rem;
+  color: #a1a1aa;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+@keyframes ai-model-marquee-scroll {
+  from { transform: translate3d(0,0,0); }
+  to { transform: translate3d(-50%,0,0); }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ai-model-marquee-viewport:hover .ai-model-marquee-track {
+    animation-play-state: paused;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-model-marquee-viewport {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: thin;
+  }
+  .ai-model-marquee-track { animation: none; transform: none; }
+}
+@media (max-width: 640px) {
+  .ai-model-card { flex-basis: 248px; height: 82px; padding: 0.75rem 0.95rem; }
+  .ai-model-logo-tile { flex-basis: 46px; width: 46px; height: 46px; }
+  .ai-model-logo-tile img { width: 30px; height: 30px; }
+  .ai-model-name { font-size: 0.9rem; }
+}
