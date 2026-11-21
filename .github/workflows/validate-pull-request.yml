@@ -23,5 +23,7 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Run game-logic tests
+        run: npm run test:games
       - name: Build static site
         run: npm run build

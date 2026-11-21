@@ -14,3 +14,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Temporary output used by lightweight game-logic tests
+.game-test-build/
