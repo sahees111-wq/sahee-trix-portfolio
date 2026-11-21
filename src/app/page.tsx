@@ -19,6 +19,7 @@ import { BeforeAfterSlider } from "@/components/transformation/BeforeAfterSlider
 import { SkillsGrid } from "@/components/skills/SkillsGrid";
 import { ExperienceTimeline } from "@/components/experience/ExperienceTimeline";
 import { ClientMarquee } from "@/components/clients/ClientMarquee";
+import { AIModelsMarquee } from "@/components/ai/AIModelsMarquee";
 import { TestimonialSection } from "@/components/testimonials/TestimonialSection";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { Footer } from "@/components/footer/Footer";
@@ -118,6 +119,9 @@ export default function Home() {
 
       {/* 11. Client & Partner Marquee */}
       <ClientMarquee />
+
+      {/* 12. AI Specialist — models and creative tools marquee */}
+      <AIModelsMarquee />
 
       {/* 12. Oversized Editorial Testimonials */}
       <TestimonialSection />
