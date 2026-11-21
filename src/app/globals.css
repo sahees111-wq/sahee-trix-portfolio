@@ -767,7 +767,7 @@ body {
   display: flex;
   width: max-content;
   gap: 0;
-  animation: ai-model-marquee-scroll 82s linear infinite;
+  animation: ai-model-marquee-scroll 82s linear infinite reverse;
   will-change: transform;
 }
 .ai-model-marquee-group {
