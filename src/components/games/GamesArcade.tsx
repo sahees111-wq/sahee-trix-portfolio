@@ -181,9 +181,6 @@ export function GamesArcade(){
       case "whack":return <WhackGame/>;
       case "tictactoe":return <TicTacToeGame/>;
       case "simon":return <SimonGame/>;
-      case "whack":return <WhackGame/>;
-      case "tictactoe":return <TicTacToeGame/>;
-      case "simon":return <SimonGame/>;
       default:return null;
     }
   };
