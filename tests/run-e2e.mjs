@@ -293,7 +293,7 @@ async function gamesAudit(browser) {
       return zone && zone.textContent.includes("TAP NOW!");
     }, null, { timeout: 7500 });
     await page.locator(".reaction-zone").click();
-    assert.match(await page.locator(".reaction-zone").innerText(), /[0-9]+\\s*ms/);
+    assert.match(await page.locator(".reaction-zone").innerText(), /[0-9]+\s*ms/);
     await page.getByRole("button", { name: "Try again" }).click();
     await page.locator(".reaction-zone").click();
     await page.getByText("TOO EARLY!", { exact: true }).waitFor();
