@@ -259,7 +259,7 @@ export function HeroSection() {
               {/* Top Registration Badge */}
               <div className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 opacity-90 font-mono text-[10px] text-red-400 bg-black/70 px-2.5 py-1 rounded-full border border-red-500/40 backdrop-blur-sm shadow-md">
                 <span className="registration-mark-red inline-block" />
-                <span>SAHEETRIX // CERTIFIED</span>
+                <span>SAHEETRIX // PORTFOLIO</span>
               </div>
 
               {/* Unobstructed Photo Viewport - 100% Face, Head, Neck, and Shoulders Fully Visible */}
@@ -284,9 +284,9 @@ export function HeroSection() {
               <div className="relative z-10 p-4 bg-[#0a0a0e] border-t border-red-500/30 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="font-mono text-[10px] uppercase text-emerald-400 font-bold tracking-wider">
-                      AVAILABLE TO HIRE &amp; FREELANCE
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="font-mono text-[10px] uppercase text-red-300 font-bold tracking-wider">
+                      OPEN TO SELECTED PROJECTS
                     </span>
                   </div>
                   <span className="font-mono text-[10px] text-zinc-400 font-medium">SRI LANKA</span>
