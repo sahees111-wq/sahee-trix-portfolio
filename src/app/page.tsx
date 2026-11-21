@@ -11,6 +11,7 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { HeroSection } from "@/components/hero/HeroSection";
 import { AboutSection } from "@/components/about/AboutSection";
 import { ServicesSection } from "@/components/services/ServicesSection";
+import { ProcessFaqSection } from "@/components/process/ProcessFaqSection";
 import { PortfolioSection } from "@/components/portfolio/PortfolioSection";
 import { JerseyShowcase } from "@/components/jersey/JerseyShowcase";
 import { PrintProductionSection } from "@/components/print/PrintProductionSection";
@@ -93,6 +94,9 @@ export default function Home() {
 
       {/* 03. Specialized Capabilities (What I Do) */}
       <ServicesSection />
+
+      {/* 03A. Working Process, Engagement Options & FAQs */}
+      <ProcessFaqSection />
 
       {/* 04. Featured Projects & Case Studies */}
       <PortfolioSection />

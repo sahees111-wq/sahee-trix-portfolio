@@ -26,7 +26,7 @@ export function generateMetadata({ params }: CaseStudyPageProps): Metadata {
   if (!project) return {};
 
   return {
-    title: `${project.title} | ${project.services[0]} Case Study`,
+    title: `${project.title} | ${project.services[0]} Concept Study`,
     description: project.description,
     alternates: {
       canonical: `/work/${project.slug}`,
@@ -98,29 +98,32 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-zinc-300 transition-colors hover:text-[#00e5ff]"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-zinc-300 transition-colors hover:text-[#ff1a26]"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to selected work
           </Link>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#00e5ff]">
-            SAHEETRIX / CASE STUDY
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#ff1a26]">
+            SAHEETRIX / CONCEPT STUDY
           </span>
         </div>
 
         <header className="grid gap-10 pb-16 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
           <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#00e5ff]">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#ff1a26]">
               {project.category} • {project.year}
             </span>
             <h1 className="mt-5 max-w-4xl font-display text-4xl font-extrabold leading-[0.98] tracking-tight text-white sm:text-6xl">
               {project.title}
-              <span className="mt-3 block bg-gradient-to-r from-[#00e5ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-2xl text-transparent sm:text-4xl">
+              <span className="mt-3 block bg-gradient-to-r from-[#ff1a26] via-[#cc1623] to-[#ff6b75] bg-clip-text text-2xl text-transparent sm:text-4xl">
                 {project.services[0]}
               </span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
               {project.description}
+            </p>
+            <p className="mt-5 max-w-2xl rounded-xl border border-red-500/20 bg-red-950/15 px-4 py-3 text-xs leading-6 text-zinc-300">
+              Independent concept showcase: this page demonstrates a creative direction and workflow, not a claimed client commission or verified commercial result.
             </p>
           </div>
 
@@ -133,8 +136,8 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             </div>
             <dl className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
               <div>
-                <dt className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">Client</dt>
-                <dd className="mt-1 font-semibold text-white">{project.client}</dd>
+                <dt className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">Project context</dt>
+                <dd className="mt-1 font-semibold text-white">Independent portfolio study</dd>
               </div>
               <div>
                 <dt className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">Tools used</dt>
@@ -168,7 +171,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         <section className="grid gap-10 py-20 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#8b5cf6]">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#cc1623]">
               The brief &amp; technical execution
             </span>
             <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -179,7 +182,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             <p>{project.challenge}</p>
             <p>{project.creativeDirection}</p>
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[#00e5ff]">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#ff1a26]">
                 Prepress &amp; handoff
               </span>
               <p className="mt-2 text-sm text-zinc-200">{technicalExecution}</p>
@@ -190,7 +193,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
         <section className="border-t border-white/10 py-16">
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#ec4899]">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#ff6b75]">
                 Execution &amp; process
               </span>
               <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
@@ -210,7 +213,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
 
         <section className="border-t border-white/10 py-16">
           <div className="mb-8">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#00e5ff]">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#ff1a26]">
               Visual artifacts
             </span>
             <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">
@@ -242,11 +245,11 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
         </section>
 
-        <section className="mb-20 rounded-3xl border border-[#00e5ff]/20 bg-gradient-to-br from-[#00e5ff]/10 via-[#8b5cf6]/5 to-transparent p-8 sm:p-12">
+        <section className="mb-20 rounded-3xl border border-[#ff1a26]/20 bg-gradient-to-br from-[#ff1a26]/10 via-[#cc1623]/5 to-transparent p-8 sm:p-12">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#00e5ff]">
-                Final result
+              <span className="font-mono text-xs uppercase tracking-[0.22em] text-[#ff1a26]">
+                Concept summary
               </span>
               <p className="mt-4 max-w-3xl text-xl leading-relaxed text-white">
                 {project.finalResult}
@@ -254,7 +257,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             </div>
             <Link
               href="/#contact"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#00e5ff] px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-black transition-transform hover:scale-105"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#ff1a26] px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-black transition-transform hover:scale-105"
             >
               Start a project
               <ArrowUpRight className="h-4 w-4" />
@@ -268,7 +271,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </Link>
           <a
             href={projectUrl}
-            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500 hover:text-[#00e5ff]"
+            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500 hover:text-[#ff1a26]"
           >
             Canonical case study URL
             <ExternalLink className="h-3.5 w-3.5" />

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -80,11 +80,11 @@ export function CaseStudyModal({
           {/* Top Bar with Close Button */}
           <div className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-[#0c0c10]/80 backdrop-blur-xl border-b border-white/5">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-[#00e5ff]/10 text-[#00e5ff] font-bold border border-[#00e5ff]/20">
+              <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-[#ff1a26]/10 text-[#ff1a26] font-bold border border-[#ff1a26]/20">
                 {project.category}
               </span>
               <span className="font-mono text-xs text-zinc-300">
-                // {project.year} • {project.client}
+                // Concept showcase • Independent portfolio study
               </span>
             </div>
 
@@ -132,20 +132,20 @@ export function CaseStudyModal({
             {/* 02 — OVERVIEW METRICS */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 font-mono text-xs">
               <div>
-                <span className="text-zinc-300 uppercase block mb-1">CLIENT</span>
+                <span className="text-zinc-300 uppercase block mb-1">PROJECT CONTEXT</span>
                 <span className="text-white font-semibold">{project.client}</span>
               </div>
               <div>
-                <span className="text-zinc-300 uppercase block mb-1">TIMELINE</span>
+                <span className="text-zinc-300 uppercase block mb-1">STUDY TYPE</span>
                 <span className="text-white font-semibold">{project.year}</span>
               </div>
               <div>
                 <span className="text-zinc-300 uppercase block mb-1">SERVICES</span>
-                <span className="text-[#00e5ff] font-semibold">{project.services.slice(0, 2).join(", ")}</span>
+                <span className="text-[#ff1a26] font-semibold">{project.services.slice(0, 2).join(", ")}</span>
               </div>
               <div>
                 <span className="text-zinc-300 uppercase block mb-1">PRIMARY TOOLS</span>
-                <span className="text-[#8b5cf6] font-semibold">{project.software.slice(0, 2).join(", ")}</span>
+                <span className="text-[#cc1623] font-semibold">{project.software.slice(0, 2).join(", ")}</span>
               </div>
             </div>
 
@@ -161,7 +161,7 @@ export function CaseStudyModal({
               </div>
 
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
-                <div className="flex items-center gap-2 text-[#00e5ff] font-mono text-xs uppercase tracking-wider font-bold">
+                <div className="flex items-center gap-2 text-[#ff1a26] font-mono text-xs uppercase tracking-wider font-bold">
                   <span>// CREATIVE STRATEGY</span>
                 </div>
                 <p className="font-sans text-sm text-zinc-300 leading-relaxed">
@@ -173,7 +173,7 @@ export function CaseStudyModal({
             {/* 05 — STEP-BY-STEP PROCESS */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-widest font-bold">
+                <span className="font-mono text-xs text-[#ff1a26] uppercase tracking-widest font-bold">
                   // EXECUTION & PROCESS
                 </span>
                 <div className="h-[1px] flex-1 bg-white/5" />
@@ -197,7 +197,7 @@ export function CaseStudyModal({
             {project.gallery && project.gallery.length > 0 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-[#8b5cf6] uppercase tracking-widest font-bold">
+                  <span className="font-mono text-xs text-[#cc1623] uppercase tracking-widest font-bold">
                     // VISUAL ARTIFACTS
                   </span>
                   <div className="h-[1px] flex-1 bg-white/5" />
@@ -209,7 +209,7 @@ export function CaseStudyModal({
                       <button
                         type="button"
                         onClick={() => setLightboxIndex(i)}
-                        className="group relative block w-full overflow-hidden rounded-2xl border border-white/10 bg-black/30 text-left aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-[#00e5ff]/70"
+                        className="group relative block w-full overflow-hidden rounded-2xl border border-white/10 bg-black/30 text-left aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-[#ff1a26]/70"
                         aria-label={`Open ${artifactLabel(i)} image`}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -224,7 +224,7 @@ export function CaseStudyModal({
                         <span className="absolute inset-0 flex items-center justify-center bg-black/0 font-mono text-[10px] uppercase tracking-widest text-white opacity-0 transition-all duration-300 group-hover:bg-black/35 group-hover:opacity-100">
                           OPEN FULLSCREEN
                         </span>
-                        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/65 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#00e5ff] backdrop-blur-md">
+                        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/65 px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#ff1a26] backdrop-blur-md">
                           {artifactLabel(i)}
                         </span>
                       </button>
@@ -239,10 +239,10 @@ export function CaseStudyModal({
 
             {/* 07 — PRINT & FACTORY PRODUCTION BREAKDOWN */}
             {project.productionBreakdown && (
-              <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 via-[#101016] to-zinc-900 border border-[#00e5ff]/20 space-y-6">
+              <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-zinc-900 via-[#101016] to-zinc-900 border border-[#ff1a26]/20 space-y-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Printer className="w-5 h-5 text-[#00e5ff]" />
+                    <Printer className="w-5 h-5 text-[#ff1a26]" />
                     <h3 className="font-display font-bold text-lg text-white">
                       PRINT & PREPRESS PRODUCTION PIPELINE
                     </h3>
@@ -254,15 +254,15 @@ export function CaseStudyModal({
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
                   <div className="p-4 rounded-xl bg-black/40 border border-white/5">
-                    <span className="text-[#00e5ff] font-bold block mb-1.5">01. DIGITAL ARTWORK</span>
+                    <span className="text-[#ff1a26] font-bold block mb-1.5">01. DIGITAL ARTWORK</span>
                     <p className="text-zinc-300 font-sans text-xs">{project.productionBreakdown.digitalArtwork}</p>
                   </div>
                   <div className="p-4 rounded-xl bg-black/40 border border-white/5">
-                    <span className="text-[#8b5cf6] font-bold block mb-1.5">02. PREPRESS & RIP</span>
+                    <span className="text-[#cc1623] font-bold block mb-1.5">02. PREPRESS & RIP</span>
                     <p className="text-zinc-300 font-sans text-xs">{project.productionBreakdown.prepress}</p>
                   </div>
                   <div className="p-4 rounded-xl bg-black/40 border border-white/5">
-                    <span className="text-[#ec4899] font-bold block mb-1.5">03. PRINT TECHNOLOGY</span>
+                    <span className="text-[#ff6b75] font-bold block mb-1.5">03. PRINT TECHNOLOGY</span>
                     <p className="text-zinc-300 font-sans text-xs">{project.productionBreakdown.printTechnology}</p>
                   </div>
                   <div className="p-4 rounded-xl bg-black/40 border border-white/5">
@@ -277,7 +277,7 @@ export function CaseStudyModal({
             <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
               <h4 className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4" />
-                OUTCOME & IMPACT
+                CONCEPT SUMMARY
               </h4>
               <p className="font-sans text-base text-zinc-200">
                 {project.finalResult}
@@ -299,15 +299,15 @@ export function CaseStudyModal({
 
               <button
                 onClick={() => onSelectProject(nextProject)}
-                className="group p-4 px-6 rounded-2xl glass-panel hover:border-[#00e5ff]/40 flex items-center gap-4 transition-all"
+                className="group p-4 px-6 rounded-2xl glass-panel hover:border-[#ff1a26]/40 flex items-center gap-4 transition-all"
               >
                 <div className="text-right">
                   <span className="text-[10px] font-mono text-zinc-300 uppercase block">NEXT PROJECT</span>
-                  <span className="font-display font-bold text-sm text-white group-hover:text-[#00e5ff] transition-colors">
+                  <span className="font-display font-bold text-sm text-white group-hover:text-[#ff1a26] transition-colors">
                     {nextProject.title}
                   </span>
                 </div>
-                <ArrowRight className="w-5 h-5 text-[#00e5ff] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-[#ff1a26] group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
@@ -333,7 +333,7 @@ export function CaseStudyModal({
                 />
                 <div className="flex w-full max-w-4xl items-center justify-between gap-4 rounded-2xl border border-white/10 bg-[#0c0c10]/90 px-4 py-3 backdrop-blur-xl">
                   <div className="min-w-0">
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-[#00e5ff]">
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-[#ff1a26]">
                       {artifactLabel(lightboxIndex)}
                     </span>
                     <p className="truncate font-mono text-xs text-zinc-200">
@@ -344,7 +344,7 @@ export function CaseStudyModal({
                     <button
                       type="button"
                       onClick={() => setLightboxIndex((lightboxIndex - 1 + project.gallery.length) % project.gallery.length)}
-                      className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-200 transition-colors hover:border-[#00e5ff]/50 hover:text-white"
+                      className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-200 transition-colors hover:border-[#ff1a26]/50 hover:text-white"
                       aria-label="Previous artifact"
                     >
                       <ArrowLeft className="h-4 w-4" />
@@ -355,7 +355,7 @@ export function CaseStudyModal({
                     <button
                       type="button"
                       onClick={() => setLightboxIndex((lightboxIndex + 1) % project.gallery.length)}
-                      className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-200 transition-colors hover:border-[#00e5ff]/50 hover:text-white"
+                      className="rounded-full border border-white/10 bg-white/5 p-2 text-zinc-200 transition-colors hover:border-[#ff1a26]/50 hover:text-white"
                       aria-label="Next artifact"
                     >
                       <ArrowRight className="h-4 w-4" />

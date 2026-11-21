@@ -165,7 +165,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="font-sans bg-[#08080a] text-zinc-100 antialiased selection:bg-[#00e5ff] selection:text-[#08080a] min-h-screen relative overflow-x-hidden"
+        className="font-sans bg-[#08080a] text-zinc-100 antialiased selection:bg-[#e50914] selection:text-white min-h-screen relative overflow-x-hidden"
       >
         <div className="fixed inset-0 bg-noise pointer-events-none z-50 opacity-40 mix-blend-overlay" />
         {children}
