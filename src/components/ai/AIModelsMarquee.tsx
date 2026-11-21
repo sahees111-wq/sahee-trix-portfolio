@@ -20,34 +20,38 @@ export function AIModelsMarquee() {
           </p>
         </div>
         <span className="w-fit rounded-full border border-red-500/25 bg-red-500/[0.07] px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-red-300">
-          {aiTools.length} + AI PLATFORMS &amp; MODELS
+          {aiTools.length} AI TOOLS &amp; MODELS
         </span>
       </div>
 
       <div className="ai-model-marquee-viewport" role="region" aria-label="AI model and creative platform logos">
-        <div className="ai-model-marquee-track" role="list">
-          {aiTools.map((tool) => (
-            <div key={tool.name} className="ai-model-card" role="listitem">
-              <span className="ai-model-logo-tile">
-                <Image src={tool.logo} alt={tool.name + " logo"} width={38} height={38} unoptimized />
-              </span>
-              <span className="min-w-0">
-                <span className="ai-model-name">{tool.name}</span>
-                <span className="ai-model-category">{tool.category}</span>
-              </span>
-            </div>
-          ))}
-          {aiTools.map((tool) => (
-            <div key={tool.name + "-duplicate"} className="ai-model-card" role="listitem" aria-hidden="true">
-              <span className="ai-model-logo-tile">
-                <Image src={tool.logo} alt="" aria-hidden="true" width={38} height={38} unoptimized />
-              </span>
-              <span className="min-w-0">
-                <span className="ai-model-name">{tool.name}</span>
-                <span className="ai-model-category">{tool.category}</span>
-              </span>
-            </div>
-          ))}
+        <div className="ai-model-marquee-track">
+          <div className="ai-model-marquee-group" role="list">
+            {aiTools.map((tool) => (
+              <div key={tool.name} className="ai-model-card" role="listitem">
+                <span className="ai-model-logo-tile">
+                  <Image src={tool.logo} alt={tool.name + " logo"} width={38} height={38} unoptimized />
+                </span>
+                <span className="min-w-0">
+                  <span className="ai-model-name">{tool.name}</span>
+                  <span className="ai-model-category">{tool.category}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="ai-model-marquee-group" aria-hidden="true">
+            {aiTools.map((tool) => (
+              <div key={tool.name + "-duplicate"} className="ai-model-card">
+                <span className="ai-model-logo-tile">
+                  <Image src={tool.logo} alt="" aria-hidden="true" width={38} height={38} unoptimized />
+                </span>
+                <span className="min-w-0">
+                  <span className="ai-model-name">{tool.name}</span>
+                  <span className="ai-model-category">{tool.category}</span>
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <p className="mx-auto mt-5 max-w-7xl px-4 font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-600 sm:px-6 lg:px-12">
