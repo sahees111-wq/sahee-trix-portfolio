@@ -33,15 +33,15 @@ export function PortfolioSection() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-widest font-bold">
+              <span className="font-mono text-xs text-[#ff1a26] uppercase tracking-widest font-bold">
                 // SELECTED WORK
               </span>
-              <div className="h-[1px] w-12 bg-[#00e5ff]/30" />
+              <div className="h-[1px] w-12 bg-[#ff1a26]/30" />
             </div>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight">
-              PROVEN CRAFT. <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-[#00e5ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
-                HIGH-IMPACT DELIVERABLES.
+              DESIGN IN MOTION. <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-[#ff1a26] via-[#cc1623] to-[#ff6b75] bg-clip-text text-transparent">
+                BUILT WITH PURPOSE.
               </span>
             </h2>
           </div>
@@ -50,6 +50,10 @@ export function PortfolioSection() {
             Click any project to inspect the in-depth case study, challenge analysis, creative strategy, and physical print prepress specs.
           </p>
         </div>
+
+          <p className="mt-5 max-w-3xl rounded-2xl border border-red-500/20 bg-red-950/15 px-5 py-4 text-xs leading-6 text-zinc-300 sm:text-sm">
+            Portfolio note: these pages are creative showcases and concept studies. They are not presented as commissioned client projects, endorsements or verified campaign results.
+          </p>
 
         {/* Filter Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
@@ -68,7 +72,7 @@ export function PortfolioSection() {
                 {isActive && (
                   <motion.div
                     layoutId="activeFilterBubble"
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00e5ff] to-[#8b5cf6]"
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ff1a26] to-[#cc1623]"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                   />
                 )}
@@ -111,18 +115,18 @@ export function PortfolioSection() {
 
                   {/* Top Badges */}
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                    <span className="font-mono text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[#00e5ff] border border-white/10">
+                    <span className="font-mono text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[#ff1a26] border border-white/10">
                       {project.category}
                     </span>
 
                     <span className="font-mono text-[11px] text-white/80 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/5">
-                      {project.year}
+                      CONCEPT STUDY
                     </span>
                   </div>
 
                   {/* Quick View Floating Prompt */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="px-5 py-2.5 rounded-full bg-[#00e5ff] text-[#08080a] font-mono font-bold text-xs flex items-center gap-2 shadow-[0_0_25px_rgba(0,229,255,0.6)] transform translate-y-3 group-hover:translate-y-0 transition-transform">
+                    <div className="px-5 py-2.5 rounded-full bg-[#ff1a26] text-[#08080a] font-mono font-bold text-xs flex items-center gap-2 shadow-[0_0_25px_rgba(0,229,255,0.6)] transform translate-y-3 group-hover:translate-y-0 transition-transform">
                       <Eye className="w-4 h-4" />
                       <span>EXPLORE CASE STUDY</span>
                     </div>
@@ -133,14 +137,14 @@ export function PortfolioSection() {
                 <div className="p-6 sm:p-7 space-y-4">
                   <div className="flex items-baseline justify-between gap-4">
                     <span className="font-mono text-xs text-zinc-300 uppercase">
-                      CLIENT: {project.client}
+                      PROJECT CONTEXT: INDEPENDENT SHOWCASE
                     </span>
                     <span className="font-mono text-xs text-zinc-300">
                       {project.software.slice(0, 2).join(" • ")}
                     </span>
                   </div>
 
-                  <h3 className="font-display font-bold text-2xl text-white group-hover:text-[#00e5ff] transition-colors leading-snug">
+                  <h3 className="font-display font-bold text-2xl text-white group-hover:text-[#ff1a26] transition-colors leading-snug">
                     {project.title}
                   </h3>
 
@@ -157,7 +161,7 @@ export function PortfolioSection() {
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-1 font-mono text-xs text-[#00e5ff] group-hover:translate-x-1 transition-transform">
+                    <div className="flex items-center gap-1 font-mono text-xs text-[#ff1a26] group-hover:translate-x-1 transition-transform">
                       <span>VIEW</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
@@ -166,7 +170,7 @@ export function PortfolioSection() {
                   <a
                     href={`/work/${project.slug}`}
                     onClick={(event) => event.stopPropagation()}
-                    className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500 transition-colors hover:text-[#00e5ff]"
+                    className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500 transition-colors hover:text-[#ff1a26]"
                   >
                     Open indexable case study
                     <ArrowUpRight className="h-3 w-3" />
