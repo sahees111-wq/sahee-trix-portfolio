@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,16 +10,16 @@ export function ServicesSection() {
 
   const getServiceIcon = (id: string) => {
     switch (id) {
-      case "graphic-design": return <Layers className="w-5 h-5 text-[#ff1a26]" />;
-      case "web-design": return <Globe className="w-5 h-5 text-[#ff6b75]" />;
-      case "brand-identity": return <Sparkles className="w-5 h-5 text-[#cc1623]" />;
-      case "social-media": return <Share2 className="w-5 h-5 text-[#ff3344]" />;
-      case "jersey-apparel": return <Shirt className="w-5 h-5 text-[#e50914]" />;
-      case "print-production": return <Printer className="w-5 h-5 text-[#ff3344]" />;
-      case "packaging": return <Box className="w-5 h-5 text-[#ff6b75]" />;
-      case "marketing": return <Megaphone className="w-5 h-5 text-[#ff1a26]" />;
-      case "ai-creative-solutions": return <Sparkles className="w-5 h-5 text-[#cc1623]" />;
-      default: return <Layers className="w-5 h-5 text-[#ff1a26]" />;
+      case "graphic-design": return <Layers className="w-5 h-5 text-[#00e5ff]" />;
+      case "web-design": return <Globe className="w-5 h-5 text-[#f97316]" />;
+      case "brand-identity": return <Sparkles className="w-5 h-5 text-[#8b5cf6]" />;
+      case "social-media": return <Share2 className="w-5 h-5 text-[#ec4899]" />;
+      case "jersey-apparel": return <Shirt className="w-5 h-5 text-[#3b82f6]" />;
+      case "print-production": return <Printer className="w-5 h-5 text-[#00a4e4]" />;
+      case "packaging": return <Box className="w-5 h-5 text-[#f59e0b]" />;
+      case "marketing": return <Megaphone className="w-5 h-5 text-[#10b981]" />;
+      case "ai-creative-solutions": return <Sparkles className="w-5 h-5 text-[#a855f7]" />;
+      default: return <Layers className="w-5 h-5 text-[#00e5ff]" />;
     }
   };
 
@@ -30,14 +30,14 @@ export function ServicesSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="font-mono text-xs text-[#ff1a26] uppercase tracking-widest font-bold">
+              <span className="font-mono text-xs text-[#00e5ff] uppercase tracking-widest font-bold">
                 // WHAT I DO
               </span>
-              <div className="h-[1px] w-12 bg-[#ff1a26]/30" />
+              <div className="h-[1px] w-12 bg-[#00e5ff]/30" />
             </div>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
               SPECIALIZED CREATIVE <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-[#ff1a26] via-[#cc1623] to-[#ff3344] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#00e5ff] via-[#8b5cf6] to-[#ec4899] bg-clip-text text-transparent">
                 CAPABILITIES & SOLUTIONS
               </span>
             </h2>
@@ -87,7 +87,7 @@ export function ServicesSection() {
 
                 {/* Middle: Title & Tagline */}
                 <div className="relative z-10 space-y-2 my-auto py-4">
-                  <h3 className="font-display font-extrabold text-xl text-white group-hover:text-[#ff1a26] transition-colors leading-tight">
+                  <h3 className="font-display font-extrabold text-xl text-white group-hover:text-[#00e5ff] transition-colors leading-tight">
                     {service.title}
                   </h3>
                   <p className="font-sans text-xs text-zinc-400 leading-relaxed line-clamp-3">
@@ -110,7 +110,7 @@ export function ServicesSection() {
 
                   <div className="flex items-center justify-between text-xs font-mono text-zinc-300 group-hover:text-white transition-colors">
                     <span>{service.tools.slice(0, 2).join(" • ")}</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#ff1a26] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <ArrowUpRight className="w-4 h-4 text-[#00e5ff] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </div>
                 </div>
               </motion.div>

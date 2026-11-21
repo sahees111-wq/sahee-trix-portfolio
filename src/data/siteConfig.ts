@@ -18,10 +18,8 @@ export const siteConfig = {
     "From the first concept to the final launch, I combine creative direction, visual design, UI/UX, and front-end development to build purposeful, polished digital experiences.",
   ],
   stats: [
-    { value: "3+", label: "Years Experience", suffix: "" },
-    { value: "250+", label: "Design & Development Projects", suffix: "" },
-    { value: "50+", label: "Worldwide Brands & Teams", suffix: "" },
-    { value: "360°", label: "Screen → Fabric Pipeline", suffix: "" },
+    { value: "3+", label: "Years of Creative Experience", suffix: "" },
+    { value: "360°", label: "Digital to Print Workflow", suffix: "" },
   ],
   contact: {
     email: "saheetrix@gmail.com",
@@ -29,7 +27,7 @@ export const siteConfig = {
     whatsappFormatted: "+94 75 473 9447",
     whatsappMessage: "Hi Sahee, I saw your SAHEETRIX portfolio! I'd like to discuss a graphic design / web design / social media / marketing project.",
     location: "Sri Lanka",
-    availability: "Available for Worldwide Design & Development Projects",
+    availability: "Open to selected projects worldwide",
   },
   payment: {
     paypalHostedButtonId: "DVGRXCM4RL9TY",

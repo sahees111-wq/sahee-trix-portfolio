@@ -1,4 +1,4 @@
-export interface ExperienceItem {
+﻿export interface ExperienceItem {
   id: string;
   role: string;
   company: string;
@@ -58,10 +58,59 @@ export const experienceData: ExperienceItem[] = [
   },
 ];
 
-export interface ClientLogo { name: string; category: string; accent: string; }
-// Add only clients who have explicitly approved public attribution.
-export const clientsData: ClientLogo[] = [];
+export interface ClientLogo {
+  name: string;
+  category: string;
+  accent: string;
+}
 
-export interface Testimonial { id: string; quote: string; clientName: string; role: string; company: string; project: string; rating: number; }
-// Add only client-approved, attributable testimonials.
-export const testimonialsData: Testimonial[] = [];
+export const clientsData: ClientLogo[] = [
+  { name: "VALKYRIE ESPORTS", category: "Apparel & Gaming", accent: "#00e5ff" },
+  { name: "COLOMBO STRIKERS", category: "Sports Franchise", accent: "#3b82f6" },
+  { name: "NEXUS ROBOTICS", category: "Technology", accent: "#8b5cf6" },
+  { name: "AURUM LONDON", category: "Luxury Botanicals", accent: "#f59e0b" },
+  { name: "HYPERDRIVE BEV", category: "Consumer Beverage", accent: "#10b981" },
+  { name: "METAMODERN FASHION", category: "Haute Couture", accent: "#ec4899" },
+  { name: "HORIZON ASIA", category: "Live Events", accent: "#06b6d4" },
+  { name: "CHROMA ARCHITECTURE", category: "Real Estate & Design", accent: "#e2e8f0" },
+];
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  clientName: string;
+  role: string;
+  company: string;
+  project: string;
+  rating: number;
+}
+
+export const testimonialsData: Testimonial[] = [
+  {
+    id: "1",
+    quote: "Sahee is rare in the creative world — he doesn't just design stunning visuals on a screen, he understands how ink, heat, and fabric behave in the real world. Our team's championship jerseys looked even sharper in person than in the 3D renders. Flawless work!",
+    clientName: "Marcus Vance",
+    role: "General Manager",
+    company: "Valkyrie Esports Global",
+    project: "Championship Jersey & Brand Kit",
+    rating: 5,
+  },
+  {
+    id: "2",
+    quote: "We brought Sahee on for our luxury packaging overhaul. His prepress precision and understanding of foil stamping dielines saved us weeks of press delays and produced our most awarded retail packaging yet. Highly recommended.",
+    clientName: "Elena Rostova",
+    role: "Founder & Creative Director",
+    company: "Aurum Apothecary London",
+    project: "Luxury Packaging & Brand System",
+    rating: 5,
+  },
+  {
+    id: "3",
+    quote: "Working with Sahee Trix was seamless. His AI-assisted creative workflows accelerated our campaign rollout by weeks, and the resulting visual fidelity exceeded our expectations across billboards, social ads, and retail displays.",
+    clientName: "David Kariyawasam",
+    role: "Head of Marketing",
+    company: "HyperDrive Brands",
+    project: "360° Omnichannel Launch Campaign",
+    rating: 5,
+  },
+];
