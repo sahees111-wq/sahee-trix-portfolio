@@ -176,7 +176,7 @@ async function homeAudit(browser, viewport) {
       await page.waitForURL("**/play");
       await checkNoHorizontalOverflow(page, viewport.name + " game portal");
     } else {
-      await page.getByRole("link", { name: /PLAY WITH ME/ }).click();
+      await page.locator("section.hero-safe-screen a[href=\"/play\"]").click();
       await page.waitForURL("**/play");
       await checkNoHorizontalOverflow(page, viewport.name + " game portal");
     }
