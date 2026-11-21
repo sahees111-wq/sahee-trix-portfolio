@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:games": "tsc src/components/games/chessEngine.ts src/components/games/gameLogic.ts --module commonjs --target ES2020 --outDir .game-test-build --skipLibCheck --strict --noEmit false && node --test tests/games.test.cjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.108.0",
