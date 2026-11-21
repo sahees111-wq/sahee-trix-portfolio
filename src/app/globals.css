@@ -855,3 +855,9 @@ body {
   .ai-model-logo-tile img { width: 30px; height: 30px; }
   .ai-model-name { font-size: 0.9rem; }
 }
+
+
+/* SAHEETRIX PLAY WITH ME — tactile game portal controls. */
+.arcade-key {display:inline-flex;min-width:1.9rem;height:1.9rem;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.13);border-bottom-width:3px;border-radius:.45rem;background:rgba(255,255,255,.045);color:#f4f4f5;font-family:var(--font-jetbrains-mono),monospace;font-size:.8rem;}
+.arcade-dpad {display:flex;height:2.8rem;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.12);border-radius:.75rem;background:rgba(255,255,255,.045);color:#fca5a5;transition:background 160ms ease,border-color 160ms ease,color 160ms ease;}
+.arcade-dpad:hover,.arcade-dpad:focus-visible {border-color:rgba(248,113,113,.6);background:rgba(185,28,28,.25);color:white;}
