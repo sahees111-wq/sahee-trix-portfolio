@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-and-browser-qa:
     runs-on: ubuntu-latest
     env:
       CUSTOM_DOMAIN: 'true'
@@ -21,9 +21,32 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - name: Install dependencies
+      - name: Install project dependencies
         run: npm ci
-      - name: Run game-logic tests
+      - name: Run game-logic unit tests
         run: npm run test:games
       - name: Build static site
         run: npm run build
+      - name: Install Playwright for browser QA
+        run: npm install --no-save playwright
+      - name: Install Chromium browser
+        run: npx playwright install --with-deps chromium
+      - name: Start production static export
+        run: node tests/static-server.mjs > /tmp/saheetrix-qa-server.log 2>&1 &
+      - name: Run desktop, tablet and mobile browser tests
+        run: |
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node tests/run-e2e.mjs
+      - name: Upload browser QA screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saheetrix-desktop-mobile-qa
+          path: qa-artifacts/
+          if-no-files-found: warn
+      - name: Stop static QA server
+        if: always()
+        run: if [ -f /tmp/saheetrix-qa-server.pid ]; then kill "$(cat /tmp/saheetrix-qa-server.pid)" || true; fi
