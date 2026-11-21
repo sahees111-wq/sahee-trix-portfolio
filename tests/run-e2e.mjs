@@ -301,7 +301,7 @@ async function gamesAudit(browser) {
 
     await backToArcade(page);
     await openGame(page, "Pixel Studio");
-    await page.getByRole("button", { name: "Paint pixel 1" }).click();
+    await page.getByRole("button", { name: "Paint pixel 1", exact: true }).click();
     await page.getByText("1 PIXELS", { exact: true }).waitFor();
     const downloadPromise = page.waitForEvent("download");
     await page.getByRole("button", { name: /Export PNG/ }).click();
