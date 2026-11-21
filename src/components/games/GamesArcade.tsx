@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Gamepad2, Trophy, RotateCcw,
-  Play, Pause, Sparkles, Brain, Zap, Grid3X3, Palette, Crown,
+  Play, Pause, Sparkles, Brain, Zap, Grid3X3, Palette, Apple, Crown,
   MousePointer2, ChevronLeft, Home, WandSparkles,
 } from "lucide-react";
 import { ChessGame } from "./ChessGame";
@@ -20,7 +20,7 @@ const GAMES: GameInfo[] = [
   { id:"pixel",title:"Pixel Studio",genre:"CREATIVE PLAYGROUND",description:"Make tiny pixel-art creations with a neon palette. Your canvas, your rules.",icon:Palette,accent:"red" },
 ];
 
-function ActionButton({children,onClick,variant="primary",disabled=false}:{children:ReactNode;onClick:()=>void;variant?:"primary"|"ghost";disabled?:boolean}) {
+function ActionButton({children,onClick,variant="primary",disabled=false}:{children:React.ReactNode;onClick:()=>void;variant?:"primary"|"ghost";disabled?:boolean}) {
   return <button type="button" disabled={disabled} onClick={onClick} className={`inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-wider transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 ${variant==="primary"?"bg-red-600 text-white shadow-[0_0_20px_rgba(229,9,20,0.22)] hover:bg-red-500":"border border-white/10 bg-white/[0.03] text-zinc-300 hover:border-red-500/40 hover:text-white"}`}>{children}</button>;
 }
 
@@ -90,19 +90,7 @@ function Game2048(){
   const initial=()=>addTile(addTile(emptyGrid()));
   const [grid,setGrid]=useState<Grid2048>(initial),[score,setScore]=useState(0),[best,setBest]=useState(0),[won,setWon]=useState(false),[over,setOver]=useState(false);
   const reset=()=>{setGrid(initial());setScore(0);setWon(false);setOver(false);};
-  const move=useCallback((direction:"left"|"right"|"up"|"down")=>{
-    if(over)return;
-    const result=shifted(grid,direction);
-    const changed=result.grid.some((row,r)=>row.some((v,c)=>v!==grid[r][c]));
-    if(!changed)return;
-    const next=addTile(result.grid);
-    setGrid(next);
-    const nextScore=score+result.score;
-    setScore(nextScore);
-    setBest(b=>Math.max(b,nextScore));
-    if(!won&&next.some(row=>row.includes(2048)))setWon(true);
-    if(!has2048Moves(next))setOver(true);
-  },[over,won,grid,score]);
+  const move=useCallback((direction:"left"|"right"|"up"|"down")=>{if(over)return;setGrid(current=>{const result=shifted(current,direction);const changed=result.grid.some((row,r)=>row.some((v,c)=>v!==current[r][c]));if(!changed)return current;const next=addTile(result.grid);setScore(s=>{const value=s+result.score;setBest(b=>Math.max(b,value));return value;});if(!won&&next.some(row=>row.includes(2048)))setWon(true);if(!has2048Moves(next))setOver(true);return next;});},[over,won]);
   useEffect(()=>{const key=(e:KeyboardEvent)=>{const keys:Record<string,"left"|"right"|"up"|"down">={ArrowLeft:"left",a:"left",ArrowRight:"right",d:"right",ArrowUp:"up",w:"up",ArrowDown:"down",s:"down"};if(keys[e.key]){e.preventDefault();move(keys[e.key]);}};window.addEventListener("keydown",key);return()=>window.removeEventListener("keydown",key);},[move]);
   return <div className="mx-auto w-full max-w-[470px]">
     <div className="mb-4 flex items-center justify-between"><div className="flex gap-3"><div className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2"><span className="block font-mono text-[9px] text-zinc-500">SCORE</span><b className="font-display text-xl text-white">{score}</b></div><div className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2"><span className="block font-mono text-[9px] text-zinc-500">BEST</span><b className="font-display text-xl text-red-300">{best}</b></div></div><ActionButton onClick={reset}><RotateCcw className="h-3.5 w-3.5"/> Restart</ActionButton></div>
@@ -148,6 +136,8 @@ function PixelStudio(){
     </aside>
   </div>;
 }
+
+function Game2048Card(){return null;}
 
 export function GamesArcade(){
   const [activeGame,setActiveGame]=useState<GameId|null>(null);

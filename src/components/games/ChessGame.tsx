@@ -19,7 +19,7 @@ export function ChessGame(){
   const [moveLog,setMoveLog]=useState<string[]>([]);
   const status=getChessStatus(position);
   const checked=isChessInCheck(position.board,position.turn);
-  const moveCount=position.fullMove*2-(position.turn==="w"?1:0);
+  const moveCount=Math.max(1,Math.ceil(history.length/2));
   const targetSet=useMemo(()=>new Set(targets.map(s=>s.r+"-"+s.c)),[targets]);
   const restart=()=>{setPosition(createChessPosition());setSelected(null);setTargets([]);setHistory([]);setMoveLog([]);};
   const undo=()=>{if(!history.length)return;setPosition(history[history.length-1]);setHistory(h=>h.slice(0,-1));setMoveLog(m=>m.slice(0,-1));setSelected(null);setTargets([]);};
