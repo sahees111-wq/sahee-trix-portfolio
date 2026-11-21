@@ -326,7 +326,7 @@ async function gamesAudit(browser) {
     for (const square of ["1", "4", "2", "5", "3"]) {
       await page.getByRole("button", { name: "Square " + square + " empty" }).click();
     }
-    await page.getByText("X WINS THE ROUND", { exact: true }).waitFor();
+    await page.locator("span.rounded-full").filter({ hasText: "X WINS THE ROUND" }).waitFor();
     await page.getByRole("button", { name: /Reset/ }).click();
     await page.getByText("PLAYER ONE • YOUR TURN", { exact: true }).waitFor();
     report.games.push("Tic-Tac-Toe: alternating turns, win detection, reset");
