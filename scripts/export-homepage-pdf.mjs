@@ -18,7 +18,8 @@ try {
     viewport: { width, height },
     deviceScaleFactor: 1.5,
     isMobile: false,
-    reducedMotion: "no-preference",
+    // Respect reduced motion while preparing a static document capture.
+    reducedMotion: "reduce",
   });
   const page = await context.newPage();
   const pageErrors = [];
@@ -43,14 +44,22 @@ try {
   await page.locator("main#site-top").waitFor({ timeout: 30000 });
   await page.evaluate(() => document.fonts.ready);
 
-  // Walk the existing page without changing its layout so lazy images and scroll reveals load.
+  // Walk the full document in viewport-sized increments. This triggers nested
+  // while-in-view animations, lazy images, and content loaded on scroll.
   const sectionCount = await page.locator("main > section").count();
-  for (let i = 0; i < sectionCount; i += 1) {
-    await page.locator("main > section").nth(i).evaluate(node => {
-      node.scrollIntoView({ block: "center", behavior: "instant" });
-    });
-    await page.waitForTimeout(220);
+  const documentHeight = await page.evaluate(() =>
+    Math.max(document.documentElement.scrollHeight, document.body.scrollHeight),
+  );
+  for (let y = 0; y < documentHeight; y += Math.round(height * 0.72)) {
+    await page.evaluate(top => window.scrollTo({ top, behavior: "instant" }), y);
+    await page.waitForTimeout(150);
   }
+
+  // Set the site section-reveal class to its intended visible state for this capture only.
+  await page.locator("main > section").evaluateAll(sections => {
+    sections.forEach(section => section.classList.add("is-scroll-revealed"));
+  });
+  await page.waitForTimeout(900);
 
   // Force native lazy images to load, then wait for their decoded pixels.
   const imageReport = await page.locator("main img").evaluateAll(async images => {
@@ -102,6 +111,8 @@ try {
     screenshot: screenshotPath,
     screenshotCssDimensions: { width: dimensions.width, height: dimensions.height },
     sections: sectionCount,
+    revealedSections: await page.locator("main > section.is-scroll-revealed").count(),
+    documentHeightBeforeCapture: documentHeight,
     images: imageReport,
     pageErrors,
     consoleErrors,
