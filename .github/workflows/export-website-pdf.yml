@@ -1,0 +1,67 @@
+name: Export SAHEETRIX website PDF
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  export-homepage:
+    runs-on: ubuntu-latest
+    env:
+      CUSTOM_DOMAIN: 'true'
+    steps:
+      - name: Checkout production website source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install website dependencies
+        run: npm ci
+
+      - name: Build the unchanged production website
+        run: npm run build
+
+      - name: Install browser capture tooling
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+
+      - name: Install lossless PDF image tooling
+        run: python -m pip install --quiet pillow reportlab
+
+      - name: Serve the production export
+        run: |
+          node tests/static-server.mjs > /tmp/saheetrix-static-server.log 2>&1 &
+          echo $! > /tmp/saheetrix-static-server.pid
+          for attempt in $(seq 1 60); do
+            if curl --silent --fail http://127.0.0.1:4173/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/saheetrix-static-server.log
+          exit 1
+
+      - name: Capture the full homepage exactly as rendered
+        run: node scripts/export-homepage-pdf.mjs
+
+      - name: Convert the full-page capture into a PDF
+        run: python scripts/capture-to-pdf.py
+
+      - name: Upload the finished PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: SAHEETRIX-Website-PDF
+          path: |
+            artifacts/SAHEETRIX-Website.pdf
+            artifacts/capture-report.json
+          if-no-files-found: error
+          retention-days: 14
