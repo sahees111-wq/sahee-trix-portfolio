@@ -61,6 +61,30 @@ try {
   });
   await page.waitForTimeout(900);
 
+  // Framer Motion can leave inline opacity: 0 styles on off-screen cards during a fast capture.
+  // Resolve those temporary initial states on this throwaway page only.
+  const motionVisibility = await page.locator("main").evaluate(root => {
+    const candidates = Array.from(root.querySelectorAll("*"));
+    const hidden = candidates.filter(element => {
+      const style = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      return style.visibility !== "hidden" && style.display !== "none" &&
+        Number(style.opacity) < 0.05 && rect.width > 1 && rect.height > 1;
+    });
+    hidden.forEach(element => {
+      element.style.setProperty("opacity", "1", "important");
+      element.style.setProperty("transform", "none", "important");
+      element.style.setProperty("transition", "none", "important");
+    });
+    const remaining = candidates.filter(element => {
+      const style = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      return style.visibility !== "hidden" && style.display !== "none" &&
+        Number(style.opacity) < 0.05 && rect.width > 1 && rect.height > 1;
+    }).length;
+    return { hiddenBefore: hidden.length, hiddenAfter: remaining };
+  });
+
   // Force native lazy images to load, then wait for their decoded pixels.
   const imageReport = await page.locator("main img").evaluateAll(async images => {
     await Promise.all(images.map(async image => {
@@ -112,6 +136,7 @@ try {
     screenshotCssDimensions: { width: dimensions.width, height: dimensions.height },
     sections: sectionCount,
     revealedSections: await page.locator("main > section.is-scroll-revealed").count(),
+    motionVisibility,
     documentHeightBeforeCapture: documentHeight,
     images: imageReport,
     pageErrors,
